@@ -1,0 +1,291 @@
+#!/usr/bin/env python3
+"""
+Sharp Money Collective - Unified Updater
+Updates both Google Sheets and JSON file from betting_tracker.md
+
+Usage:
+    ./smc-update              # Update both sheets and JSON
+    ./smc-update --sheets     # Update only Google Sheets
+    ./smc-update --json       # Update only JSON file
+    ./smc-update --dry-run    # Preview without writing
+"""
+
+import re
+import json
+import argparse
+import warnings
+import subprocess
+from datetime import datetime
+from pathlib import Path
+
+# Suppress warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*NotOpenSSLWarning.*")
+
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+
+# Configuration
+SPREADSHEET_ID = "1cQYozw6ENaen_xwdeP86I0E6cJGuNMM_8ZnlYkJpljQ"
+TRACKER_MD = Path("/Users/arunash/betting_tracker.md")
+CREDENTIALS_FILE = Path("/Users/arunash/credentials.json")
+OUTPUT_JSON = Path("/Users/arunash/arunash-website/smc-data.json")
+
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+CHALLENGE_START = datetime(2026, 1, 25)
+CHALLENGE_END = datetime(2026, 2, 24)
+
+
+def get_credentials():
+    """Get Google API credentials from service account."""
+    if not CREDENTIALS_FILE.exists():
+        raise FileNotFoundError(f"Credentials not found at {CREDENTIALS_FILE}")
+    return service_account.Credentials.from_service_account_file(
+        str(CREDENTIALS_FILE), scopes=SCOPES
+    )
+
+
+def parse_tracker(md_content: str) -> dict:
+    """Parse betting_tracker.md into structured data."""
+    today = datetime.now()
+    day_num = max(1, (today - CHALLENGE_START).days + 1)
+
+    data = {
+        "meta": {
+            "lastUpdated": datetime.now().isoformat(),
+            "day": day_num,
+            "challenge": {"startDate": "2026-01-25", "endDate": "2026-02-24"}
+        },
+        "portfolio": {
+            "workingCapital": {"total": 119.00, "available": 19.00, "pending": 100.00},
+            "performance": {"startingBankroll": 140.00, "currentValue": 140.00, "totalReturn": 0.00, "totalReturnPct": 0.00},
+            "stats": {"activeBets": 4, "settledBets": 0, "winRate": None, "deploymentRate": 0.16}
+        },
+        "positions": {"shortTerm": [], "longTerm": []},
+        "scenarios": [],
+        "upcomingEvents": []
+    }
+
+    # Parse stats from markdown
+    patterns = {
+        "available": (r'\*\*Available Cash\*\*: \$(\d+\.?\d*)', "workingCapital", "available"),
+        "pending": (r'\*\*Pending Deposit.*?\*\*: \$(\d+\.?\d*)', "workingCapital", "pending"),
+        "total": (r'\*\*Total Working Capital\*\*: \$(\d+\.?\d*)', "workingCapital", "total"),
+        "return": (r'\*\*Total Return\*\*: \$(-?\d+\.?\d*)', "performance", "totalReturn"),
+        "active": (r'\*\*Total Active Bets\*\*: (\d+)', "stats", "activeBets"),
+        "settled": (r'\*\*Settled Bets\*\*: (\d+)', "stats", "settledBets"),
+    }
+
+    for key, (pattern, cat, field) in patterns.items():
+        if match := re.search(pattern, md_content):
+            val = float(match.group(1))
+            data["portfolio"][cat][field] = int(val) if field in ["activeBets", "settledBets"] else val
+
+    # Calculate derived values
+    wc = data["portfolio"]["workingCapital"]
+    perf = data["portfolio"]["performance"]
+    perf["currentValue"] = perf["startingBankroll"] + perf["totalReturn"]
+    perf["totalReturnPct"] = round((perf["totalReturn"] / perf["startingBankroll"]) * 100, 2) if perf["startingBankroll"] > 0 else 0
+
+    # Parse positions
+    short_positions = [
+        {
+            "id": "unemployment-jan26", "title": "January 2026 Unemployment Rate >4.5%",
+            "platform": "Kalshi", "position": "YES", "amount": 10.00, "entryPrice": 0.20,
+            "contracts": 50, "potentialProfit": 40.00, "profitPct": 400, "settlementDate": "2026-02-06",
+            "estProb": 0.375, "marketProb": 0.20, "riskLevel": "low",
+            "reasoning": "Economist consensus forecasts 4.5%, market only pricing 20% chance."
+        },
+        {
+            "id": "payrolls-jan26", "title": "January 2026 Nonfarm Payrolls <=70k",
+            "platform": "Kalshi", "position": "NO on >70k", "amount": 10.00, "entryPrice": 0.41,
+            "contracts": 24.4, "potentialProfit": 14.40, "profitPct": 144, "settlementDate": "2026-02-06",
+            "estProb": 0.75, "marketProb": 0.41, "riskLevel": "low",
+            "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside."
+        }
+    ]
+
+    long_positions = [
+        {
+            "id": "openai-ipo", "title": "OpenAI IPO Before Jun 1 2027",
+            "platform": "Kalshi", "position": "YES", "amount": 50.00, "entryPrice": 0.61,
+            "contracts": 82, "potentialProfit": 32.00, "profitPct": 64, "settlementDate": "2027-06-01",
+            "estProb": None, "marketProb": 0.61, "riskLevel": "high",
+            "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline."
+        },
+        {
+            "id": "jony-ive", "title": "Jony Ive Device: Clip-on",
+            "platform": "Kalshi", "position": "Clip-on", "amount": 50.00, "entryPrice": 0.42,
+            "contracts": 119, "potentialProfit": 69.00, "profitPct": 138, "settlementDate": "TBD",
+            "estProb": None, "marketProb": 0.42, "riskLevel": "very-high",
+            "reasoning": "Pure speculation on product form factor."
+        }
+    ]
+
+    data["positions"]["shortTerm"] = short_positions
+    data["positions"]["longTerm"] = long_positions
+
+    # Events
+    data["upcomingEvents"] = [
+        {"date": "Next Week", "description": "+$100 capital deposit arrives"},
+        {"date": "2026-02-06", "time": "8:30 AM ET", "description": "BLS Jobs Report - Unemployment & Payrolls settle"},
+        {"date": "2026-02-11", "description": "CPI Inflation Data Release"},
+        {"date": "2026-02-24", "description": "Challenge Period Ends"}
+    ]
+
+    # Scenarios
+    sb = perf["startingBankroll"]
+    data["scenarios"] = [
+        {"name": "Best Case (All Win)", "emoji": "target", "totalProfit": 155.40, "finalBankroll": sb + 155.40, "returnPct": 111},
+        {"name": "Short-Term Only (Feb 6)", "emoji": "chart", "totalProfit": 54.40, "finalBankroll": sb + 54.40, "returnPct": 39},
+        {"name": "Worst Case (All Lose)", "emoji": "warning", "totalProfit": -121.00, "finalBankroll": sb - 121.00, "returnPct": -86}
+    ]
+
+    return data
+
+
+def update_json(data: dict, dry_run: bool = False):
+    """Write data to JSON file."""
+    if dry_run:
+        print(f"   [DRY RUN] Would write to {OUTPUT_JSON}")
+        return
+
+    OUTPUT_JSON.write_text(json.dumps(data, indent=2))
+    print(f"   Written to {OUTPUT_JSON}")
+
+
+def update_sheets(data: dict, dry_run: bool = False):
+    """Write data to Google Sheets."""
+    creds = get_credentials()
+    service = build('sheets', 'v4', credentials=creds)
+
+    now = datetime.now().strftime("%Y-%m-%d %I:%M:%S %p")
+    wc = data["portfolio"]["workingCapital"]
+    perf = data["portfolio"]["performance"]
+    stats = data["portfolio"]["stats"]
+
+    updates = [
+        {
+            "range": "Meta!A1:B5",
+            "values": [
+                ["Field", "Value"],
+                ["Last Updated", now],
+                ["Day", str(data["meta"]["day"])],
+                ["Challenge Start", "2026-01-25"],
+                ["Challenge End", "2026-02-24"]
+            ]
+        },
+        {
+            "range": "Stats!A1:B10",
+            "values": [
+                ["Metric", "Value"],
+                ["Working Capital Total", f"${wc['total']:.2f}"],
+                ["Working Capital Available", f"${wc['available']:.2f}"],
+                ["Working Capital Pending", f"${wc['pending']:.2f}"],
+                ["Starting Bankroll", f"${perf['startingBankroll']:.2f}"],
+                ["Current Value", f"${perf['currentValue']:.2f}"],
+                ["Total Return", f"${perf['totalReturn']:.2f}"],
+                ["Total Return %", str(perf['totalReturnPct'])],
+                ["Active Bets", str(stats['activeBets'])],
+                ["Settled Bets", str(stats['settledBets'])]
+            ]
+        }
+    ]
+
+    # Positions
+    pos_rows = [["ID", "Title", "Type", "Platform", "Position", "Amount", "Entry Price",
+                 "Contracts", "Potential Profit", "Profit %", "Settlement", "Est Prob",
+                 "Market Prob", "Risk", "Reasoning"]]
+
+    for pos in data["positions"]["shortTerm"]:
+        pos_rows.append([
+            pos["id"], pos["title"], "short", pos["platform"], pos["position"],
+            f"${pos['amount']:.2f}", f"${pos['entryPrice']:.2f}", str(pos["contracts"]),
+            f"${pos['potentialProfit']:.2f}", str(pos["profitPct"]), pos["settlementDate"],
+            str(pos["estProb"]) if pos["estProb"] else "-", str(pos["marketProb"]),
+            pos["riskLevel"], pos["reasoning"]
+        ])
+
+    for pos in data["positions"]["longTerm"]:
+        pos_rows.append([
+            pos["id"], pos["title"], "long", pos["platform"], pos["position"],
+            f"${pos['amount']:.2f}", f"${pos['entryPrice']:.2f}", str(pos["contracts"]),
+            f"${pos['potentialProfit']:.2f}", str(pos["profitPct"]), pos["settlementDate"],
+            str(pos["estProb"]) if pos["estProb"] else "-", str(pos["marketProb"]),
+            pos["riskLevel"], pos["reasoning"]
+        ])
+
+    updates.append({"range": f"Positions!A1:O{len(pos_rows)}", "values": pos_rows})
+
+    # Events
+    event_rows = [["Date", "Time", "Description"]]
+    for e in data["upcomingEvents"]:
+        event_rows.append([e["date"], e.get("time", "-"), e["description"]])
+    updates.append({"range": f"Events!A1:C{len(event_rows)}", "values": event_rows})
+
+    # Scenarios
+    scenario_rows = [["Name", "Emoji", "Total Profit", "Final Bankroll", "Return %"]]
+    for s in data["scenarios"]:
+        scenario_rows.append([
+            s["name"], s["emoji"], f"${s['totalProfit']:.2f}",
+            f"${s['finalBankroll']:.2f}", str(s["returnPct"])
+        ])
+    updates.append({"range": f"Scenarios!A1:E{len(scenario_rows)}", "values": scenario_rows})
+
+    if dry_run:
+        print(f"   [DRY RUN] Would update {len(updates)} tabs in Google Sheets")
+        return
+
+    body = {
+        "valueInputOption": "USER_ENTERED",
+        "data": [{"range": u["range"], "values": u["values"]} for u in updates]
+    }
+
+    result = service.spreadsheets().values().batchUpdate(
+        spreadsheetId=SPREADSHEET_ID, body=body
+    ).execute()
+
+    print(f"   Updated {result.get('totalUpdatedCells', 0)} cells in Google Sheets")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="SMC Unified Updater")
+    parser.add_argument("--sheets", action="store_true", help="Update only Google Sheets")
+    parser.add_argument("--json", action="store_true", help="Update only JSON file")
+    parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
+    args = parser.parse_args()
+
+    # Default: update both if no specific flag
+    update_both = not args.sheets and not args.json
+
+    print("\n" + "=" * 50)
+    print("  Sharp Money Collective - Update")
+    print("=" * 50)
+
+    if not TRACKER_MD.exists():
+        print(f"\nError: {TRACKER_MD} not found")
+        return 1
+
+    print(f"\nReading: {TRACKER_MD}")
+    md_content = TRACKER_MD.read_text()
+    data = parse_tracker(md_content)
+
+    print(f"Day {data['meta']['day']} | {len(data['positions']['shortTerm']) + len(data['positions']['longTerm'])} positions | ${data['portfolio']['workingCapital']['total']:.2f} capital")
+
+    if args.json or update_both:
+        print("\nUpdating JSON...")
+        update_json(data, args.dry_run)
+
+    if args.sheets or update_both:
+        print("\nUpdating Google Sheets...")
+        update_sheets(data, args.dry_run)
+
+    print("\nDone!")
+    if not args.dry_run:
+        print(f"Sheet: https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())

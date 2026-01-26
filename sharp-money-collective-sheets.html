@@ -287,58 +287,6 @@
             color: #f87171;
         }
 
-        .password-gate {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .password-input {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 12px 20px;
-            color: #fff;
-            font-size: 1rem;
-            width: 300px;
-            max-width: 100%;
-            margin: 20px auto;
-            display: block;
-            font-family: monospace;
-        }
-
-        .password-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .password-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 8px;
-            padding: 12px 30px;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .password-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .password-error {
-            color: #f87171;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -421,11 +369,8 @@
     </div>
 
     <script>
-        // Sharp Money Collective Dashboard v1.1
+        // ⚠️ REPLACE THIS WITH YOUR GOOGLE SHEET ID
         const SHEET_ID = '1cQYozw6ENaen_xwdeP86I0E6cJGuNMM_8ZnlYkJpljQ';
-        const PASSWORD = 'smc2026'; // Change this to your desired password
-
-        let isUnlocked = sessionStorage.getItem('smc_unlocked') === 'true';
 
         const SHEETS = {
             meta: 'Meta',
@@ -453,79 +398,34 @@
             }
         }
 
-        function parseSheetToKeyValue(table, useFormatted = false) {
+        function parseSheetToKeyValue(table) {
             const data = {};
             if (!table || !table.rows) return data;
 
             table.rows.forEach(row => {
                 if (row.c && row.c[0] && row.c[1]) {
-                    const key = row.c[0].v || row.c[0].f;
-                    // Use formatted value for dates (Meta sheet), raw value for numbers (Stats sheet)
-                    const value = useFormatted ? (row.c[1].f || row.c[1].v) : row.c[1].v;
+                    const key = row.c[0].v;
+                    const value = row.c[1].v;
                     data[key] = value;
                 }
             });
             return data;
         }
 
-        window.unlockPositions = function() {
-            const input = document.getElementById('password-input');
-            const error = document.getElementById('password-error');
-
-            if (input.value === PASSWORD) {
-                sessionStorage.setItem('smc_unlocked', 'true');
-                isUnlocked = true;
-                error.textContent = '';
-                loadPortfolio(); // Reload to show positions
-            } else {
-                error.textContent = '❌ Incorrect password';
-                input.value = '';
-                input.focus();
-            }
-        };
-
-        function renderPasswordGate() {
-            return `
-                <div class="password-gate">
-                    <h3 style="margin-bottom: 10px; color: #fff;">🔒 Protected Content</h3>
-                    <p style="color: #a0a0a0; margin-bottom: 20px;">Enter password to view position details</p>
-                    <input
-                        type="password"
-                        id="password-input"
-                        class="password-input"
-                        placeholder="Enter password"
-                        onkeypress="if(event.key === 'Enter') unlockPositions()"
-                    >
-                    <button class="password-button" onclick="unlockPositions()">Unlock</button>
-                    <div id="password-error" class="password-error"></div>
-                </div>
-            `;
-        }
-
         function parsePositions(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
-            // Get column headers from table.cols (not from first data row)
-            const headers = table.cols.map(col => col.label || col.id || '');
+            const headers = table.rows[0].c.map(cell => cell ? cell.v : '');
             const positions = [];
 
-            // Columns that should use formatted values (dates, not numbers)
-            const formattedColumns = ['Settlement'];
-
-            // Start from row 0 (all rows are data rows, no header row in table.rows)
-            for (let i = 0; i < table.rows.length; i++) {
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c) continue;
 
                 const position = {};
                 headers.forEach((header, index) => {
                     if (row.c[index]) {
-                        // Use formatted value for dates, raw value for numbers and text
-                        if (formattedColumns.includes(header)) {
-                            position[header] = row.c[index].f || row.c[index].v;
-                        } else {
-                            position[header] = row.c[index].v;
-                        }
+                        position[header] = row.c[index].v;
                     }
                 });
 
@@ -538,29 +438,27 @@
         }
 
         function parseEvents(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
             const events = [];
-            // Start from row 0 (all rows are data)
-            for (let i = 0; i < table.rows.length; i++) {
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c || !row.c[0]) continue;
 
                 events.push({
-                    date: row.c[0] ? (row.c[0].f || row.c[0].v) : '',
-                    time: row.c[1] ? (row.c[1].f || row.c[1].v) : '',
-                    description: row.c[2] ? (row.c[2].f || row.c[2].v) : ''
+                    date: row.c[0] ? row.c[0].v : '',
+                    time: row.c[1] ? row.c[1].v : '',
+                    description: row.c[2] ? row.c[2].v : ''
                 });
             }
             return events;
         }
 
         function parseScenarios(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
             const scenarios = [];
-            // Start from row 0 (all rows are data)
-            for (let i = 0; i < table.rows.length; i++) {
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c || !row.c[0]) continue;
 
@@ -610,15 +508,7 @@
 
             // Short-term positions
             const shortTerm = positions.filter(p => p.Type === 'short');
-            if (!isUnlocked) {
-                // Show password gate for short-term positions
-                document.getElementById('short-term-section').innerHTML = `
-                    <div class="section">
-                        <h2 class="section-title">📊 Active Short-Term Positions <span class="badge badge-low">Low Risk</span></h2>
-                        ${renderPasswordGate()}
-                    </div>
-                `;
-            } else if (shortTerm.length > 0) {
+            if (shortTerm.length > 0) {
                 const shortTermHtml = shortTerm.map(pos => `
                     <div class="position-card">
                         <div class="position-header">
@@ -638,22 +528,16 @@
                                 <span class="detail-label">Entry Price</span>
                                 <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
                             </div>
-                            ${pos.Contracts ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Contracts</span>
-                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
-                            </div>
-                            ` : ''}
                             <div class="detail-item">
                                 <span class="detail-label">Potential Profit</span>
                                 <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Settlement</span>
-                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
+                                <span class="detail-value">${pos.Settlement}</span>
                             </div>
                         </div>
-                        ${pos['Est Prob'] && pos['Est Prob'] !== '-' && pos['Est Prob'] !== null ? `
+                        ${pos['Est Prob'] && pos['Est Prob'] !== '-' ? `
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: ${parseFloat(pos['Est Prob']) * 100}%"></div>
                             </div>
@@ -674,15 +558,7 @@
 
             // Long-term positions
             const longTerm = positions.filter(p => p.Type === 'long');
-            if (!isUnlocked) {
-                // Show password gate for long-term positions
-                document.getElementById('long-term-section').innerHTML = `
-                    <div class="section">
-                        <h2 class="section-title">🔒 Locked Long-Term Positions <span class="badge badge-high">High Risk</span></h2>
-                        ${renderPasswordGate()}
-                    </div>
-                `;
-            } else if (longTerm.length > 0) {
+            if (longTerm.length > 0) {
                 const longTermHtml = longTerm.map(pos => `
                     <div class="position-card">
                         <div class="position-header">
@@ -690,12 +566,6 @@
                             <span class="badge badge-high">${pos.Risk} Risk</span>
                         </div>
                         <div class="position-details">
-                            ${pos.Position ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Position</span>
-                                <span class="detail-value">${pos.Position}</span>
-                            </div>
-                            ` : ''}
                             <div class="detail-item">
                                 <span class="detail-label">Amount Wagered</span>
                                 <span class="detail-value">$${parseFloat(pos.Amount).toFixed(2)}</span>
@@ -704,19 +574,13 @@
                                 <span class="detail-label">Entry Price</span>
                                 <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
                             </div>
-                            ${pos.Contracts ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Contracts</span>
-                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
-                            </div>
-                            ` : ''}
                             <div class="detail-item">
                                 <span class="detail-label">Potential Profit</span>
                                 <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Settlement</span>
-                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
+                                <span class="detail-value">${pos.Settlement}</span>
                             </div>
                         </div>
                         ${pos.Reasoning ? `
@@ -797,8 +661,8 @@
                 ]);
 
                 const data = {
-                    meta: parseSheetToKeyValue(metaTable, true), // Use formatted values for dates
-                    stats: parseSheetToKeyValue(statsTable, false), // Use raw values for numbers
+                    meta: parseSheetToKeyValue(metaTable),
+                    stats: parseSheetToKeyValue(statsTable),
                     positions: parsePositions(positionsTable),
                     events: parseEvents(eventsTable),
                     scenarios: parseScenarios(scenariosTable)

@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "lastUpdated": "2026-01-25T21:04:06.037004",
+    "day": 1,
+    "challenge": {
+      "startDate": "2026-01-25",
+      "endDate": "2026-02-24"
+    }
+  },
+  "portfolio": {
+    "workingCapital": {
+      "total": 119.0,
+      "available": 19.0,
+      "pending": 100.0
+    },
+    "performance": {
+      "startingBankroll": 140.0,
+      "currentValue": 140.0,
+      "totalReturn": 0.0,
+      "totalReturnPct": 0.0
+    },
+    "stats": {
+      "activeBets": 4,
+      "settledBets": 0,
+      "winRate": null,
+      "deploymentRate": 0.16
+    }
+  },
+  "positions": {
+    "shortTerm": [
+      {
+        "id": "unemployment-jan26",
+        "title": "January 2026 Unemployment Rate >4.5%",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 10.0,
+        "entryPrice": 0.2,
+        "contracts": 50,
+        "potentialProfit": 40.0,
+        "profitPct": 400,
+        "settlementDate": "2026-02-06",
+        "estProb": 0.375,
+        "marketProb": 0.2,
+        "riskLevel": "low",
+        "reasoning": "Economist consensus forecasts 4.5%, market only pricing 20% chance."
+      },
+      {
+        "id": "payrolls-jan26",
+        "title": "January 2026 Nonfarm Payrolls <=70k",
+        "platform": "Kalshi",
+        "position": "NO on >70k",
+        "amount": 10.0,
+        "entryPrice": 0.41,
+        "contracts": 24.4,
+        "potentialProfit": 14.4,
+        "profitPct": 144,
+        "settlementDate": "2026-02-06",
+        "estProb": 0.75,
+        "marketProb": 0.41,
+        "riskLevel": "low",
+        "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside."
+      }
+    ],
+    "longTerm": [
+      {
+        "id": "openai-ipo",
+        "title": "OpenAI IPO Before Jun 1 2027",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 50.0,
+        "entryPrice": 0.61,
+        "contracts": 82,
+        "potentialProfit": 32.0,
+        "profitPct": 64,
+        "settlementDate": "2027-06-01",
+        "estProb": null,
+        "marketProb": 0.61,
+        "riskLevel": "high",
+        "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline."
+      },
+      {
+        "id": "jony-ive",
+        "title": "Jony Ive Device: Clip-on",
+        "platform": "Kalshi",
+        "position": "Clip-on",
+        "amount": 50.0,
+        "entryPrice": 0.42,
+        "contracts": 119,
+        "potentialProfit": 69.0,
+        "profitPct": 138,
+        "settlementDate": "TBD",
+        "estProb": null,
+        "marketProb": 0.42,
+        "riskLevel": "very-high",
+        "reasoning": "Pure speculation on product form factor."
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "Best Case (All Win)",
+      "emoji": "target",
+      "totalProfit": 155.4,
+      "finalBankroll": 295.4,
+      "returnPct": 111
+    },
+    {
+      "name": "Short-Term Only (Feb 6)",
+      "emoji": "chart",
+      "totalProfit": 54.4,
+      "finalBankroll": 194.4,
+      "returnPct": 39
+    },
+    {
+      "name": "Worst Case (All Lose)",
+      "emoji": "warning",
+      "totalProfit": -121.0,
+      "finalBankroll": 19.0,
+      "returnPct": -86
+    }
+  ],
+  "upcomingEvents": [
+    {
+      "date": "Next Week",
+      "description": "+$100 capital deposit arrives"
+    },
+    {
+      "date": "2026-02-06",
+      "time": "8:30 AM ET",
+      "description": "BLS Jobs Report - Unemployment & Payrolls settle"
+    },
+    {
+      "date": "2026-02-11",
+      "description": "CPI Inflation Data Release"
+    },
+    {
+      "date": "2026-02-24",
+      "description": "Challenge Period Ends"
+    }
+  ]
+}

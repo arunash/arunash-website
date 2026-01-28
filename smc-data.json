@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-01-25T21:04:06.037004",
-    "day": 1,
+    "lastUpdated": "2026-01-27T20:57:45.821331",
+    "day": 3,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,9 +9,9 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 119.0,
-      "available": 19.0,
-      "pending": 100.0
+      "total": 140.0,
+      "available": 0.0,
+      "deployed": 140.0
     },
     "performance": {
       "startingBankroll": 140.0,
@@ -20,14 +20,30 @@
       "totalReturnPct": 0.0
     },
     "stats": {
-      "activeBets": 4,
+      "activeBets": 5,
       "settledBets": 0,
       "winRate": null,
-      "deploymentRate": 0.16
+      "deploymentRate": 1.0
     }
   },
   "positions": {
     "shortTerm": [
+      {
+        "id": "shutdown-jan31",
+        "title": "Government Shutdown Jan 31",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 19.0,
+        "entryPrice": 0.75,
+        "contracts": 25,
+        "potentialProfit": 6.0,
+        "profitPct": 33,
+        "settlementDate": "2026-01-31",
+        "estProb": 0.85,
+        "marketProb": 0.75,
+        "riskLevel": "medium",
+        "reasoning": "Democrats blocking DHS funding, Schumer publicly committed. Even partial deal = shutdown."
+      },
       {
         "id": "unemployment-jan26",
         "title": "January 2026 Unemployment Rate >4.5%",
@@ -56,7 +72,7 @@
         "profitPct": 144,
         "settlementDate": "2026-02-06",
         "estProb": 0.75,
-        "marketProb": 0.41,
+        "marketProb": 0.45,
         "riskLevel": "low",
         "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside."
       }
@@ -74,7 +90,7 @@
         "profitPct": 64,
         "settlementDate": "2027-06-01",
         "estProb": null,
-        "marketProb": 0.61,
+        "marketProb": 0.66,
         "riskLevel": "high",
         "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline."
       },
@@ -100,26 +116,35 @@
     {
       "name": "Best Case (All Win)",
       "emoji": "target",
-      "totalProfit": 155.4,
-      "finalBankroll": 295.4,
-      "returnPct": 111
+      "totalProfit": 161.4,
+      "finalBankroll": 301.4,
+      "returnPct": 115
     },
     {
-      "name": "Short-Term Only (Feb 6)",
+      "name": "Short-Term Only (Jan 31 + Feb 6)",
       "emoji": "chart",
-      "totalProfit": 54.4,
-      "finalBankroll": 194.4,
-      "returnPct": 39
+      "totalProfit": 60.4,
+      "finalBankroll": 200.4,
+      "returnPct": 43
     },
     {
       "name": "Worst Case (All Lose)",
       "emoji": "warning",
-      "totalProfit": -121.0,
-      "finalBankroll": 19.0,
-      "returnPct": -86
+      "totalProfit": -140.0,
+      "finalBankroll": 0.0,
+      "returnPct": -100
     }
   ],
   "upcomingEvents": [
+    {
+      "date": "2026-01-29",
+      "description": "Senate test vote on funding package (needs 60 votes)"
+    },
+    {
+      "date": "2026-01-31",
+      "time": "12:01 AM ET",
+      "description": "Government Shutdown deadline - Position settles"
+    },
     {
       "date": "Next Week",
       "description": "+$100 capital deposit arrives"

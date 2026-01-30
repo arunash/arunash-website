@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-01-27T20:57:45.821331",
-    "day": 3,
+    "lastUpdated": "2026-01-30T12:00:00.000000",
+    "day": 6,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,21 +9,21 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 140.0,
-      "available": 0.0,
-      "deployed": 140.0
+      "total": 240.0,
+      "available": 50.0,
+      "deployed": 190.0
     },
     "performance": {
-      "startingBankroll": 140.0,
-      "currentValue": 140.0,
+      "startingBankroll": 240.0,
+      "currentValue": 240.0,
       "totalReturn": 0.0,
       "totalReturnPct": 0.0
     },
     "stats": {
-      "activeBets": 5,
+      "activeBets": 6,
       "settledBets": 0,
       "winRate": null,
-      "deploymentRate": 1.0
+      "deploymentRate": 0.79
     }
   },
   "positions": {
@@ -43,6 +43,22 @@
         "marketProb": 0.75,
         "riskLevel": "medium",
         "reasoning": "Democrats blocking DHS funding, Schumer publicly committed. Even partial deal = shutdown."
+      },
+      {
+        "id": "shutdown-length",
+        "title": "Shutdown >2 Days",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 50.0,
+        "entryPrice": 0.89,
+        "contracts": 56,
+        "potentialProfit": 6.0,
+        "profitPct": 12,
+        "settlementDate": "2026-02-28",
+        "estProb": 0.95,
+        "marketProb": 0.89,
+        "riskLevel": "very-low",
+        "reasoning": "House on recess until Monday. Shutdown starts Saturday = minimum 2 days guaranteed."
       },
       {
         "id": "unemployment-jan26",
@@ -116,38 +132,34 @@
     {
       "name": "Best Case (All Win)",
       "emoji": "target",
-      "totalProfit": 161.4,
-      "finalBankroll": 301.4,
-      "returnPct": 115
+      "totalProfit": 167.4,
+      "finalBankroll": 407.4,
+      "returnPct": 70
     },
     {
-      "name": "Short-Term Only (Jan 31 + Feb 6)",
+      "name": "Short-Term Only (Shutdown + Feb 6)",
       "emoji": "chart",
-      "totalProfit": 60.4,
-      "finalBankroll": 200.4,
-      "returnPct": 43
+      "totalProfit": 66.4,
+      "finalBankroll": 306.4,
+      "returnPct": 28
     },
     {
       "name": "Worst Case (All Lose)",
       "emoji": "warning",
-      "totalProfit": -140.0,
-      "finalBankroll": 0.0,
-      "returnPct": -100
+      "totalProfit": -190.0,
+      "finalBankroll": 50.0,
+      "returnPct": -79
     }
   ],
   "upcomingEvents": [
     {
-      "date": "2026-01-29",
-      "description": "Senate test vote on funding package (needs 60 votes)"
-    },
-    {
       "date": "2026-01-31",
       "time": "12:01 AM ET",
-      "description": "Government Shutdown deadline - Position settles"
+      "description": "Government Shutdown begins - Position 5 settles"
     },
     {
-      "date": "Next Week",
-      "description": "+$100 capital deposit arrives"
+      "date": "2026-02-02",
+      "description": "House returns from recess - earliest possible shutdown end"
     },
     {
       "date": "2026-02-06",

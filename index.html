@@ -454,8 +454,59 @@
 
     <!-- AI Chat Tab Content -->
     <div id="aichat" class="tab-content">
-        <div class="iframe-container">
-            <iframe src="https://aichat.arunash.com/" title="AI Chat"></iframe>
+        <!-- Password Overlay -->
+        <div id="aichat-password-overlay" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e14 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        ">
+            <div style="
+                background: rgba(255,255,255,0.05);
+                padding: 40px;
+                border-radius: 16px;
+                text-align: center;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(102, 126, 234, 0.3);
+            ">
+                <h2 style="color: #fff; margin-bottom: 10px; font-size: 1.8rem;">AI Chat</h2>
+                <p style="color: #a0a0a0; margin-bottom: 30px;">Enter password to access</p>
+                <input type="password" id="aichat-password-input" placeholder="Password" style="
+                    padding: 15px 20px;
+                    font-size: 1rem;
+                    border: 2px solid rgba(102, 126, 234, 0.3);
+                    border-radius: 8px;
+                    background: rgba(0,0,0,0.3);
+                    color: #fff;
+                    width: 250px;
+                    margin-bottom: 20px;
+                    outline: none;
+                " onkeypress="if(event.key==='Enter') checkAichatPassword()">
+                <br>
+                <button onclick="checkAichatPassword()" style="
+                    padding: 15px 40px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(102,126,234,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                    Enter
+                </button>
+                <p id="aichat-error-msg" style="color: #ff6b6b; margin-top: 15px; display: none;">Incorrect password</p>
+            </div>
+        </div>
+        <div class="iframe-container" id="aichat-content" style="display: none;">
+            <iframe src="about:blank" data-src="https://aichat.arunash.com/" title="AI Chat" id="aichat-iframe"></iframe>
         </div>
     </div>
 
@@ -505,6 +556,30 @@
                 tabs.classList.remove('mobile-open');
             }
         });
+
+        // AI Chat password protection
+        function checkAichatPassword() {
+            const password = document.getElementById('aichat-password-input').value;
+            if (password === 'newsiri2026') {
+                sessionStorage.setItem('aichatAuthenticated', 'true');
+                document.getElementById('aichat-password-overlay').style.display = 'none';
+                document.getElementById('aichat-content').style.display = 'block';
+                // Load iframe only after authentication
+                const iframe = document.getElementById('aichat-iframe');
+                iframe.src = iframe.dataset.src;
+            } else {
+                document.getElementById('aichat-error-msg').style.display = 'block';
+                document.getElementById('aichat-password-input').value = '';
+            }
+        }
+
+        // Check if already authenticated for AI Chat
+        if (sessionStorage.getItem('aichatAuthenticated') === 'true') {
+            document.getElementById('aichat-password-overlay').style.display = 'none';
+            document.getElementById('aichat-content').style.display = 'block';
+            const iframe = document.getElementById('aichat-iframe');
+            iframe.src = iframe.dataset.src;
+        }
     </script>
 </body>
 </html>

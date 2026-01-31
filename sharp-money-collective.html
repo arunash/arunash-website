@@ -46,6 +46,28 @@
             margin-top: 5px;
         }
 
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(102, 126, 234, 0.2);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -84,6 +106,7 @@
         .stat-change {
             font-size: 0.9rem;
             margin-top: 8px;
+            color: #a0a0a0;
         }
 
         .positive {
@@ -92,10 +115,6 @@
 
         .negative {
             color: #f87171;
-        }
-
-        .warning {
-            color: #fbbf24;
         }
 
         .section {
@@ -136,12 +155,6 @@
             background: rgba(74, 222, 128, 0.2);
             color: #4ade80;
             border: 1px solid rgba(74, 222, 128, 0.3);
-        }
-
-        .badge-medium {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.3);
         }
 
         .position-card {
@@ -265,6 +278,67 @@
             margin-top: 40px;
         }
 
+        .error {
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #f87171;
+        }
+
+        .password-gate {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .password-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: #fff;
+            font-size: 1rem;
+            width: 300px;
+            max-width: 100%;
+            margin: 20px auto;
+            display: block;
+            font-family: monospace;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .password-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .password-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .password-error {
+            color: #f87171;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -285,352 +359,54 @@
         <header>
             <h1>⚡ Sharp Money Collective</h1>
             <p class="subtitle">Data-Driven Prediction Market Portfolio</p>
-            <p class="subtitle" style="margin-top: 5px; font-size: 0.85rem;">Last Updated: January 31, 2026 | Day 7</p>
+            <p class="subtitle" style="margin-top: 5px; font-size: 0.85rem;" id="last-updated">Powered by Google Sheets</p>
         </header>
 
-        <!-- Key Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Working Capital</div>
-                <div class="stat-value">$246.33</div>
-                <div class="stat-change">$75.33 available • $171 deployed</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">Deployment Rate</div>
-                <div class="stat-value">69%</div>
-                <div class="stat-change positive">✓ Within target range</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">Active Positions</div>
-                <div class="stat-value">5</div>
-                <div class="stat-change">3 short-term • 2 long-term</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">Total Return</div>
-                <div class="stat-value positive">+$6.33</div>
-                <div class="stat-change positive">+2.6% • 1 settled (100% win rate)</div>
-            </div>
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <div>Loading portfolio data from Google Sheets...</div>
         </div>
 
-        <!-- Active Positions -->
-        <div class="section">
-            <h2 class="section-title">
-                📊 Active Short-Term Positions
-                <span class="badge badge-low">Low Risk</span>
-            </h2>
+        <div id="error" style="display: none;"></div>
 
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-title">January 2026 Unemployment Rate >4.5%</div>
-                    <span class="badge badge-low">Low Risk</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Position</span>
-                        <span class="detail-value">YES</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$10.00</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.20 (20%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Contracts</span>
-                        <span class="detail-value">50</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Potential Profit</span>
-                        <span class="detail-value positive">+$40.00 (+400%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">Feb 6, 2026</span>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 37.5%"></div>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.85rem; color: #a0a0a0;">
-                    Estimated true probability: 37.5% (vs 20% market price)
-                </div>
-            </div>
+        <div id="content" style="display: none;">
+            <div id="stats-section"></div>
+            <div id="short-term-section"></div>
+            <div id="long-term-section"></div>
+            <div id="timeline-section"></div>
+            <div id="scenarios-section"></div>
 
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-title">January 2026 Nonfarm Payrolls ≤70k</div>
-                    <span class="badge badge-low">Low Risk</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Position</span>
-                        <span class="detail-value">NO on >70k</span>
+            <!-- Strategy Notes -->
+            <div class="section">
+                <h2 class="section-title">📋 Strategy & Philosophy</h2>
+                <div style="display: grid; gap: 15px; font-size: 0.95rem; line-height: 1.6;">
+                    <div style="display: flex; align-items: start; gap: 10px;">
+                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
+                        <div>
+                            <strong style="color: #fff;">Data-Driven Analysis:</strong>
+                            <span style="color: #a0a0a0;"> Hunt for markets where public information contradicts market prices</span>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$10.00</span>
+                    <div style="display: flex; align-items: start; gap: 10px;">
+                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
+                        <div>
+                            <strong style="color: #fff;">Disciplined Sizing:</strong>
+                            <span style="color: #a0a0a0;"> 5-15% per position, max 30% deployed at once</span>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.41 (41%)</span>
+                    <div style="display: flex; align-items: start; gap: 10px;">
+                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
+                        <div>
+                            <strong style="color: #fff;">Focus on Objectivity:</strong>
+                            <span style="color: #a0a0a0;"> Prefer economic data and official statistics over speculation</span>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Contracts</span>
-                        <span class="detail-value">24.4</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Potential Profit</span>
-                        <span class="detail-value positive">+$14.40 (+144%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">Feb 6, 2026</span>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%"></div>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.85rem; color: #a0a0a0;">
-                    Estimated true probability: 75% (vs 59% market price)
-                </div>
-            </div>
-
-            <div class="position-card" style="border: 2px solid #4ade80;">
-                <div class="position-header">
-                    <div class="position-title">Government Shutdown Jan 31 ✅ WON</div>
-                    <span class="badge badge-low" style="background: rgba(74, 222, 128, 0.2); color: #4ade80; border-color: #4ade80;">SETTLED</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Position</span>
-                        <span class="detail-value">YES</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$19.00</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.75 (75%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Contracts</span>
-                        <span class="detail-value">25</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Profit</span>
-                        <span class="detail-value positive">+$6.33 (+33%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">Jan 31, 2026</span>
-                    </div>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.85rem; color: #4ade80;">
-                    ✅ Shutdown started at midnight. Payout: $25.33
-                </div>
-            </div>
-
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-title">Government Shutdown >2 Days</div>
-                    <span class="badge badge-low">Very Low Risk</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Position</span>
-                        <span class="detail-value">YES</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$50.00</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.89 (89%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Contracts</span>
-                        <span class="detail-value">56</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Potential Profit</span>
-                        <span class="detail-value positive">+$6.00 (+12%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">Feb 28, 2026</span>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 95%"></div>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.85rem; color: #a0a0a0;">
-                    Estimated true probability: 95% - House returns Monday, shutdown lasts weekend
-                </div>
-            </div>
-        </div>
-
-        <!-- Background Positions -->
-        <div class="section">
-            <h2 class="section-title">
-                🔒 Locked Long-Term Positions
-                <span class="badge badge-high">High Risk</span>
-            </h2>
-
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-title">OpenAI IPO Announcement Before Jun 1, 2027</div>
-                    <span class="badge badge-high">High Risk</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$50.00</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.61 (61%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Potential Profit</span>
-                        <span class="detail-value positive">+$32.00 (+64%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">Before Jun 1, 2027</span>
-                    </div>
-                </div>
-                <div style="margin-top: 12px; font-size: 0.85rem; color: #fbbf24;">
-                    ⚠️ Speculative - 17-month timeline, insider information risk
-                </div>
-            </div>
-
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-title">Jony Ive/OpenAI Device: Clip-on for Clothing</div>
-                    <span class="badge badge-high">Very High Risk</span>
-                </div>
-                <div class="position-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Wagered</span>
-                        <span class="detail-value">$50.00</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value">$0.42 (42%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Potential Profit</span>
-                        <span class="detail-value positive">+$69.00 (+138%)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Settlement</span>
-                        <span class="detail-value">TBD</span>
-                    </div>
-                </div>
-                <div style="margin-top: 12px; font-size: 0.85rem; color: #f87171;">
-                    ⚠️ Pure speculation on product form factor - very high risk
-                </div>
-            </div>
-        </div>
-
-        <!-- Timeline -->
-        <div class="section">
-            <h2 class="section-title">📅 Upcoming Events</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">February 3, 2026</div>
-                    <div class="timeline-content">House returns from recess • Expected shutdown end → Shutdown >2 Days bet settles</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">February 6, 2026 (8:30 AM ET)</div>
-                    <div class="timeline-content">BLS Jobs Report → Unemployment & Payrolls bets settle • Max profit: +$54.40</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">February 11, 2026</div>
-                    <div class="timeline-content">CPI Inflation Data Release • Potential new opportunities</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">February 13, 2026</div>
-                    <div class="timeline-content">DHS Funding Deadline • Potential shutdown opportunity</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">February 24, 2026</div>
-                    <div class="timeline-content">Challenge Period Ends • Performance Review</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Portfolio Scenarios -->
-        <div class="section">
-            <h2 class="section-title">💰 Portfolio Scenarios</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div class="position-card">
-                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: #4ade80;">
-                        🎯 Best Case (All Remaining Win)
-                    </div>
-                    <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$407.73</div>
-                    <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
-                        +$167.73 profit (+70% from start)
-                    </div>
-                </div>
-                <div class="position-card">
-                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: #fbbf24;">
-                        📊 Short-Term Only (Feb 6 + Shutdown)
-                    </div>
-                    <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$306.73</div>
-                    <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
-                        +$66.73 profit (+28% from start)
-                    </div>
-                </div>
-                <div class="position-card">
-                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: #f87171;">
-                        ⚠️ Worst Case (All Remaining Lose)
-                    </div>
-                    <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$75.33</div>
-                    <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
-                        -$164.67 loss (-69% from start)
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Strategy Notes -->
-        <div class="section">
-            <h2 class="section-title">📋 Strategy & Philosophy</h2>
-            <div style="display: grid; gap: 15px; font-size: 0.95rem; line-height: 1.6;">
-                <div style="display: flex; align-items: start; gap: 10px;">
-                    <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                    <div>
-                        <strong style="color: #fff;">Data-Driven Analysis:</strong>
-                        <span style="color: #a0a0a0;"> Hunt for markets where public information contradicts market prices</span>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: start; gap: 10px;">
-                    <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                    <div>
-                        <strong style="color: #fff;">Disciplined Sizing:</strong>
-                        <span style="color: #a0a0a0;"> 5-15% per position, max 30% deployed at once</span>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: start; gap: 10px;">
-                    <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                    <div>
-                        <strong style="color: #fff;">Focus on Objectivity:</strong>
-                        <span style="color: #a0a0a0;"> Prefer economic data and official statistics over speculation</span>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: start; gap: 10px;">
-                    <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                    <div>
-                        <strong style="color: #fff;">Daily Check-ins:</strong>
-                        <span style="color: #a0a0a0;"> 9 PM Pacific • Monitor positions and identify new opportunities</span>
+                    <div style="display: flex; align-items: start; gap: 10px;">
+                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
+                        <div>
+                            <strong style="color: #fff;">Daily Check-ins:</strong>
+                            <span style="color: #a0a0a0;"> 9 PM Pacific • Monitor positions and identify new opportunities</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -643,5 +419,419 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // Sharp Money Collective Dashboard v1.1
+        const SHEET_ID = '1cQYozw6ENaen_xwdeP86I0E6cJGuNMM_8ZnlYkJpljQ';
+        const PASSWORD = 'smc2026'; // Change this to your desired password
+
+        let isUnlocked = sessionStorage.getItem('smc_unlocked') === 'true';
+
+        const SHEETS = {
+            meta: 'Meta',
+            stats: 'Stats',
+            positions: 'Positions',
+            events: 'Events',
+            scenarios: 'Scenarios'
+        };
+
+        async function fetchSheetData(sheetName) {
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+
+                // Google Sheets returns JSONP, need to extract JSON
+                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\((.*)\);/);
+                if (!jsonMatch) throw new Error('Invalid response from Google Sheets');
+
+                const json = JSON.parse(jsonMatch[1]);
+                return json.table;
+            } catch (error) {
+                throw new Error(`Failed to fetch ${sheetName}: ${error.message}`);
+            }
+        }
+
+        function parseSheetToKeyValue(table, useFormatted = false) {
+            const data = {};
+            if (!table || !table.rows || table.rows.length < 2) return data;
+
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
+                if (row.c && row.c[0] && row.c[1]) {
+                    const key = row.c[0].v || row.c[0].f;
+                    // Use formatted value for dates (Meta sheet), raw value for numbers (Stats sheet)
+                    const value = useFormatted ? (row.c[1].f || row.c[1].v) : row.c[1].v;
+                    data[key] = value;
+                }
+            }
+            return data;
+        }
+
+        window.unlockPositions = function() {
+            const input = document.getElementById('password-input');
+            const error = document.getElementById('password-error');
+
+            if (input.value === PASSWORD) {
+                sessionStorage.setItem('smc_unlocked', 'true');
+                isUnlocked = true;
+                error.textContent = '';
+                loadPortfolio(); // Reload to show positions
+            } else {
+                error.textContent = '❌ Incorrect password';
+                input.value = '';
+                input.focus();
+            }
+        };
+
+        function renderPasswordGate() {
+            return `
+                <div class="password-gate">
+                    <h3 style="margin-bottom: 10px; color: #fff;">🔒 Protected Content</h3>
+                    <p style="color: #a0a0a0; margin-bottom: 20px;">Enter password to view position details</p>
+                    <input
+                        type="password"
+                        id="password-input"
+                        class="password-input"
+                        placeholder="Enter password"
+                        onkeypress="if(event.key === 'Enter') unlockPositions()"
+                    >
+                    <button class="password-button" onclick="unlockPositions()">Unlock</button>
+                    <div id="password-error" class="password-error"></div>
+                </div>
+            `;
+        }
+
+        function parsePositions(table) {
+            if (!table || !table.rows || table.rows.length < 2) return [];
+
+            // Get column headers from first data row (row 0)
+            const headerRow = table.rows[0];
+            if (!headerRow.c) return [];
+            const headers = headerRow.c.map(cell => cell ? (cell.v || '') : '');
+            const positions = [];
+
+            // Columns that should use formatted values (dates, not numbers)
+            const formattedColumns = ['Settlement'];
+
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
+                if (!row.c) continue;
+
+                const position = {};
+                headers.forEach((header, index) => {
+                    if (row.c[index]) {
+                        // Use formatted value for dates, raw value for numbers and text
+                        if (formattedColumns.includes(header)) {
+                            position[header] = row.c[index].f || row.c[index].v;
+                        } else {
+                            position[header] = row.c[index].v;
+                        }
+                    }
+                });
+
+                if (position.ID) {
+                    positions.push(position);
+                }
+            }
+
+            return positions;
+        }
+
+        function parseEvents(table) {
+            if (!table || !table.rows || table.rows.length < 2) return [];
+
+            const events = [];
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
+                if (!row.c || !row.c[0]) continue;
+
+                events.push({
+                    date: row.c[0] ? (row.c[0].f || row.c[0].v) : '',
+                    time: row.c[1] ? (row.c[1].f || row.c[1].v) : '',
+                    description: row.c[2] ? (row.c[2].f || row.c[2].v) : ''
+                });
+            }
+            return events;
+        }
+
+        function parseScenarios(table) {
+            if (!table || !table.rows || table.rows.length < 2) return [];
+
+            const scenarios = [];
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
+                if (!row.c || !row.c[0]) continue;
+
+                scenarios.push({
+                    name: row.c[0] ? row.c[0].v : '',
+                    emoji: row.c[1] ? row.c[1].v : '📊',
+                    totalProfit: row.c[2] ? parseFloat(row.c[2].v) : 0,
+                    finalBankroll: row.c[3] ? parseFloat(row.c[3].v) : 0,
+                    returnPct: row.c[4] ? parseFloat(row.c[4].v) : 0
+                });
+            }
+            return scenarios;
+        }
+
+        function renderPortfolio(data) {
+            const { meta, stats, positions, events, scenarios } = data;
+
+            // Update header
+            document.getElementById('last-updated').textContent =
+                `Last Updated: ${meta['Last Updated']} | Day ${meta['Day']}`;
+
+            // Stats section
+            document.getElementById('stats-section').innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Working Capital</div>
+                        <div class="stat-value">$${parseFloat(stats['Working Capital Total']).toFixed(2)}</div>
+                        <div class="stat-change">$${parseFloat(stats['Working Capital Available']).toFixed(2)} available • $${parseFloat(stats['Working Capital Pending']).toFixed(2)} pending</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Deployment Rate</div>
+                        <div class="stat-value">${(parseFloat(stats['Deployment Rate']) * 100).toFixed(0)}%</div>
+                        <div class="stat-change positive">✓ Within target range</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Active Positions</div>
+                        <div class="stat-value">${stats['Active Bets']}</div>
+                        <div class="stat-change">${positions.filter(p => p.Type === 'short').length} short-term • ${positions.filter(p => p.Type === 'long').length} long-term</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Return</div>
+                        <div class="stat-value">$${parseFloat(stats['Total Return']).toFixed(2)}</div>
+                        <div class="stat-change">${parseFloat(stats['Total Return %']).toFixed(1)}% • ${stats['Settled Bets']} settled bets</div>
+                    </div>
+                </div>
+            `;
+
+            // Short-term positions
+            const shortTerm = positions.filter(p => p.Type === 'short');
+            if (!isUnlocked) {
+                // Show password gate for short-term positions
+                document.getElementById('short-term-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">📊 Active Short-Term Positions <span class="badge badge-low">Low Risk</span></h2>
+                        ${renderPasswordGate()}
+                    </div>
+                `;
+            } else if (shortTerm.length > 0) {
+                const shortTermHtml = shortTerm.map(pos => `
+                    <div class="position-card">
+                        <div class="position-header">
+                            <div class="position-title">${pos.Title}</div>
+                            <span class="badge badge-${pos.Risk === 'low' ? 'low' : 'high'}">${pos.Risk} Risk</span>
+                        </div>
+                        <div class="position-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Position</span>
+                                <span class="detail-value">${pos.Position}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Amount Wagered</span>
+                                <span class="detail-value">$${parseFloat(pos.Amount).toFixed(2)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Entry Price</span>
+                                <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
+                            </div>
+                            ${pos.Contracts ? `
+                            <div class="detail-item">
+                                <span class="detail-label">Contracts</span>
+                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
+                            </div>
+                            ` : ''}
+                            <div class="detail-item">
+                                <span class="detail-label">Potential Profit</span>
+                                <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Settlement</span>
+                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
+                            </div>
+                        </div>
+                        ${pos['Est Prob'] && pos['Est Prob'] !== '-' && pos['Est Prob'] !== null ? `
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${parseFloat(pos['Est Prob']) * 100}%"></div>
+                            </div>
+                            <div style="margin-top: 8px; font-size: 0.85rem; color: #a0a0a0;">
+                                Estimated true probability: ${(parseFloat(pos['Est Prob']) * 100).toFixed(1)}% (vs ${(parseFloat(pos['Market Prob']) * 100).toFixed(0)}% market price)
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+
+                document.getElementById('short-term-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">📊 Active Short-Term Positions <span class="badge badge-low">Low Risk</span></h2>
+                        ${shortTermHtml}
+                    </div>
+                `;
+            }
+
+            // Long-term positions
+            const longTerm = positions.filter(p => p.Type === 'long');
+            if (!isUnlocked) {
+                // Show password gate for long-term positions
+                document.getElementById('long-term-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">🔒 Locked Long-Term Positions <span class="badge badge-high">High Risk</span></h2>
+                        ${renderPasswordGate()}
+                    </div>
+                `;
+            } else if (longTerm.length > 0) {
+                const longTermHtml = longTerm.map(pos => `
+                    <div class="position-card">
+                        <div class="position-header">
+                            <div class="position-title">${pos.Title}</div>
+                            <span class="badge badge-high">${pos.Risk} Risk</span>
+                        </div>
+                        <div class="position-details">
+                            ${pos.Position ? `
+                            <div class="detail-item">
+                                <span class="detail-label">Position</span>
+                                <span class="detail-value">${pos.Position}</span>
+                            </div>
+                            ` : ''}
+                            <div class="detail-item">
+                                <span class="detail-label">Amount Wagered</span>
+                                <span class="detail-value">$${parseFloat(pos.Amount).toFixed(2)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Entry Price</span>
+                                <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
+                            </div>
+                            ${pos.Contracts ? `
+                            <div class="detail-item">
+                                <span class="detail-label">Contracts</span>
+                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
+                            </div>
+                            ` : ''}
+                            <div class="detail-item">
+                                <span class="detail-label">Potential Profit</span>
+                                <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Settlement</span>
+                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
+                            </div>
+                        </div>
+                        ${pos.Reasoning ? `
+                            <div style="margin-top: 12px; font-size: 0.85rem; color: #fbbf24;">
+                                ⚠️ ${pos.Reasoning}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+
+                document.getElementById('long-term-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">🔒 Locked Long-Term Positions <span class="badge badge-high">High Risk</span></h2>
+                        ${longTermHtml}
+                    </div>
+                `;
+            }
+
+            // Timeline
+            if (events.length > 0) {
+                const timelineHtml = events.map(event => `
+                    <div class="timeline-item">
+                        <div class="timeline-date">${event.date}${event.time ? ` (${event.time})` : ''}</div>
+                        <div class="timeline-content">${event.description}</div>
+                    </div>
+                `).join('');
+
+                document.getElementById('timeline-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">📅 Upcoming Events</h2>
+                        <div class="timeline">${timelineHtml}</div>
+                    </div>
+                `;
+            }
+
+            // Scenarios
+            if (scenarios.length > 0) {
+                const scenariosHtml = scenarios.map(scenario => {
+                    const color = scenario.returnPct > 50 ? '#4ade80' : scenario.returnPct > 0 ? '#fbbf24' : '#f87171';
+                    return `
+                        <div class="position-card">
+                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: ${color};">
+                                ${scenario.emoji} ${scenario.name}
+                            </div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$${scenario.finalBankroll.toFixed(2)}</div>
+                            <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
+                                ${scenario.totalProfit >= 0 ? '+' : ''}$${scenario.totalProfit.toFixed(2)} profit (${scenario.returnPct >= 0 ? '+' : ''}${scenario.returnPct}% from start)
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('scenarios-section').innerHTML = `
+                    <div class="section">
+                        <h2 class="section-title">💰 Portfolio Scenarios</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            ${scenariosHtml}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        async function loadPortfolio() {
+            try {
+                // Check if Sheet ID is configured
+                if (SHEET_ID === 'YOUR_SHEET_ID_HERE') {
+                    throw new Error('Please configure your Google Sheet ID in the HTML file');
+                }
+
+                // Fetch all sheets
+                const [metaTable, statsTable, positionsTable, eventsTable, scenariosTable] = await Promise.all([
+                    fetchSheetData(SHEETS.meta),
+                    fetchSheetData(SHEETS.stats),
+                    fetchSheetData(SHEETS.positions),
+                    fetchSheetData(SHEETS.events),
+                    fetchSheetData(SHEETS.scenarios)
+                ]);
+
+                const data = {
+                    meta: parseSheetToKeyValue(metaTable, true), // Use formatted values for dates
+                    stats: parseSheetToKeyValue(statsTable, false), // Use raw values for numbers
+                    positions: parsePositions(positionsTable),
+                    events: parseEvents(eventsTable),
+                    scenarios: parseScenarios(scenariosTable)
+                };
+
+                renderPortfolio(data);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').innerHTML = `
+                    <div class="error">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;">❌ Error Loading Portfolio</div>
+                        <div>${error.message}</div>
+                        <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                            Make sure your Google Sheet is set to "Anyone with the link can view" and the Sheet ID is correct.
+                        </div>
+                    </div>
+                `;
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        // Load on page load
+        loadPortfolio();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadPortfolio, 5 * 60 * 1000);
+    </script>
 </body>
 </html>

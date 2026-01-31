@@ -455,16 +455,18 @@
 
         function parseSheetToKeyValue(table, useFormatted = false) {
             const data = {};
-            if (!table || !table.rows) return data;
+            if (!table || !table.rows || table.rows.length < 2) return data;
 
-            table.rows.forEach(row => {
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
+                const row = table.rows[i];
                 if (row.c && row.c[0] && row.c[1]) {
                     const key = row.c[0].v || row.c[0].f;
                     // Use formatted value for dates (Meta sheet), raw value for numbers (Stats sheet)
                     const value = useFormatted ? (row.c[1].f || row.c[1].v) : row.c[1].v;
                     data[key] = value;
                 }
-            });
+            }
             return data;
         }
 
@@ -503,17 +505,18 @@
         }
 
         function parsePositions(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
-            // Get column headers from table.cols (not from first data row)
-            const headers = table.cols.map(col => col.label || col.id || '');
+            // Get column headers from first data row (row 0)
+            const headerRow = table.rows[0];
+            const headers = headerRow.c.map(cell => cell ? (cell.v || '') : '');
             const positions = [];
 
             // Columns that should use formatted values (dates, not numbers)
             const formattedColumns = ['Settlement'];
 
-            // Start from row 0 (all rows are data rows, no header row in table.rows)
-            for (let i = 0; i < table.rows.length; i++) {
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c) continue;
 
@@ -538,11 +541,11 @@
         }
 
         function parseEvents(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
             const events = [];
-            // Start from row 0 (all rows are data)
-            for (let i = 0; i < table.rows.length; i++) {
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c || !row.c[0]) continue;
 
@@ -556,11 +559,11 @@
         }
 
         function parseScenarios(table) {
-            if (!table || !table.rows || table.rows.length < 1) return [];
+            if (!table || !table.rows || table.rows.length < 2) return [];
 
             const scenarios = [];
-            // Start from row 0 (all rows are data)
-            for (let i = 0; i < table.rows.length; i++) {
+            // Start from row 1 (skip header row)
+            for (let i = 1; i < table.rows.length; i++) {
                 const row = table.rows[i];
                 if (!row.c || !row.c[0]) continue;
 

@@ -327,6 +327,7 @@
                 <li><a href="#pm-game" class="tab-link" onclick="switchTab(event, 'pm-game')">PM Game</a></li>
                 <li><a href="#sharp-money" class="tab-link" onclick="switchTab(event, 'sharp-money')">Sharp Money Collective</a></li>
                 <li><a href="#wheel" class="tab-link" onclick="switchTab(event, 'wheel')">The Wheel Syndicate</a></li>
+                <li><a href="#aichat" class="tab-link" onclick="switchTab(event, 'aichat')">AI Chat</a></li>
             </ul>
         </div>
     </nav>
@@ -451,6 +452,13 @@
         </div>
     </div>
 
+    <!-- AI Chat Tab Content -->
+    <div id="aichat" class="tab-content">
+        <div class="iframe-container">
+            <iframe src="https://aichat.arunash.com/" title="AI Chat"></iframe>
+        </div>
+    </div>
+
     <script>
         function switchTab(event, tabName) {
             event.preventDefault();
@@ -481,7 +489,7 @@
         // Handle initial hash on page load
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
-            if (hash && ['mentorship', 'pm-game', 'sharp-money', 'wheel'].includes(hash)) {
+            if (hash && ['mentorship', 'pm-game', 'sharp-money', 'wheel', 'aichat'].includes(hash)) {
                 const tabLink = document.querySelector(`[href="#${hash}"]`);
                 if (tabLink) {
                     tabLink.click();

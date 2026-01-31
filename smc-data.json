@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-01-30T12:00:00.000000",
-    "day": 6,
+    "lastUpdated": "2026-01-31T18:30:00.000000",
+    "day": 7,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,21 +9,21 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 240.0,
-      "available": 50.0,
-      "deployed": 190.0
+      "total": 246.33,
+      "available": 75.33,
+      "deployed": 171.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "currentValue": 240.0,
-      "totalReturn": 0.0,
-      "totalReturnPct": 0.0
+      "currentValue": 246.33,
+      "totalReturn": 6.33,
+      "totalReturnPct": 2.6
     },
     "stats": {
-      "activeBets": 6,
-      "settledBets": 0,
-      "winRate": null,
-      "deploymentRate": 0.79
+      "activeBets": 5,
+      "settledBets": 1,
+      "winRate": 100,
+      "deploymentRate": 0.69
     }
   },
   "positions": {
@@ -36,13 +36,12 @@
         "amount": 19.0,
         "entryPrice": 0.75,
         "contracts": 25,
-        "potentialProfit": 6.0,
+        "payout": 25.33,
+        "profit": 6.33,
         "profitPct": 33,
         "settlementDate": "2026-01-31",
-        "estProb": 0.85,
-        "marketProb": 0.75,
-        "riskLevel": "medium",
-        "reasoning": "Democrats blocking DHS funding, Schumer publicly committed. Even partial deal = shutdown."
+        "status": "WON",
+        "result": "Shutdown started at midnight. Senate passed 71-29 but House not back until Monday."
       },
       {
         "id": "shutdown-length",
@@ -56,9 +55,10 @@
         "profitPct": 12,
         "settlementDate": "2026-02-28",
         "estProb": 0.95,
-        "marketProb": 0.89,
+        "marketProb": 0.90,
         "riskLevel": "very-low",
-        "reasoning": "House on recess until Monday. Shutdown starts Saturday = minimum 2 days guaranteed."
+        "reasoning": "House on recess until Monday. Shutdown through weekend guaranteed.",
+        "status": "ACTIVE"
       },
       {
         "id": "unemployment-jan26",
@@ -74,7 +74,8 @@
         "estProb": 0.375,
         "marketProb": 0.2,
         "riskLevel": "low",
-        "reasoning": "Economist consensus forecasts 4.5%, market only pricing 20% chance."
+        "reasoning": "Economist consensus forecasts 4.5%, market only pricing 20% chance.",
+        "status": "ACTIVE"
       },
       {
         "id": "payrolls-jan26",
@@ -90,7 +91,8 @@
         "estProb": 0.75,
         "marketProb": 0.45,
         "riskLevel": "low",
-        "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside."
+        "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside.",
+        "status": "ACTIVE"
       }
     ],
     "longTerm": [
@@ -108,7 +110,8 @@
         "estProb": null,
         "marketProb": 0.66,
         "riskLevel": "high",
-        "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline."
+        "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline.",
+        "status": "ACTIVE"
       },
       {
         "id": "jony-ive",
@@ -124,42 +127,38 @@
         "estProb": null,
         "marketProb": 0.42,
         "riskLevel": "very-high",
-        "reasoning": "Pure speculation on product form factor."
+        "reasoning": "Pure speculation on product form factor.",
+        "status": "ACTIVE"
       }
     ]
   },
   "scenarios": [
     {
-      "name": "Best Case (All Win)",
+      "name": "Best Case (All Remaining Win)",
       "emoji": "target",
-      "totalProfit": 167.4,
-      "finalBankroll": 407.4,
+      "totalProfit": 167.73,
+      "finalBankroll": 407.73,
       "returnPct": 70
     },
     {
-      "name": "Short-Term Only (Shutdown + Feb 6)",
+      "name": "Short-Term Only (Shutdown Length + Feb 6)",
       "emoji": "chart",
-      "totalProfit": 66.4,
-      "finalBankroll": 306.4,
+      "totalProfit": 66.73,
+      "finalBankroll": 306.73,
       "returnPct": 28
     },
     {
-      "name": "Worst Case (All Lose)",
+      "name": "Worst Case (All Remaining Lose)",
       "emoji": "warning",
-      "totalProfit": -190.0,
-      "finalBankroll": 50.0,
-      "returnPct": -79
+      "totalProfit": -164.67,
+      "finalBankroll": 75.33,
+      "returnPct": -69
     }
   ],
   "upcomingEvents": [
     {
-      "date": "2026-01-31",
-      "time": "12:01 AM ET",
-      "description": "Government Shutdown begins - Position 5 settles"
-    },
-    {
-      "date": "2026-02-02",
-      "description": "House returns from recess - earliest possible shutdown end"
+      "date": "2026-02-03",
+      "description": "House returns from recess - expected shutdown end"
     },
     {
       "date": "2026-02-06",

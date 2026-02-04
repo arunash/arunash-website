@@ -425,7 +425,7 @@
         const SHEET_ID = '1cQYozw6ENaen_xwdeP86I0E6cJGuNMM_8ZnlYkJpljQ';
         const PASSWORD = 'smc2026'; // Change this to your desired password
 
-        let isUnlocked = sessionStorage.getItem('smc_unlocked') === 'true';
+        let isUnlocked = true; // Positions are now public
 
         const SHEETS = {
             meta: 'Meta',
@@ -436,7 +436,9 @@
         };
 
         async function fetchSheetData(sheetName) {
-            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+            // Add cache-busting parameter to prevent stale data
+            const cacheBust = Date.now();
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}&_cb=${cacheBust}`;
 
             try {
                 const response = await fetch(url);

@@ -328,6 +328,7 @@
                 <li><a href="#sharp-money" class="tab-link" onclick="switchTab(event, 'sharp-money')">Sharp Money Collective</a></li>
                 <li><a href="#wheel" class="tab-link" onclick="switchTab(event, 'wheel')">The Wheel Syndicate</a></li>
                 <li><a href="#aichat" class="tab-link" onclick="switchTab(event, 'aichat')">AI Chat</a></li>
+                <li><a href="#giftist" class="tab-link" onclick="switchTab(event, 'giftist')">The Giftist</a></li>
             </ul>
         </div>
     </nav>
@@ -510,6 +511,13 @@
         </div>
     </div>
 
+    <!-- The Giftist Tab Content -->
+    <div id="giftist" class="tab-content">
+        <div class="iframe-container">
+            <iframe src="https://the-giftist.vercel.app/" title="The Giftist" style="width: 100%; min-height: calc(100vh - 80px); border: none;"></iframe>
+        </div>
+    </div>
+
     <script>
         function switchTab(event, tabName) {
             event.preventDefault();
@@ -540,7 +548,7 @@
         // Handle initial hash on page load
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
-            if (hash && ['mentorship', 'pm-game', 'sharp-money', 'wheel', 'aichat'].includes(hash)) {
+            if (hash && ['mentorship', 'pm-game', 'sharp-money', 'wheel', 'aichat', 'giftist'].includes(hash)) {
                 const tabLink = document.querySelector(`[href="#${hash}"]`);
                 if (tabLink) {
                     tabLink.click();

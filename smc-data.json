@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-01-31T18:30:00.000000",
-    "day": 7,
+    "lastUpdated": "2026-02-09T19:00:00.000000",
+    "day": 16,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,21 +9,21 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 246.33,
-      "available": 75.33,
+      "total": 302.33,
+      "available": 131.33,
       "deployed": 171.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "currentValue": 246.33,
-      "totalReturn": 6.33,
-      "totalReturnPct": 2.6
+      "currentValue": 302.33,
+      "totalReturn": 62.33,
+      "totalReturnPct": 26.0
     },
     "stats": {
       "activeBets": 5,
-      "settledBets": 1,
+      "settledBets": 2,
       "winRate": 100,
-      "deploymentRate": 0.69
+      "deploymentRate": 0.57
     }
   },
   "positions": {
@@ -51,14 +51,12 @@
         "amount": 50.0,
         "entryPrice": 0.89,
         "contracts": 56,
-        "potentialProfit": 6.0,
+        "payout": 56.0,
+        "profit": 6.0,
         "profitPct": 12,
-        "settlementDate": "2026-02-28",
-        "estProb": 0.95,
-        "marketProb": 0.90,
-        "riskLevel": "very-low",
-        "reasoning": "House on recess until Monday. Shutdown through weekend guaranteed.",
-        "status": "ACTIVE"
+        "settlementDate": "2026-02-04",
+        "status": "WON",
+        "result": "Shutdown lasted ~4 days. Trump signed funding bill Feb 4."
       },
       {
         "id": "unemployment-jan26",
@@ -70,11 +68,11 @@
         "contracts": 50,
         "potentialProfit": 40.0,
         "profitPct": 400,
-        "settlementDate": "2026-02-06",
+        "settlementDate": "2026-02-11",
         "estProb": 0.375,
-        "marketProb": 0.2,
-        "riskLevel": "low",
-        "reasoning": "Economist consensus forecasts 4.5%, market only pricing 20% chance.",
+        "marketProb": 0.25,
+        "riskLevel": "medium",
+        "reasoning": "DELAYED to Feb 11 due to shutdown. Consensus expects 4.4% - need miss to upside.",
         "status": "ACTIVE"
       },
       {
@@ -87,11 +85,11 @@
         "contracts": 24.4,
         "potentialProfit": 14.4,
         "profitPct": 144,
-        "settlementDate": "2026-02-06",
-        "estProb": 0.75,
-        "marketProb": 0.45,
-        "riskLevel": "low",
-        "reasoning": "JPMorgan forecasts only 25k/month Q1, market overpricing upside.",
+        "settlementDate": "2026-02-11",
+        "estProb": 0.65,
+        "marketProb": 0.50,
+        "riskLevel": "medium",
+        "reasoning": "DELAYED to Feb 11. Consensus now 60k. Still favorable odds.",
         "status": "ACTIVE"
       }
     ],
@@ -110,7 +108,7 @@
         "estProb": null,
         "marketProb": 0.66,
         "riskLevel": "high",
-        "reasoning": "Speculative bet on OpenAI IPO timing. 17-month timeline.",
+        "reasoning": "Speculative bet on OpenAI IPO timing. 16-month timeline.",
         "status": "ACTIVE"
       },
       {
@@ -130,48 +128,78 @@
         "reasoning": "Pure speculation on product form factor.",
         "status": "ACTIVE"
       }
+    ],
+    "watchlist": [
+      {
+        "id": "fed-march-cut",
+        "title": "Fed 25bp Cut at March FOMC",
+        "platform": "Kalshi",
+        "currentPrice": 0.64,
+        "marketProb": 0.64,
+        "reasoning": "64% probability of 25bp cut on March 17-18. CPI mid-Feb is key catalyst. If CPI <2.5%, could jump to 80%+. Warsh nomination adds uncertainty.",
+        "recommendation": "WATCH - wait for Feb CPI data",
+        "url": "https://kalshi.com/markets/kxfed/fed-funds-rate"
+      },
+      {
+        "id": "cpi-feb",
+        "title": "February CPI (YoY)",
+        "platform": "Kalshi",
+        "currentPrice": null,
+        "marketProb": null,
+        "reasoning": "Key catalyst for Fed rate bets. Current sticky at 2.7%. Sub-2.5% print would move markets.",
+        "recommendation": "RESEARCH - check market pricing",
+        "url": "https://kalshi.com/category/economics/inflation"
+      }
     ]
   },
   "scenarios": [
     {
       "name": "Best Case (All Remaining Win)",
       "emoji": "target",
-      "totalProfit": 167.73,
-      "finalBankroll": 407.73,
-      "returnPct": 70
+      "totalProfit": 217.73,
+      "finalBankroll": 457.73,
+      "returnPct": 91
     },
     {
-      "name": "Short-Term Only (Shutdown Length + Feb 6)",
+      "name": "Feb 11 Jobs Win + Long-Term Lose",
       "emoji": "chart",
-      "totalProfit": 66.73,
-      "finalBankroll": 306.73,
-      "returnPct": 28
+      "totalProfit": 116.73,
+      "finalBankroll": 356.73,
+      "returnPct": 49
+    },
+    {
+      "name": "Current Locked (Already Won)",
+      "emoji": "lock",
+      "totalProfit": 62.33,
+      "finalBankroll": 302.33,
+      "returnPct": 26
     },
     {
       "name": "Worst Case (All Remaining Lose)",
       "emoji": "warning",
-      "totalProfit": -164.67,
-      "finalBankroll": 75.33,
-      "returnPct": -69
+      "totalProfit": -57.67,
+      "finalBankroll": 182.33,
+      "returnPct": -24
     }
   ],
   "upcomingEvents": [
     {
-      "date": "2026-02-03",
-      "description": "House returns from recess - expected shutdown end"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "8:30 AM ET",
-      "description": "BLS Jobs Report - Unemployment & Payrolls settle"
-    },
-    {
       "date": "2026-02-11",
-      "description": "CPI Inflation Data Release"
+      "time": "8:30 AM ET",
+      "description": "BLS Jobs Report (DELAYED) - Unemployment & Payrolls settle"
+    },
+    {
+      "date": "2026-02-12",
+      "time": "8:30 AM ET",
+      "description": "CPI Inflation Data Release - key for Fed rate cut bets"
     },
     {
       "date": "2026-02-24",
       "description": "Challenge Period Ends"
+    },
+    {
+      "date": "2026-03-18",
+      "description": "March FOMC Meeting - potential 25bp cut"
     }
   ]
 }

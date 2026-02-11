@@ -11,19 +11,26 @@
     "workingCapital": {
       "total": 302.33,
       "available": 131.33,
-      "deployed": 171.0
+      "deployed": 120.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "currentValue": 302.33,
-      "totalReturn": 62.33,
-      "totalReturnPct": 26.0
+      "realizedProfit": 62.33,
+      "unrealizedPnL": 12.15,
+      "currentValue": 314.48,
+      "totalReturnPct": 31.0
     },
     "stats": {
-      "activeBets": 5,
+      "activeBets": 4,
       "settledBets": 2,
       "winRate": 100,
-      "deploymentRate": 0.57
+      "deploymentRate": 0.40
+    },
+    "positionSummary": {
+      "unemployment": {"entry": 0.20, "current": 0.11, "pnl": -4.50, "status": "LOSING"},
+      "payrolls": {"entry": 0.41, "current": 0.75, "pnl": 8.29, "status": "WINNING"},
+      "openaiIPO": {"entry": 0.61, "current": 0.77, "pnl": 13.12, "status": "WINNING"},
+      "jonyIve": {"entry": 0.42, "current": 0.38, "pnl": -4.76, "status": "LOSING"}
     }
   },
   "positions": {
@@ -64,16 +71,16 @@
         "platform": "Kalshi",
         "position": "YES",
         "amount": 10.0,
-        "entryPrice": 0.2,
+        "entryPrice": 0.20,
         "contracts": 50,
         "potentialProfit": 40.0,
         "profitPct": 400,
         "settlementDate": "2026-02-11",
-        "estProb": 0.70,
-        "marketProb": 0.36,
-        "currentPrice": 0.36,
-        "riskLevel": "low",
-        "reasoning": "STRONG SETUP: Unemployment at 4.6% (4-year high). >4.4% trading at 36%. Need to stay above 4.5% for win. Settles TOMORROW 8:30 AM.",
+        "currentPrice": 0.11,
+        "marketProb": 0.11,
+        "unrealizedPnL": -4.50,
+        "riskLevel": "high",
+        "reasoning": "RISKY: Market expects 4.4% (36% prob). Need 4.6%+ for win (only 11% prob). Entry at $0.20, now $0.11. Settles TOMORROW 8:30 AM.",
         "status": "ACTIVE"
       },
       {
@@ -87,11 +94,11 @@
         "potentialProfit": 14.4,
         "profitPct": 144,
         "settlementDate": "2026-02-11",
-        "estProb": 0.75,
-        "marketProb": 0.60,
-        "currentPrice": 0.40,
+        "currentPrice": 0.75,
+        "marketProb": 0.75,
+        "unrealizedPnL": 8.29,
         "riskLevel": "low",
-        "reasoning": "STRONG SETUP: Consensus 60k (Goldman 45k, ADP 22k). Need <70k for win. Settles TOMORROW 8:30 AM.",
+        "reasoning": "STRONG: >70k YES at $0.25 (25% prob). Our NO now worth $0.75. Consensus 60k. Settles TOMORROW 8:30 AM.",
         "status": "ACTIVE"
       }
     ],
@@ -107,10 +114,11 @@
         "potentialProfit": 32.0,
         "profitPct": 64,
         "settlementDate": "2027-06-01",
-        "estProb": null,
-        "marketProb": 0.66,
-        "riskLevel": "high",
-        "reasoning": "Speculative bet on OpenAI IPO timing. 16-month timeline.",
+        "currentPrice": 0.77,
+        "marketProb": 0.77,
+        "unrealizedPnL": 13.12,
+        "riskLevel": "medium",
+        "reasoning": "UP 26%: Now at $0.77 (was $0.61). 77% probability of IPO by Jun 2027.",
         "status": "ACTIVE"
       },
       {
@@ -123,11 +131,12 @@
         "contracts": 119,
         "potentialProfit": 69.0,
         "profitPct": 138,
-        "settlementDate": "TBD",
-        "estProb": null,
-        "marketProb": 0.42,
+        "settlementDate": "2027-01-01",
+        "currentPrice": 0.38,
+        "marketProb": 0.38,
+        "unrealizedPnL": -4.76,
         "riskLevel": "very-high",
-        "reasoning": "Pure speculation on product form factor.",
+        "reasoning": "DOWN 10%: Now $0.38 (was $0.42). Earbuds now favorite at 74%. Clip-on 2nd.",
         "status": "ACTIVE"
       }
     ],
@@ -136,11 +145,11 @@
         "id": "fed-march-cut",
         "title": "Fed 25bp Cut at March FOMC",
         "platform": "Kalshi",
-        "currentPrice": 0.64,
-        "marketProb": 0.64,
-        "reasoning": "64% on Kalshi vs 90% hold on CME FedWatch. Warsh nomination (May 2026) may push Fed to 'clear deck' with preemptive cut. CPI tomorrow is key catalyst.",
-        "recommendation": "BUY after CPI - if CPI <2.5% could jump to 80%+",
-        "url": "https://kalshi.com/markets/kxfed/fed-funds-rate/kxfed-26mar"
+        "currentPrice": 0.18,
+        "marketProb": 0.18,
+        "reasoning": "Only 18% cut odds. 81% expect hold. Market has moved hawkish. Wait for CPI catalyst.",
+        "recommendation": "WAIT - low odds, needs CPI surprise to move",
+        "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26mar"
       },
       {
         "id": "cpi-jan",
@@ -148,19 +157,19 @@
         "platform": "Kalshi",
         "currentPrice": null,
         "marketProb": null,
-        "reasoning": "Releases Feb 12 8:30 AM. Currently sticky at 2.7%. Sub-2.5% would boost rate cut odds. Above 3% would tank them.",
-        "recommendation": "CATALYST - watch for Fed trade setup",
+        "reasoning": "Releases Feb 12 8:30 AM. Currently sticky at 2.7%. Sub-2.5% would boost rate cut odds.",
+        "recommendation": "CATALYST - key for Fed trade setup",
         "url": "https://kalshi.com/markets/kxcpiyoy/inflation"
       },
       {
-        "id": "scotus-tariffs",
-        "title": "Supreme Court Rules for Trump Tariffs",
+        "id": "openai-earbuds",
+        "title": "OpenAI/Jony Ive Device: Earbuds",
         "platform": "Kalshi",
-        "currentPrice": 0.30,
-        "marketProb": 0.30,
-        "reasoning": "Only 30% odds court upholds tariffs. V.O.S. Selections case pending. 3 justices expected to vote in favor (35% odds).",
-        "recommendation": "CONTRARIAN - consider NO position if price rises",
-        "url": "https://kalshi.com/markets/kxdjtvostariffs/tariffs-case"
+        "currentPrice": 0.74,
+        "marketProb": 0.74,
+        "reasoning": "Earbuds now favorite at 74%. 'Sweetpea' earbud prototype confirmed. Could hedge clip-on position.",
+        "recommendation": "CONSIDER - hedge against clip-on bet",
+        "url": "https://kalshi.com/markets/kxoaihardware/what-hardware-will-openaijony-ive-launch"
       },
       {
         "id": "rate-cuts-2026",
@@ -168,8 +177,8 @@
         "platform": "Kalshi",
         "currentPrice": null,
         "marketProb": null,
-        "reasoning": "Labor market weakening (4.6% unemployment, weak payrolls). Warsh transition in May. Market may be underpricing cuts.",
-        "recommendation": "RESEARCH - check 3+ cuts pricing",
+        "reasoning": "Market expects Fed to hold. Contrarian if labor market weakens further.",
+        "recommendation": "RESEARCH - check 2+ cuts pricing",
         "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31"
       }
     ]
@@ -208,35 +217,35 @@
     {
       "id": "fed-cut-post-cpi",
       "title": "Fed March Rate Cut (Post-CPI Play)",
-      "action": "BUY YES if CPI < 2.5%",
-      "currentPrice": 0.64,
-      "targetPrice": 0.80,
-      "reasoning": "If CPI comes in below 2.5% tomorrow, rate cut odds should spike. Entry at 64% with 80%+ upside potential.",
-      "catalyst": "Feb 12 CPI Release",
-      "risk": "High - binary event",
+      "action": "BUY YES at $0.18 if CPI surprises low",
+      "currentPrice": 0.18,
+      "targetPrice": 0.40,
+      "reasoning": "Only 18% cut odds now. Low entry point. If Jan CPI <2.5%, could spike to 40%+. High risk/reward.",
+      "catalyst": "Feb 12 CPI Release 8:30 AM",
+      "risk": "High - needs CPI surprise",
+      "suggestedSize": 15
+    },
+    {
+      "id": "openai-ipo-2026",
+      "title": "OpenAI IPO Before Oct 2026",
+      "action": "BUY YES at $0.35",
+      "currentPrice": 0.35,
+      "targetPrice": 0.60,
+      "reasoning": "Oct 2026 contract at 35%. Company targeting IPO in 2026. Good risk/reward for 8-month timeline.",
+      "catalyst": "IPO rumors, S-1 filing",
+      "risk": "Medium - timing uncertain",
       "suggestedSize": 25
     },
     {
-      "id": "scotus-tariffs-no",
-      "title": "Supreme Court Strikes Down Tariffs",
-      "action": "BUY NO (bet against Trump)",
-      "currentPrice": 0.30,
-      "targetPrice": 0.20,
-      "reasoning": "70% probability court rules against. If conviction strengthens, NO price rises. Good risk/reward.",
-      "catalyst": "Court decision timing unclear",
-      "risk": "Medium - timing uncertain",
+      "id": "earbuds-hedge",
+      "title": "OpenAI Device: Earbuds (Hedge)",
+      "action": "BUY YES at $0.74 to hedge clip-on bet",
+      "currentPrice": 0.74,
+      "targetPrice": 1.00,
+      "reasoning": "Earbuds now favorite at 74%. 'Sweetpea' prototype confirmed. Hedges existing clip-on position.",
+      "catalyst": "Device announcement H2 2026",
+      "risk": "Low - strong favorite",
       "suggestedSize": 20
-    },
-    {
-      "id": "greenland-no",
-      "title": "No Greenland Deal by May 2026",
-      "action": "Consider NO position",
-      "currentPrice": 0.13,
-      "targetPrice": 0.05,
-      "reasoning": "Only 13% odds of deal by May. Very unlikely Denmark sells. Collect premium.",
-      "catalyst": "None specific",
-      "risk": "Low - time decay in favor",
-      "suggestedSize": 15
     }
   ],
   "upcomingEvents": [

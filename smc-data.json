@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-10T10:00:00.000000",
+    "lastUpdated": "2026-02-11T08:00:00.000000",
     "day": 17,
     "challenge": {
       "startDate": "2026-01-25",
@@ -9,22 +9,22 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 302.33,
-      "available": 131.33,
+      "total": 287.33,
+      "available": 167.33,
       "deployed": 120.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": 62.33,
+      "realizedProfit": 47.33,
       "unrealizedPnL": 12.15,
-      "currentValue": 314.48,
-      "totalReturnPct": 31.0
+      "currentValue": 299.48,
+      "totalReturnPct": 25.0
     },
     "stats": {
       "activeBets": 4,
-      "settledBets": 2,
-      "winRate": 100,
-      "deploymentRate": 0.40
+      "settledBets": 3,
+      "winRate": 67,
+      "deploymentRate": 0.42
     },
     "positionSummary": {
       "unemployment": {"entry": 0.20, "current": 0.11, "pnl": -4.50, "status": "LOSING"},
@@ -35,6 +35,21 @@
   },
   "positions": {
     "shortTerm": [
+      {
+        "id": "superbowl-patriots",
+        "title": "Super Bowl LX Patriots Win",
+        "platform": "Polymarket",
+        "position": "YES",
+        "amount": 15.0,
+        "entryPrice": 0.33,
+        "contracts": 45,
+        "payout": 0,
+        "profit": -15.0,
+        "profitPct": -100,
+        "settlementDate": "2026-02-09",
+        "status": "LOST",
+        "result": "Patriots lost Super Bowl LX."
+      },
       {
         "id": "shutdown-jan31",
         "title": "Government Shutdown Jan 31",
@@ -187,30 +202,30 @@
     {
       "name": "Best Case (All Remaining Win)",
       "emoji": "target",
-      "totalProfit": 217.73,
-      "finalBankroll": 457.73,
-      "returnPct": 91
+      "totalProfit": 202.73,
+      "finalBankroll": 442.73,
+      "returnPct": 85
     },
     {
       "name": "Feb 11 Jobs Win + Long-Term Lose",
       "emoji": "chart",
-      "totalProfit": 116.73,
-      "finalBankroll": 356.73,
-      "returnPct": 49
+      "totalProfit": 101.73,
+      "finalBankroll": 341.73,
+      "returnPct": 42
     },
     {
-      "name": "Current Locked (Already Won)",
+      "name": "Current Locked (Already Settled)",
       "emoji": "lock",
-      "totalProfit": 62.33,
-      "finalBankroll": 302.33,
-      "returnPct": 26
+      "totalProfit": 47.33,
+      "finalBankroll": 287.33,
+      "returnPct": 20
     },
     {
       "name": "Worst Case (All Remaining Lose)",
       "emoji": "warning",
-      "totalProfit": -57.67,
-      "finalBankroll": 182.33,
-      "returnPct": -24
+      "totalProfit": -72.67,
+      "finalBankroll": 167.33,
+      "returnPct": -30
     }
   ],
   "opportunities": [

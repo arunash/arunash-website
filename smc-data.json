@@ -9,30 +9,30 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 244.23,
-      "available": 94.23,
-      "deployed": 150.0
+      "total": 313.76,
+      "available": 113.76,
+      "deployed": 200.0
     },
     "performance": {
       "startingBankroll": 240.0,
       "realizedProfit": 4.23,
-      "unrealizedPnL": 0,
-      "currentValue": 244.23,
-      "totalReturnPct": 2.0
+      "unrealizedPnL": 69.53,
+      "currentValue": 313.76,
+      "totalReturnPct": 31.0
     },
     "stats": {
       "activeBets": 6,
       "settledBets": 7,
       "winRate": 57,
-      "deploymentRate": 0.61
+      "deploymentRate": 0.64
     },
     "positionSummary": {
-      "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -11.92, "status": "LOSING"},
-      "cpiJan": {"entry": 0.25, "current": null, "pnl": 0, "status": "PENDING"},
-      "fedMarch": {"entry": 0.91, "current": null, "pnl": 0, "status": "ACTIVE"},
-      "oscars": {"entry": 0.22, "current": null, "pnl": 0, "status": "ACTIVE"},
-      "gdpQ4": {"entry": 0.49, "current": null, "pnl": 0, "status": "ACTIVE"},
-      "khamenei": {"entry": 0.39, "current": null, "pnl": 0, "status": "ACTIVE"}
+      "cpiJan": {"entry": 0.25, "current": 0.85, "pnl": 60.0, "status": "WINNING"},
+      "gdpQ4": {"entry": 0.49, "current": 0.82, "pnl": 16.83, "status": "WINNING"},
+      "fedMarch": {"entry": 0.91, "current": 0.93, "pnl": 0.54, "status": "WINNING"},
+      "oscars": {"entry": 0.22, "current": 0.16, "pnl": -2.70, "status": "LOSING"},
+      "khamenei": {"entry": 0.39, "current": 0.38, "pnl": -0.38, "status": "LOSING"},
+      "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -4.76, "status": "LOSING"}
     }
   },
   "positions": {
@@ -134,12 +134,14 @@
         "position": "YES",
         "amount": 10.0,
         "entryPrice": 0.22,
+        "currentPrice": 0.16,
         "contracts": 45,
         "potentialProfit": 35.0,
         "profitPct": 350,
+        "unrealizedPnL": -2.70,
         "settlementDate": "2026-03-02",
         "status": "ACTIVE",
-        "reasoning": "Betting on Sinners to win Best Picture at 2026 Oscars."
+        "reasoning": "DOWN 27%: One Battle After Another is heavy favorite at 74%."
       },
       {
         "id": "fed-march-nocut",
@@ -148,12 +150,14 @@
         "position": "NO CUT",
         "amount": 25.0,
         "entryPrice": 0.91,
+        "currentPrice": 0.93,
         "contracts": 27,
         "potentialProfit": 2.47,
         "profitPct": 10,
+        "unrealizedPnL": 0.54,
         "settlementDate": "2026-03-19",
         "status": "ACTIVE",
-        "reasoning": "Betting Fed holds rates at March FOMC. Currently 81% hold odds."
+        "reasoning": "UP 2%: 93% hold odds now. Limited upside remaining."
       },
       {
         "id": "cpi-jan-2.5",
@@ -162,12 +166,14 @@
         "position": "YES",
         "amount": 25.0,
         "entryPrice": 0.25,
+        "currentPrice": 0.85,
         "contracts": 100,
         "potentialProfit": 75.0,
         "profitPct": 300,
+        "unrealizedPnL": 60.0,
         "settlementDate": "2026-02-13",
         "status": "ACTIVE",
-        "reasoning": "Betting CPI stays above 2.5%. Currently at 2.7%. Settles tomorrow."
+        "reasoning": "STRONG: CPI at 2.7% in Dec. 85% odds. Settles tomorrow 8:30 AM."
       },
       {
         "id": "gdp-q4-3.5",
@@ -176,12 +182,14 @@
         "position": "YES",
         "amount": 25.0,
         "entryPrice": 0.49,
+        "currentPrice": 0.82,
         "contracts": 51,
         "potentialProfit": 26.0,
         "profitPct": 104,
+        "unrealizedPnL": 16.83,
         "settlementDate": "2026-02-27",
         "status": "ACTIVE",
-        "reasoning": "Betting on strong Q4 GDP growth above 3.5%."
+        "reasoning": "STRONG: Atlanta Fed nowcast at 5.1%. 82% odds."
       },
       {
         "id": "khamenei-sept",
@@ -190,12 +198,14 @@
         "position": "YES",
         "amount": 15.0,
         "entryPrice": 0.39,
+        "currentPrice": 0.38,
         "contracts": 38,
         "potentialProfit": 23.0,
         "profitPct": 153,
+        "unrealizedPnL": -0.38,
         "settlementDate": "2026-09-30",
         "status": "ACTIVE",
-        "reasoning": "Betting on Iran leadership change by September 2026."
+        "reasoning": "HOLD: 38% by Sept, 64% by year-end. Health concerns driving odds."
       }
     ],
     "longTerm": [

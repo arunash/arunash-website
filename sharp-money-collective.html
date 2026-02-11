@@ -394,11 +394,11 @@
                     <div class="stat-card">
                         <div class="stat-label">Portfolio Value</div>
                         <div class="stat-value">$${perf.currentValue.toFixed(2)}</div>
-                        <div class="stat-change positive">+$${perf.realizedProfit.toFixed(2)} realized</div>
+                        <div class="stat-change ${perf.realizedProfit >= 0 ? 'positive' : 'negative'}">${perf.realizedProfit >= 0 ? '+' : ''}$${perf.realizedProfit.toFixed(2)} realized</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">Total Return</div>
-                        <div class="stat-value ${perf.totalReturnPct >= 0 ? 'positive' : 'negative'}">+${perf.totalReturnPct}%</div>
+                        <div class="stat-value ${perf.totalReturnPct >= 0 ? 'positive' : 'negative'}">${perf.totalReturnPct >= 0 ? '+' : ''}${perf.totalReturnPct}%</div>
                         <div class="stat-change">From $${perf.startingBankroll} start</div>
                     </div>
                     <div class="stat-card">
@@ -422,13 +422,13 @@
                         <h2 class="section-title">Position Summary (Live Prices)</h2>
                         <div class="stats-grid">
                             ${Object.entries(ps).map(([key, pos]) => `
-                                <div class="stat-card" style="border-left: 3px solid ${pos.status === 'WINNING' ? '#4ade80' : '#f87171'}">
+                                <div class="stat-card" style="border-left: 3px solid ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}">
                                     <div class="stat-label">${key}</div>
                                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
                                         <span style="color: #a0a0a0;">$${pos.entry.toFixed(2)}</span>
-                                        <span style="color: #fff; font-size: 1.2rem;">→ $${pos.current.toFixed(2)}</span>
+                                        <span style="color: ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}; font-size: 1.2rem;">→ $${pos.current ? pos.current.toFixed(2) : 'N/A'}</span>
                                     </div>
-                                    <div class="stat-change ${pos.pnl >= 0 ? 'positive' : 'negative'}">
+                                    <div class="stat-change" style="color: ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}">
                                         ${pos.pnl >= 0 ? '+' : ''}$${pos.pnl.toFixed(2)} (${pos.status})
                                     </div>
                                 </div>
@@ -444,11 +444,13 @@
                 html += `
                     <div class="section">
                         <h2 class="section-title">Settled Bets</h2>
-                        ${settledBets.map(pos => `
-                            <div class="position-card settled-won">
+                        ${settledBets.map(pos => {
+                            const isWin = pos.status === 'WON';
+                            return `
+                            <div class="position-card" style="border-left: 3px solid ${isWin ? '#4ade80' : '#f87171'}; opacity: 0.85;">
                                 <div class="position-header">
                                     <div class="position-title">${pos.title}</div>
-                                    <span class="badge badge-won">${pos.status}</span>
+                                    <span class="badge ${isWin ? 'badge-won' : 'badge-losing'}">${pos.status}</span>
                                 </div>
                                 <div class="position-details">
                                     <div class="detail-item">
@@ -460,8 +462,8 @@
                                         <span class="detail-value">$${pos.amount.toFixed(2)}</span>
                                     </div>
                                     <div class="detail-item">
-                                        <span class="detail-label">Profit</span>
-                                        <span class="detail-value positive">+$${pos.profit.toFixed(2)} (+${pos.profitPct}%)</span>
+                                        <span class="detail-label">Profit/Loss</span>
+                                        <span class="detail-value ${isWin ? 'positive' : 'negative'}">${pos.profit >= 0 ? '+' : ''}$${pos.profit.toFixed(2)} (${pos.profitPct >= 0 ? '+' : ''}${pos.profitPct}%)</span>
                                     </div>
                                     <div class="detail-item">
                                         <span class="detail-label">Settlement</span>
@@ -470,7 +472,7 @@
                                 </div>
                                 ${pos.result ? `<div class="reasoning">${pos.result}</div>` : ''}
                             </div>
-                        `).join('')}
+                        `}).join('')}
                     </div>
                 `;
             }
@@ -528,12 +530,14 @@
                     <div class="section">
                         <h2 class="section-title">Long-Term Positions</h2>
                         ${positions.longTerm.map(pos => {
-                            const isWinning = pos.unrealizedPnL && pos.unrealizedPnL > 0;
+                            const isSold = pos.status === 'SOLD';
+                            const isWinning = isSold ? pos.profit > 0 : (pos.unrealizedPnL && pos.unrealizedPnL > 0);
+                            const pnlValue = isSold ? pos.profit : (pos.unrealizedPnL || 0);
                             return `
-                            <div class="position-card ${isWinning ? 'winning' : 'losing'}">
+                            <div class="position-card" style="border-left: 3px solid ${isWinning ? '#4ade80' : '#f87171'}; ${isSold ? 'opacity: 0.85;' : ''}">
                                 <div class="position-header">
                                     <div class="position-title">${pos.title}</div>
-                                    <span class="badge ${isWinning ? 'badge-winning' : 'badge-losing'}">${isWinning ? 'WINNING' : 'LOSING'}</span>
+                                    <span class="badge ${isSold ? (isWinning ? 'badge-won' : 'badge-losing') : (isWinning ? 'badge-winning' : 'badge-losing')}">${pos.status || (isWinning ? 'WINNING' : 'LOSING')}</span>
                                 </div>
                                 <div class="position-details">
                                     <div class="detail-item">
@@ -549,12 +553,12 @@
                                         <span class="detail-value">$${pos.entryPrice.toFixed(2)}</span>
                                     </div>
                                     <div class="detail-item">
-                                        <span class="detail-label">Current</span>
-                                        <span class="detail-value">$${pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A'}</span>
+                                        <span class="detail-label">${isSold ? 'Exit' : 'Current'}</span>
+                                        <span class="detail-value">$${isSold ? pos.exitPrice.toFixed(2) : (pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A')}</span>
                                     </div>
                                     <div class="detail-item">
-                                        <span class="detail-label">Unrealized P&L</span>
-                                        <span class="detail-value ${pos.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${pos.unrealizedPnL >= 0 ? '+' : ''}$${pos.unrealizedPnL ? pos.unrealizedPnL.toFixed(2) : '0.00'}</span>
+                                        <span class="detail-label">${isSold ? 'Realized P&L' : 'Unrealized P&L'}</span>
+                                        <span class="detail-value ${pnlValue >= 0 ? 'positive' : 'negative'}">${pnlValue >= 0 ? '+' : ''}$${pnlValue.toFixed(2)}</span>
                                     </div>
                                     <div class="detail-item">
                                         <span class="detail-label">Settlement</span>
@@ -562,6 +566,7 @@
                                     </div>
                                 </div>
                                 ${pos.reasoning ? `<div class="reasoning">${pos.reasoning}</div>` : ''}
+                                ${pos.result ? `<div class="reasoning">${pos.result}</div>` : ''}
                             </div>
                         `}).join('')}
                     </div>

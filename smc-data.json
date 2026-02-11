@@ -10,8 +10,8 @@
   "portfolio": {
     "workingCapital": {
       "total": 313.76,
-      "available": 113.76,
-      "deployed": 200.0
+      "available": 93.76,
+      "deployed": 220.0
     },
     "performance": {
       "startingBankroll": 240.0,
@@ -21,10 +21,10 @@
       "totalReturnPct": 31.0
     },
     "stats": {
-      "activeBets": 6,
+      "activeBets": 7,
       "settledBets": 7,
       "winRate": 57,
-      "deploymentRate": 0.64
+      "deploymentRate": 0.70
     },
     "positionSummary": {
       "cpiJan": {"entry": 0.25, "current": 0.85, "pnl": 60.0, "status": "WINNING"},
@@ -32,7 +32,8 @@
       "fedMarch": {"entry": 0.91, "current": 0.93, "pnl": 0.54, "status": "WINNING"},
       "oscars": {"entry": 0.22, "current": 0.16, "pnl": -2.70, "status": "LOSING"},
       "khamenei": {"entry": 0.39, "current": 0.38, "pnl": -0.38, "status": "LOSING"},
-      "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -4.76, "status": "LOSING"}
+      "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -4.76, "status": "LOSING"},
+      "btcNo100k": {"entry": 0.71, "current": 0.71, "pnl": 0.00, "status": "NEW"}
     }
   },
   "positions": {
@@ -206,6 +207,22 @@
         "settlementDate": "2026-09-30",
         "status": "ACTIVE",
         "reasoning": "HOLD: 38% by Sept, 64% by year-end. Health concerns driving odds."
+      },
+      {
+        "id": "btc-no-100k-july",
+        "title": "Bitcoin NO $100K Before July 2026",
+        "platform": "Kalshi",
+        "position": "NO",
+        "amount": 20.0,
+        "entryPrice": 0.71,
+        "currentPrice": 0.71,
+        "contracts": 28,
+        "potentialProfit": 8.17,
+        "profitPct": 41,
+        "unrealizedPnL": 0.0,
+        "settlementDate": "2026-07-01",
+        "status": "ACTIVE",
+        "reasoning": "NEW: BTC at $70K, broken below 365-day MA. ETFs net sellers, hostile macro. Higher-for-longer rates."
       }
     ],
     "longTerm": [

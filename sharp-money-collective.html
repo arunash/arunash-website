@@ -70,7 +70,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -109,13 +109,9 @@
             color: #a0a0a0;
         }
 
-        .positive {
-            color: #4ade80;
-        }
-
-        .negative {
-            color: #f87171;
-        }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .warning { color: #fbbf24; }
 
         .section {
             background: rgba(255, 255, 255, 0.05);
@@ -145,13 +141,25 @@
             letter-spacing: 0.5px;
         }
 
-        .badge-high {
+        .badge-won {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .badge-active {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .badge-losing {
             background: rgba(248, 113, 113, 0.2);
             color: #f87171;
             border: 1px solid rgba(248, 113, 113, 0.3);
         }
 
-        .badge-low {
+        .badge-winning {
             background: rgba(74, 222, 128, 0.2);
             color: #4ade80;
             border: 1px solid rgba(74, 222, 128, 0.3);
@@ -171,11 +179,26 @@
             background: rgba(102, 126, 234, 0.05);
         }
 
+        .position-card.winning {
+            border-left: 3px solid #4ade80;
+        }
+
+        .position-card.losing {
+            border-left: 3px solid #f87171;
+        }
+
+        .position-card.settled-won {
+            border-left: 3px solid #4ade80;
+            opacity: 0.8;
+        }
+
         .position-header {
             display: flex;
             justify-content: space-between;
             align-items: start;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .position-title {
@@ -187,7 +210,7 @@
 
         .position-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
             font-size: 0.9rem;
         }
@@ -208,19 +231,13 @@
             font-weight: 600;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s;
+        .reasoning {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            line-height: 1.5;
         }
 
         .timeline {
@@ -230,7 +247,7 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 30px;
+            padding-bottom: 25px;
         }
 
         .timeline-item::before {
@@ -243,6 +260,11 @@
             border-radius: 50%;
             background: #667eea;
             border: 3px solid #1a1a2e;
+        }
+
+        .timeline-item.highlight::before {
+            background: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
         }
 
         .timeline-item::after {
@@ -265,8 +287,24 @@
             margin-bottom: 5px;
         }
 
+        .timeline-item.highlight .timeline-date {
+            color: #4ade80;
+        }
+
         .timeline-content {
             color: #e0e0e0;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .scenario-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
         }
 
         footer {
@@ -278,555 +316,320 @@
             margin-top: 40px;
         }
 
-        .error {
-            background: rgba(248, 113, 113, 0.1);
-            border: 1px solid rgba(248, 113, 113, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            color: #f87171;
+        .pnl-summary {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .password-gate {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .password-input {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 12px 20px;
-            color: #fff;
-            font-size: 1rem;
-            width: 300px;
-            max-width: 100%;
-            margin: 20px auto;
-            display: block;
-            font-family: monospace;
-        }
-
-        .password-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .password-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 8px;
-            padding: 12px 30px;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .password-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .password-error {
-            color: #f87171;
-            margin-top: 10px;
-            font-size: 0.9rem;
+        .pnl-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .position-details {
-                grid-template-columns: 1fr;
-            }
+            h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .position-details { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>⚡ Sharp Money Collective</h1>
+            <h1>Sharp Money Collective</h1>
             <p class="subtitle">Data-Driven Prediction Market Portfolio</p>
-            <p class="subtitle" style="margin-top: 5px; font-size: 0.85rem;" id="last-updated">Powered by Google Sheets</p>
+            <p class="subtitle" id="last-updated" style="margin-top: 5px; font-size: 0.85rem;">Loading...</p>
         </header>
 
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
-            <div>Loading portfolio data from Google Sheets...</div>
+            <div>Loading portfolio data...</div>
         </div>
 
-        <div id="error" style="display: none;"></div>
-
-        <div id="content" style="display: none;">
-            <div id="stats-section"></div>
-            <div id="short-term-section"></div>
-            <div id="long-term-section"></div>
-            <div id="timeline-section"></div>
-            <div id="scenarios-section"></div>
-
-            <!-- Strategy Notes -->
-            <div class="section">
-                <h2 class="section-title">📋 Strategy & Philosophy</h2>
-                <div style="display: grid; gap: 15px; font-size: 0.95rem; line-height: 1.6;">
-                    <div style="display: flex; align-items: start; gap: 10px;">
-                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                        <div>
-                            <strong style="color: #fff;">Data-Driven Analysis:</strong>
-                            <span style="color: #a0a0a0;"> Hunt for markets where public information contradicts market prices</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: start; gap: 10px;">
-                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                        <div>
-                            <strong style="color: #fff;">Disciplined Sizing:</strong>
-                            <span style="color: #a0a0a0;"> 5-15% per position, max 30% deployed at once</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: start; gap: 10px;">
-                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                        <div>
-                            <strong style="color: #fff;">Focus on Objectivity:</strong>
-                            <span style="color: #a0a0a0;"> Prefer economic data and official statistics over speculation</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: start; gap: 10px;">
-                        <span style="color: #667eea; font-size: 1.2rem;">✓</span>
-                        <div>
-                            <strong style="color: #fff;">Daily Check-ins:</strong>
-                            <span style="color: #a0a0a0;"> 9 PM Pacific • Monitor positions and identify new opportunities</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="content" style="display: none;"></div>
 
         <footer>
-            <div>Sharp Money Collective • Prediction Market Portfolio</div>
+            <div>Sharp Money Collective &bull; Prediction Market Portfolio</div>
             <div style="margin-top: 10px; font-size: 0.85rem;">
-                Platform: Kalshi • Challenge Period: Jan 25 - Feb 24, 2026
+                Platform: Kalshi &bull; Challenge Period: Jan 25 - Feb 24, 2026
             </div>
         </footer>
     </div>
 
     <script>
-        // Sharp Money Collective Dashboard v1.1
-        const SHEET_ID = '1cQYozw6ENaen_xwdeP86I0E6cJGuNMM_8ZnlYkJpljQ';
-        const PASSWORD = 'smc2026'; // Change this to your desired password
-
-        let isUnlocked = true; // Positions are now public
-
-        const SHEETS = {
-            meta: 'Meta',
-            stats: 'Stats',
-            positions: 'Positions',
-            events: 'Events',
-            scenarios: 'Scenarios'
-        };
-
-        async function fetchSheetData(sheetName) {
-            // Add cache-busting parameter to prevent stale data
-            const cacheBust = Date.now();
-            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}&_cb=${cacheBust}`;
-
+        async function loadPortfolio() {
             try {
-                const response = await fetch(url);
-                const text = await response.text();
-
-                // Google Sheets returns JSONP, need to extract JSON
-                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\((.*)\);/);
-                if (!jsonMatch) throw new Error('Invalid response from Google Sheets');
-
-                const json = JSON.parse(jsonMatch[1]);
-                return json.table;
+                const response = await fetch('smc-data.json?' + Date.now());
+                const data = await response.json();
+                renderPortfolio(data);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
             } catch (error) {
-                throw new Error(`Failed to fetch ${sheetName}: ${error.message}`);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #f87171;">Error loading portfolio: ${error.message}</div>
+                `;
             }
-        }
-
-        function parseSheetToKeyValue(table, useFormatted = false) {
-            const data = {};
-            if (!table || !table.rows || table.rows.length < 2) return data;
-
-            // Start from row 1 (skip header row)
-            for (let i = 1; i < table.rows.length; i++) {
-                const row = table.rows[i];
-                if (row.c && row.c[0] && row.c[1]) {
-                    const key = row.c[0].v || row.c[0].f;
-                    // Use formatted value for dates (Meta sheet), raw value for numbers (Stats sheet)
-                    const value = useFormatted ? (row.c[1].f || row.c[1].v) : row.c[1].v;
-                    data[key] = value;
-                }
-            }
-            return data;
-        }
-
-        window.unlockPositions = function() {
-            const input = document.getElementById('password-input');
-            const error = document.getElementById('password-error');
-
-            if (input.value === PASSWORD) {
-                sessionStorage.setItem('smc_unlocked', 'true');
-                isUnlocked = true;
-                error.textContent = '';
-                loadPortfolio(); // Reload to show positions
-            } else {
-                error.textContent = '❌ Incorrect password';
-                input.value = '';
-                input.focus();
-            }
-        };
-
-        function renderPasswordGate() {
-            return `
-                <div class="password-gate">
-                    <h3 style="margin-bottom: 10px; color: #fff;">🔒 Protected Content</h3>
-                    <p style="color: #a0a0a0; margin-bottom: 20px;">Enter password to view position details</p>
-                    <input
-                        type="password"
-                        id="password-input"
-                        class="password-input"
-                        placeholder="Enter password"
-                        onkeypress="if(event.key === 'Enter') unlockPositions()"
-                    >
-                    <button class="password-button" onclick="unlockPositions()">Unlock</button>
-                    <div id="password-error" class="password-error"></div>
-                </div>
-            `;
-        }
-
-        function parsePositions(table) {
-            if (!table || !table.rows || table.rows.length < 2) return [];
-
-            // Get column headers from first data row (row 0)
-            const headerRow = table.rows[0];
-            if (!headerRow.c) return [];
-            const headers = headerRow.c.map(cell => cell ? (cell.v || '') : '');
-            const positions = [];
-
-            // Columns that should use formatted values (dates, not numbers)
-            const formattedColumns = ['Settlement'];
-
-            // Start from row 1 (skip header row)
-            for (let i = 1; i < table.rows.length; i++) {
-                const row = table.rows[i];
-                if (!row.c) continue;
-
-                const position = {};
-                headers.forEach((header, index) => {
-                    if (row.c[index]) {
-                        // Use formatted value for dates, raw value for numbers and text
-                        if (formattedColumns.includes(header)) {
-                            position[header] = row.c[index].f || row.c[index].v;
-                        } else {
-                            position[header] = row.c[index].v;
-                        }
-                    }
-                });
-
-                if (position.ID) {
-                    positions.push(position);
-                }
-            }
-
-            return positions;
-        }
-
-        function parseEvents(table) {
-            if (!table || !table.rows || table.rows.length < 2) return [];
-
-            const events = [];
-            // Start from row 1 (skip header row)
-            for (let i = 1; i < table.rows.length; i++) {
-                const row = table.rows[i];
-                if (!row.c || !row.c[0]) continue;
-
-                events.push({
-                    date: row.c[0] ? (row.c[0].f || row.c[0].v) : '',
-                    time: row.c[1] ? (row.c[1].f || row.c[1].v) : '',
-                    description: row.c[2] ? (row.c[2].f || row.c[2].v) : ''
-                });
-            }
-            return events;
-        }
-
-        function parseScenarios(table) {
-            if (!table || !table.rows || table.rows.length < 2) return [];
-
-            const scenarios = [];
-            // Start from row 1 (skip header row)
-            for (let i = 1; i < table.rows.length; i++) {
-                const row = table.rows[i];
-                if (!row.c || !row.c[0]) continue;
-
-                scenarios.push({
-                    name: row.c[0] ? row.c[0].v : '',
-                    emoji: row.c[1] ? row.c[1].v : '📊',
-                    totalProfit: row.c[2] ? parseFloat(row.c[2].v) : 0,
-                    finalBankroll: row.c[3] ? parseFloat(row.c[3].v) : 0,
-                    returnPct: row.c[4] ? parseFloat(row.c[4].v) : 0
-                });
-            }
-            return scenarios;
         }
 
         function renderPortfolio(data) {
-            const { meta, stats, positions, events, scenarios } = data;
+            const { meta, portfolio, positions, scenarios, upcomingEvents } = data;
 
             // Update header
+            const lastUpdated = new Date(meta.lastUpdated).toLocaleString();
             document.getElementById('last-updated').textContent =
-                `Last Updated: ${meta['Last Updated']} | Day ${meta['Day']}`;
+                `Day ${meta.day} of 31 | Last Updated: ${lastUpdated}`;
 
-            // Stats section
-            document.getElementById('stats-section').innerHTML = `
+            let html = '';
+
+            // Stats Grid
+            const perf = portfolio.performance;
+            const stats = portfolio.stats;
+            html += `
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-label">Working Capital</div>
-                        <div class="stat-value">$${parseFloat(stats['Working Capital Total']).toFixed(2)}</div>
-                        <div class="stat-change">$${parseFloat(stats['Working Capital Available']).toFixed(2)} available • $${parseFloat(stats['Working Capital Pending']).toFixed(2)} pending</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Deployment Rate</div>
-                        <div class="stat-value">${(parseFloat(stats['Deployment Rate']) * 100).toFixed(0)}%</div>
-                        <div class="stat-change positive">✓ Within target range</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Active Positions</div>
-                        <div class="stat-value">${stats['Active Bets']}</div>
-                        <div class="stat-change">${positions.filter(p => p.Type === 'short').length} short-term • ${positions.filter(p => p.Type === 'long').length} long-term</div>
+                        <div class="stat-label">Portfolio Value</div>
+                        <div class="stat-value">$${perf.currentValue.toFixed(2)}</div>
+                        <div class="stat-change positive">+$${perf.realizedProfit.toFixed(2)} realized</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">Total Return</div>
-                        <div class="stat-value">$${parseFloat(stats['Total Return']).toFixed(2)}</div>
-                        <div class="stat-change">${parseFloat(stats['Total Return %']).toFixed(1)}% • ${stats['Settled Bets']} settled bets</div>
+                        <div class="stat-value ${perf.totalReturnPct >= 0 ? 'positive' : 'negative'}">+${perf.totalReturnPct}%</div>
+                        <div class="stat-change">From $${perf.startingBankroll} start</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Unrealized P&L</div>
+                        <div class="stat-value ${perf.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${perf.unrealizedPnL >= 0 ? '+' : ''}$${perf.unrealizedPnL.toFixed(2)}</div>
+                        <div class="stat-change">Mark-to-market</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Win Rate</div>
+                        <div class="stat-value">${stats.winRate}%</div>
+                        <div class="stat-change">${stats.settledBets} settled, ${stats.activeBets} active</div>
                     </div>
                 </div>
             `;
 
-            // Short-term positions
-            const shortTerm = positions.filter(p => p.Type === 'short');
-            if (!isUnlocked) {
-                // Show password gate for short-term positions
-                document.getElementById('short-term-section').innerHTML = `
+            // Position Summary
+            if (portfolio.positionSummary) {
+                const ps = portfolio.positionSummary;
+                html += `
                     <div class="section">
-                        <h2 class="section-title">📊 Active Short-Term Positions <span class="badge badge-low">Low Risk</span></h2>
-                        ${renderPasswordGate()}
-                    </div>
-                `;
-            } else if (shortTerm.length > 0) {
-                const shortTermHtml = shortTerm.map(pos => `
-                    <div class="position-card">
-                        <div class="position-header">
-                            <div class="position-title">${pos.Title}</div>
-                            <span class="badge badge-${pos.Risk === 'low' ? 'low' : 'high'}">${pos.Risk} Risk</span>
+                        <h2 class="section-title">Position Summary (Live Prices)</h2>
+                        <div class="stats-grid">
+                            ${Object.entries(ps).map(([key, pos]) => `
+                                <div class="stat-card" style="border-left: 3px solid ${pos.status === 'WINNING' ? '#4ade80' : '#f87171'}">
+                                    <div class="stat-label">${key}</div>
+                                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                        <span style="color: #a0a0a0;">$${pos.entry.toFixed(2)}</span>
+                                        <span style="color: #fff; font-size: 1.2rem;">→ $${pos.current.toFixed(2)}</span>
+                                    </div>
+                                    <div class="stat-change ${pos.pnl >= 0 ? 'positive' : 'negative'}">
+                                        ${pos.pnl >= 0 ? '+' : ''}$${pos.pnl.toFixed(2)} (${pos.status})
+                                    </div>
+                                </div>
+                            `).join('')}
                         </div>
-                        <div class="position-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Position</span>
-                                <span class="detail-value">${pos.Position}</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Amount Wagered</span>
-                                <span class="detail-value">$${parseFloat(pos.Amount).toFixed(2)}</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Entry Price</span>
-                                <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
-                            </div>
-                            ${pos.Contracts ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Contracts</span>
-                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
-                            </div>
-                            ` : ''}
-                            <div class="detail-item">
-                                <span class="detail-label">Potential Profit</span>
-                                <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Settlement</span>
-                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
-                            </div>
-                        </div>
-                        ${pos['Est Prob'] && pos['Est Prob'] !== '-' && pos['Est Prob'] !== null ? `
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${parseFloat(pos['Est Prob']) * 100}%"></div>
-                            </div>
-                            <div style="margin-top: 8px; font-size: 0.85rem; color: #a0a0a0;">
-                                Estimated true probability: ${(parseFloat(pos['Est Prob']) * 100).toFixed(1)}% (vs ${(parseFloat(pos['Market Prob']) * 100).toFixed(0)}% market price)
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-
-                document.getElementById('short-term-section').innerHTML = `
-                    <div class="section">
-                        <h2 class="section-title">📊 Active Short-Term Positions <span class="badge badge-low">Low Risk</span></h2>
-                        ${shortTermHtml}
                     </div>
                 `;
             }
 
-            // Long-term positions
-            const longTerm = positions.filter(p => p.Type === 'long');
-            if (!isUnlocked) {
-                // Show password gate for long-term positions
-                document.getElementById('long-term-section').innerHTML = `
+            // Settled Bets
+            const settledBets = positions.shortTerm.filter(p => p.status === 'WON' || p.status === 'LOST');
+            if (settledBets.length > 0) {
+                html += `
                     <div class="section">
-                        <h2 class="section-title">🔒 Locked Long-Term Positions <span class="badge badge-high">High Risk</span></h2>
-                        ${renderPasswordGate()}
-                    </div>
-                `;
-            } else if (longTerm.length > 0) {
-                const longTermHtml = longTerm.map(pos => `
-                    <div class="position-card">
-                        <div class="position-header">
-                            <div class="position-title">${pos.Title}</div>
-                            <span class="badge badge-high">${pos.Risk} Risk</span>
-                        </div>
-                        <div class="position-details">
-                            ${pos.Position ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Position</span>
-                                <span class="detail-value">${pos.Position}</span>
+                        <h2 class="section-title">Settled Bets</h2>
+                        ${settledBets.map(pos => `
+                            <div class="position-card settled-won">
+                                <div class="position-header">
+                                    <div class="position-title">${pos.title}</div>
+                                    <span class="badge badge-won">${pos.status}</span>
+                                </div>
+                                <div class="position-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Position</span>
+                                        <span class="detail-value">${pos.position}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Amount</span>
+                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Profit</span>
+                                        <span class="detail-value positive">+$${pos.profit.toFixed(2)} (+${pos.profitPct}%)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Settlement</span>
+                                        <span class="detail-value">${pos.settlementDate}</span>
+                                    </div>
+                                </div>
+                                ${pos.result ? `<div class="reasoning">${pos.result}</div>` : ''}
                             </div>
-                            ` : ''}
-                            <div class="detail-item">
-                                <span class="detail-label">Amount Wagered</span>
-                                <span class="detail-value">$${parseFloat(pos.Amount).toFixed(2)}</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Entry Price</span>
-                                <span class="detail-value">$${parseFloat(pos['Entry Price']).toFixed(2)} (${(parseFloat(pos['Entry Price']) * 100).toFixed(0)}%)</span>
-                            </div>
-                            ${pos.Contracts ? `
-                            <div class="detail-item">
-                                <span class="detail-label">Contracts</span>
-                                <span class="detail-value">${parseFloat(pos.Contracts).toFixed(1)}</span>
-                            </div>
-                            ` : ''}
-                            <div class="detail-item">
-                                <span class="detail-label">Potential Profit</span>
-                                <span class="detail-value positive">+$${parseFloat(pos['Potential Profit']).toFixed(2)} (+${pos['Profit %']}%)</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Settlement</span>
-                                <span class="detail-value">${pos.Settlement || 'TBD'}</span>
-                            </div>
-                        </div>
-                        ${pos.Reasoning ? `
-                            <div style="margin-top: 12px; font-size: 0.85rem; color: #fbbf24;">
-                                ⚠️ ${pos.Reasoning}
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-
-                document.getElementById('long-term-section').innerHTML = `
-                    <div class="section">
-                        <h2 class="section-title">🔒 Locked Long-Term Positions <span class="badge badge-high">High Risk</span></h2>
-                        ${longTermHtml}
+                        `).join('')}
                     </div>
                 `;
             }
 
-            // Timeline
-            if (events.length > 0) {
-                const timelineHtml = events.map(event => `
-                    <div class="timeline-item">
-                        <div class="timeline-date">${event.date}${event.time ? ` (${event.time})` : ''}</div>
-                        <div class="timeline-content">${event.description}</div>
-                    </div>
-                `).join('');
-
-                document.getElementById('timeline-section').innerHTML = `
+            // Active Short-Term
+            const activeShort = positions.shortTerm.filter(p => p.status === 'ACTIVE');
+            if (activeShort.length > 0) {
+                html += `
                     <div class="section">
-                        <h2 class="section-title">📅 Upcoming Events</h2>
-                        <div class="timeline">${timelineHtml}</div>
+                        <h2 class="section-title">Active Short-Term Positions</h2>
+                        ${activeShort.map(pos => {
+                            const isWinning = pos.unrealizedPnL && pos.unrealizedPnL > 0;
+                            return `
+                            <div class="position-card ${isWinning ? 'winning' : 'losing'}">
+                                <div class="position-header">
+                                    <div class="position-title">${pos.title}</div>
+                                    <span class="badge ${isWinning ? 'badge-winning' : 'badge-losing'}">${isWinning ? 'WINNING' : 'LOSING'}</span>
+                                </div>
+                                <div class="position-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Position</span>
+                                        <span class="detail-value">${pos.position}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Amount</span>
+                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Entry</span>
+                                        <span class="detail-value">$${pos.entryPrice.toFixed(2)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Current</span>
+                                        <span class="detail-value">$${pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Unrealized P&L</span>
+                                        <span class="detail-value ${pos.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${pos.unrealizedPnL >= 0 ? '+' : ''}$${pos.unrealizedPnL ? pos.unrealizedPnL.toFixed(2) : '0.00'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Settlement</span>
+                                        <span class="detail-value">${pos.settlementDate}</span>
+                                    </div>
+                                </div>
+                                ${pos.reasoning ? `<div class="reasoning">${pos.reasoning}</div>` : ''}
+                            </div>
+                        `}).join('')}
+                    </div>
+                `;
+            }
+
+            // Long-Term Positions
+            if (positions.longTerm && positions.longTerm.length > 0) {
+                html += `
+                    <div class="section">
+                        <h2 class="section-title">Long-Term Positions</h2>
+                        ${positions.longTerm.map(pos => {
+                            const isWinning = pos.unrealizedPnL && pos.unrealizedPnL > 0;
+                            return `
+                            <div class="position-card ${isWinning ? 'winning' : 'losing'}">
+                                <div class="position-header">
+                                    <div class="position-title">${pos.title}</div>
+                                    <span class="badge ${isWinning ? 'badge-winning' : 'badge-losing'}">${isWinning ? 'WINNING' : 'LOSING'}</span>
+                                </div>
+                                <div class="position-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Position</span>
+                                        <span class="detail-value">${pos.position}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Amount</span>
+                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Entry</span>
+                                        <span class="detail-value">$${pos.entryPrice.toFixed(2)}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Current</span>
+                                        <span class="detail-value">$${pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Unrealized P&L</span>
+                                        <span class="detail-value ${pos.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${pos.unrealizedPnL >= 0 ? '+' : ''}$${pos.unrealizedPnL ? pos.unrealizedPnL.toFixed(2) : '0.00'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Settlement</span>
+                                        <span class="detail-value">${pos.settlementDate}</span>
+                                    </div>
+                                </div>
+                                ${pos.reasoning ? `<div class="reasoning">${pos.reasoning}</div>` : ''}
+                            </div>
+                        `}).join('')}
+                    </div>
+                `;
+            }
+
+            // Watchlist
+            if (positions.watchlist && positions.watchlist.length > 0) {
+                html += `
+                    <div class="section">
+                        <h2 class="section-title">Watchlist</h2>
+                        ${positions.watchlist.map(item => `
+                            <div class="position-card">
+                                <div class="position-header">
+                                    <div class="position-title">${item.title}</div>
+                                    ${item.currentPrice ? `<span class="badge badge-active">$${item.currentPrice.toFixed(2)}</span>` : ''}
+                                </div>
+                                <div class="reasoning">${item.reasoning}</div>
+                                <div style="margin-top: 10px; color: #667eea; font-weight: 600;">${item.recommendation}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            // Upcoming Events
+            if (upcomingEvents && upcomingEvents.length > 0) {
+                html += `
+                    <div class="section">
+                        <h2 class="section-title">Upcoming Events</h2>
+                        <div class="timeline">
+                            ${upcomingEvents.map(event => `
+                                <div class="timeline-item ${event.highlight ? 'highlight' : ''}">
+                                    <div class="timeline-date">${event.date}${event.time ? ` (${event.time})` : ''}</div>
+                                    <div class="timeline-content">${event.description}</div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
             }
 
             // Scenarios
-            if (scenarios.length > 0) {
-                const scenariosHtml = scenarios.map(scenario => {
-                    const color = scenario.returnPct > 50 ? '#4ade80' : scenario.returnPct > 0 ? '#fbbf24' : '#f87171';
-                    return `
-                        <div class="position-card">
-                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: ${color};">
-                                ${scenario.emoji} ${scenario.name}
-                            </div>
-                            <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$${scenario.finalBankroll.toFixed(2)}</div>
-                            <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
-                                ${scenario.totalProfit >= 0 ? '+' : ''}$${scenario.totalProfit.toFixed(2)} profit (${scenario.returnPct >= 0 ? '+' : ''}${scenario.returnPct}% from start)
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-
-                document.getElementById('scenarios-section').innerHTML = `
+            if (scenarios && scenarios.length > 0) {
+                html += `
                     <div class="section">
-                        <h2 class="section-title">💰 Portfolio Scenarios</h2>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                            ${scenariosHtml}
+                        <h2 class="section-title">Portfolio Scenarios</h2>
+                        <div class="scenarios-grid">
+                            ${scenarios.map(scenario => {
+                                const color = scenario.returnPct > 50 ? '#4ade80' : scenario.returnPct > 0 ? '#fbbf24' : '#f87171';
+                                return `
+                                    <div class="scenario-card">
+                                        <div style="font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: ${color};">
+                                            ${scenario.name}
+                                        </div>
+                                        <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$${scenario.finalBankroll.toFixed(2)}</div>
+                                        <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
+                                            ${scenario.totalProfit >= 0 ? '+' : ''}$${scenario.totalProfit.toFixed(2)} (${scenario.returnPct >= 0 ? '+' : ''}${scenario.returnPct}%)
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
                         </div>
                     </div>
                 `;
             }
-        }
 
-        async function loadPortfolio() {
-            try {
-                // Check if Sheet ID is configured
-                if (SHEET_ID === 'YOUR_SHEET_ID_HERE') {
-                    throw new Error('Please configure your Google Sheet ID in the HTML file');
-                }
-
-                // Fetch all sheets
-                const [metaTable, statsTable, positionsTable, eventsTable, scenariosTable] = await Promise.all([
-                    fetchSheetData(SHEETS.meta),
-                    fetchSheetData(SHEETS.stats),
-                    fetchSheetData(SHEETS.positions),
-                    fetchSheetData(SHEETS.events),
-                    fetchSheetData(SHEETS.scenarios)
-                ]);
-
-                const data = {
-                    meta: parseSheetToKeyValue(metaTable, true), // Use formatted values for dates
-                    stats: parseSheetToKeyValue(statsTable, false), // Use raw values for numbers
-                    positions: parsePositions(positionsTable),
-                    events: parseEvents(eventsTable),
-                    scenarios: parseScenarios(scenariosTable)
-                };
-
-                renderPortfolio(data);
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                document.getElementById('error').style.display = 'none';
-            } catch (error) {
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('error').innerHTML = `
-                    <div class="error">
-                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 10px;">❌ Error Loading Portfolio</div>
-                        <div>${error.message}</div>
-                        <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
-                            Make sure your Google Sheet is set to "Anyone with the link can view" and the Sheet ID is correct.
-                        </div>
-                    </div>
-                `;
-                document.getElementById('error').style.display = 'block';
-            }
+            document.getElementById('content').innerHTML = html;
         }
 
         // Load on page load

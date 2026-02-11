@@ -10,8 +10,8 @@
   "portfolio": {
     "workingCapital": {
       "total": 313.76,
-      "available": 73.76,
-      "deployed": 240.0
+      "available": 53.76,
+      "deployed": 260.0
     },
     "performance": {
       "startingBankroll": 240.0,
@@ -21,10 +21,10 @@
       "totalReturnPct": 31.0
     },
     "stats": {
-      "activeBets": 8,
+      "activeBets": 9,
       "settledBets": 7,
       "winRate": 57,
-      "deploymentRate": 0.77
+      "deploymentRate": 0.83
     },
     "positionSummary": {
       "cpiJan": {"entry": 0.25, "current": 0.85, "pnl": 60.0, "status": "WINNING"},
@@ -34,7 +34,8 @@
       "khamenei": {"entry": 0.39, "current": 0.38, "pnl": -0.38, "status": "LOSING"},
       "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -4.76, "status": "LOSING"},
       "btcNo100k": {"entry": 0.71, "current": 0.71, "pnl": 0.00, "status": "NEW"},
-      "rateCuts1": {"entry": 0.17, "current": 0.17, "pnl": 0.00, "status": "NEW"}
+      "rateCuts1": {"entry": 0.17, "current": 0.17, "pnl": 0.00, "status": "NEW"},
+      "jonyIveEarbuds": {"entry": 0.75, "current": 0.75, "pnl": 0.00, "status": "NEW"}
     }
   },
   "positions": {
@@ -240,6 +241,22 @@
         "settlementDate": "2026-12-31",
         "status": "ACTIVE",
         "reasoning": "NEW: Fed dot plot projects exactly 1 cut in 2026. Inflation sticky at 2.7-2.9%, hot jobs data. Market underpricing Fed's own guidance."
+      },
+      {
+        "id": "jony-ive-earbuds",
+        "title": "Jony Ive/OpenAI Device: Earbuds",
+        "platform": "Kalshi",
+        "position": "YES (Earbuds)",
+        "amount": 20.0,
+        "entryPrice": 0.75,
+        "currentPrice": 0.75,
+        "contracts": 26,
+        "potentialProfit": 6.67,
+        "profitPct": 33,
+        "unrealizedPnL": 0.0,
+        "settlementDate": "2027-01-01",
+        "status": "ACTIVE",
+        "reasoning": "NEW: Hedge against clip-on position. 'Sweetpea' earbud prototype confirmed. Earbuds 75% favorite."
       }
     ],
     "longTerm": [

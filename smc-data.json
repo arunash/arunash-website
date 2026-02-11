@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-11T08:00:00.000000",
+    "lastUpdated": "2026-02-11T08:45:00.000000",
     "day": 17,
     "challenge": {
       "startDate": "2026-01-25",
@@ -9,26 +9,24 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 287.33,
+      "total": 267.33,
       "available": 167.33,
-      "deployed": 120.0
+      "deployed": 100.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": 47.33,
-      "unrealizedPnL": 12.15,
-      "currentValue": 299.48,
-      "totalReturnPct": 25.0
+      "realizedProfit": 27.33,
+      "unrealizedPnL": 8.36,
+      "currentValue": 275.69,
+      "totalReturnPct": 15.0
     },
     "stats": {
-      "activeBets": 4,
-      "settledBets": 3,
-      "winRate": 67,
-      "deploymentRate": 0.42
+      "activeBets": 2,
+      "settledBets": 5,
+      "winRate": 40,
+      "deploymentRate": 0.37
     },
     "positionSummary": {
-      "unemployment": {"entry": 0.20, "current": 0.11, "pnl": -4.50, "status": "LOSING"},
-      "payrolls": {"entry": 0.41, "current": 0.75, "pnl": 8.29, "status": "WINNING"},
       "openaiIPO": {"entry": 0.61, "current": 0.77, "pnl": 13.12, "status": "WINNING"},
       "jonyIve": {"entry": 0.42, "current": 0.38, "pnl": -4.76, "status": "LOSING"}
     }
@@ -88,15 +86,12 @@
         "amount": 10.0,
         "entryPrice": 0.20,
         "contracts": 50,
-        "potentialProfit": 40.0,
-        "profitPct": 400,
+        "payout": 0,
+        "profit": -10.0,
+        "profitPct": -100,
         "settlementDate": "2026-02-11",
-        "currentPrice": 0.11,
-        "marketProb": 0.11,
-        "unrealizedPnL": -4.50,
-        "riskLevel": "high",
-        "reasoning": "RISKY: Market expects 4.4% (36% prob). Need 4.6%+ for win (only 11% prob). Entry at $0.20, now $0.11. Settles TOMORROW 8:30 AM.",
-        "status": "ACTIVE"
+        "status": "LOST",
+        "result": "Unemployment came in at 4.3%, below the 4.5% threshold needed to win."
       },
       {
         "id": "payrolls-jan26",
@@ -106,15 +101,12 @@
         "amount": 10.0,
         "entryPrice": 0.41,
         "contracts": 24.4,
-        "potentialProfit": 14.4,
-        "profitPct": 144,
+        "payout": 0,
+        "profit": -10.0,
+        "profitPct": -100,
         "settlementDate": "2026-02-11",
-        "currentPrice": 0.75,
-        "marketProb": 0.75,
-        "unrealizedPnL": 8.29,
-        "riskLevel": "low",
-        "reasoning": "STRONG: >70k YES at $0.25 (25% prob). Our NO now worth $0.75. Consensus 60k. Settles TOMORROW 8:30 AM.",
-        "status": "ACTIVE"
+        "status": "LOST",
+        "result": "Payrolls came in at +130k, well above the 70k threshold. Consensus was wrong."
       }
     ],
     "longTerm": [
@@ -200,28 +192,28 @@
   },
   "scenarios": [
     {
-      "name": "Best Case (All Remaining Win)",
+      "name": "Best Case (Both Long-Term Win)",
       "emoji": "target",
-      "totalProfit": 202.73,
-      "finalBankroll": 442.73,
-      "returnPct": 85
+      "totalProfit": 128.33,
+      "finalBankroll": 368.33,
+      "returnPct": 53
     },
     {
-      "name": "Feb 11 Jobs Win + Long-Term Lose",
+      "name": "OpenAI Wins, Jony Ive Loses",
       "emoji": "chart",
-      "totalProfit": 101.73,
-      "finalBankroll": 341.73,
-      "returnPct": 42
+      "totalProfit": 59.33,
+      "finalBankroll": 299.33,
+      "returnPct": 25
     },
     {
       "name": "Current Locked (Already Settled)",
       "emoji": "lock",
-      "totalProfit": 47.33,
-      "finalBankroll": 287.33,
-      "returnPct": 20
+      "totalProfit": 27.33,
+      "finalBankroll": 267.33,
+      "returnPct": 11
     },
     {
-      "name": "Worst Case (All Remaining Lose)",
+      "name": "Worst Case (Both Long-Term Lose)",
       "emoji": "warning",
       "totalProfit": -72.67,
       "finalBankroll": 167.33,
@@ -266,14 +258,14 @@
   "upcomingEvents": [
     {
       "date": "2026-02-11",
-      "time": "8:30 AM ET",
-      "description": "BLS Jobs Report - Unemployment & Payrolls settle. BOTH POSITIONS LOOKING STRONG.",
-      "highlight": true
+      "description": "Jobs Report Released: Unemployment 4.3%, Payrolls +130k. Both bets LOST.",
+      "highlight": false
     },
     {
       "date": "2026-02-12",
       "time": "8:30 AM ET",
-      "description": "January CPI Release - Key catalyst for Fed rate cut trade"
+      "description": "January CPI Release - Key catalyst for Fed rate cut trade",
+      "highlight": true
     },
     {
       "date": "2026-02-24",
@@ -281,7 +273,7 @@
     },
     {
       "date": "2026-03-18",
-      "description": "March FOMC Meeting - potential 25bp cut (64% odds)"
+      "description": "March FOMC Meeting - potential 25bp cut (18% odds currently)"
     }
   ]
 }

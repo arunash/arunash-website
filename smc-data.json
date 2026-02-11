@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-11T08:45:00.000000",
+    "lastUpdated": "2026-02-11T09:00:00.000000",
     "day": 17,
     "challenge": {
       "startDate": "2026-01-25",
@@ -9,26 +9,30 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 267.33,
-      "available": 167.33,
-      "deployed": 100.0
+      "total": 244.23,
+      "available": 94.23,
+      "deployed": 150.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": 27.33,
-      "unrealizedPnL": 8.36,
-      "currentValue": 275.69,
-      "totalReturnPct": 15.0
+      "realizedProfit": 4.23,
+      "unrealizedPnL": 0,
+      "currentValue": 244.23,
+      "totalReturnPct": 2.0
     },
     "stats": {
-      "activeBets": 2,
-      "settledBets": 5,
-      "winRate": 40,
-      "deploymentRate": 0.37
+      "activeBets": 6,
+      "settledBets": 7,
+      "winRate": 57,
+      "deploymentRate": 0.61
     },
     "positionSummary": {
-      "openaiIPO": {"entry": 0.61, "current": 0.77, "pnl": 13.12, "status": "WINNING"},
-      "jonyIve": {"entry": 0.42, "current": 0.38, "pnl": -4.76, "status": "LOSING"}
+      "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -11.92, "status": "LOSING"},
+      "cpiJan": {"entry": 0.25, "current": null, "pnl": 0, "status": "PENDING"},
+      "fedMarch": {"entry": 0.91, "current": null, "pnl": 0, "status": "ACTIVE"},
+      "oscars": {"entry": 0.22, "current": null, "pnl": 0, "status": "ACTIVE"},
+      "gdpQ4": {"entry": 0.49, "current": null, "pnl": 0, "status": "ACTIVE"},
+      "khamenei": {"entry": 0.39, "current": null, "pnl": 0, "status": "ACTIVE"}
     }
   },
   "positions": {
@@ -107,6 +111,91 @@
         "settlementDate": "2026-02-11",
         "status": "LOST",
         "result": "Payrolls came in at +130k, well above the 70k threshold. Consensus was wrong."
+      },
+      {
+        "id": "jobs-jan-70k",
+        "title": "January 2026 Jobs >70k",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 15.0,
+        "entryPrice": 0.43,
+        "contracts": 35,
+        "payout": 35.0,
+        "profit": 20.0,
+        "profitPct": 133,
+        "settlementDate": "2026-02-11",
+        "status": "WON",
+        "result": "Payrolls came in at +130k. Hedge bet paid off!"
+      },
+      {
+        "id": "oscars-sinners",
+        "title": "Oscars Best Picture - Sinners",
+        "platform": "Polymarket",
+        "position": "YES",
+        "amount": 10.0,
+        "entryPrice": 0.22,
+        "contracts": 45,
+        "potentialProfit": 35.0,
+        "profitPct": 350,
+        "settlementDate": "2026-03-02",
+        "status": "ACTIVE",
+        "reasoning": "Betting on Sinners to win Best Picture at 2026 Oscars."
+      },
+      {
+        "id": "fed-march-nocut",
+        "title": "Fed March 2026 No Rate Cut",
+        "platform": "Kalshi",
+        "position": "NO CUT",
+        "amount": 25.0,
+        "entryPrice": 0.91,
+        "contracts": 27,
+        "potentialProfit": 2.47,
+        "profitPct": 10,
+        "settlementDate": "2026-03-19",
+        "status": "ACTIVE",
+        "reasoning": "Betting Fed holds rates at March FOMC. Currently 81% hold odds."
+      },
+      {
+        "id": "cpi-jan-2.5",
+        "title": "January CPI >2.5%",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 25.0,
+        "entryPrice": 0.25,
+        "contracts": 100,
+        "potentialProfit": 75.0,
+        "profitPct": 300,
+        "settlementDate": "2026-02-13",
+        "status": "ACTIVE",
+        "reasoning": "Betting CPI stays above 2.5%. Currently at 2.7%. Settles tomorrow."
+      },
+      {
+        "id": "gdp-q4-3.5",
+        "title": "GDP Q4 2025 >3.5%",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 25.0,
+        "entryPrice": 0.49,
+        "contracts": 51,
+        "potentialProfit": 26.0,
+        "profitPct": 104,
+        "settlementDate": "2026-02-27",
+        "status": "ACTIVE",
+        "reasoning": "Betting on strong Q4 GDP growth above 3.5%."
+      },
+      {
+        "id": "khamenei-sept",
+        "title": "Khamenei Out by Sept 2026",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 15.0,
+        "entryPrice": 0.39,
+        "contracts": 38,
+        "potentialProfit": 23.0,
+        "profitPct": 153,
+        "settlementDate": "2026-09-30",
+        "status": "ACTIVE",
+        "reasoning": "Betting on Iran leadership change by September 2026."
       }
     ],
     "longTerm": [
@@ -118,15 +207,13 @@
         "amount": 50.0,
         "entryPrice": 0.61,
         "contracts": 82,
-        "potentialProfit": 32.0,
-        "profitPct": 64,
+        "exitPrice": 0.69,
+        "payout": 56.90,
+        "profit": 6.90,
+        "profitPct": 14,
         "settlementDate": "2027-06-01",
-        "currentPrice": 0.77,
-        "marketProb": 0.77,
-        "unrealizedPnL": 13.12,
-        "riskLevel": "medium",
-        "reasoning": "UP 26%: Now at $0.77 (was $0.61). 77% probability of IPO by Jun 2027.",
-        "status": "ACTIVE"
+        "status": "SOLD",
+        "result": "Exited early at $0.69 to lock in profits. +$6.90 (+14%)"
       },
       {
         "id": "jony-ive",
@@ -192,32 +279,32 @@
   },
   "scenarios": [
     {
-      "name": "Best Case (Both Long-Term Win)",
+      "name": "Best Case (All 6 Active Win)",
       "emoji": "target",
-      "totalProfit": 128.33,
-      "finalBankroll": 368.33,
-      "returnPct": 53
+      "totalProfit": 234.70,
+      "finalBankroll": 474.70,
+      "returnPct": 98
     },
     {
-      "name": "OpenAI Wins, Jony Ive Loses",
+      "name": "CPI + Fed + GDP Win, Others Lose",
       "emoji": "chart",
-      "totalProfit": 59.33,
-      "finalBankroll": 299.33,
-      "returnPct": 25
+      "totalProfit": 81.70,
+      "finalBankroll": 321.70,
+      "returnPct": 34
     },
     {
-      "name": "Current Locked (Already Settled)",
+      "name": "Current Locked",
       "emoji": "lock",
-      "totalProfit": 27.33,
-      "finalBankroll": 267.33,
-      "returnPct": 11
+      "totalProfit": 4.23,
+      "finalBankroll": 244.23,
+      "returnPct": 2
     },
     {
-      "name": "Worst Case (Both Long-Term Lose)",
+      "name": "Worst Case (All 6 Lose)",
       "emoji": "warning",
-      "totalProfit": -72.67,
-      "finalBankroll": 167.33,
-      "returnPct": -30
+      "totalProfit": -145.77,
+      "finalBankroll": 94.23,
+      "returnPct": -61
     }
   ],
   "opportunities": [

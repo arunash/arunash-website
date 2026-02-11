@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-09T19:00:00.000000",
-    "day": 16,
+    "lastUpdated": "2026-02-10T10:00:00.000000",
+    "day": 17,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -69,10 +69,11 @@
         "potentialProfit": 40.0,
         "profitPct": 400,
         "settlementDate": "2026-02-11",
-        "estProb": 0.375,
-        "marketProb": 0.25,
-        "riskLevel": "medium",
-        "reasoning": "DELAYED to Feb 11 due to shutdown. Consensus expects 4.4% - need miss to upside.",
+        "estProb": 0.70,
+        "marketProb": 0.36,
+        "currentPrice": 0.36,
+        "riskLevel": "low",
+        "reasoning": "STRONG SETUP: Unemployment at 4.6% (4-year high). >4.4% trading at 36%. Need to stay above 4.5% for win. Settles TOMORROW 8:30 AM.",
         "status": "ACTIVE"
       },
       {
@@ -86,10 +87,11 @@
         "potentialProfit": 14.4,
         "profitPct": 144,
         "settlementDate": "2026-02-11",
-        "estProb": 0.65,
-        "marketProb": 0.50,
-        "riskLevel": "medium",
-        "reasoning": "DELAYED to Feb 11. Consensus now 60k. Still favorable odds.",
+        "estProb": 0.75,
+        "marketProb": 0.60,
+        "currentPrice": 0.40,
+        "riskLevel": "low",
+        "reasoning": "STRONG SETUP: Consensus 60k (Goldman 45k, ADP 22k). Need <70k for win. Settles TOMORROW 8:30 AM.",
         "status": "ACTIVE"
       }
     ],
@@ -136,19 +138,39 @@
         "platform": "Kalshi",
         "currentPrice": 0.64,
         "marketProb": 0.64,
-        "reasoning": "64% probability of 25bp cut on March 17-18. CPI mid-Feb is key catalyst. If CPI <2.5%, could jump to 80%+. Warsh nomination adds uncertainty.",
-        "recommendation": "WATCH - wait for Feb CPI data",
-        "url": "https://kalshi.com/markets/kxfed/fed-funds-rate"
+        "reasoning": "64% on Kalshi vs 90% hold on CME FedWatch. Warsh nomination (May 2026) may push Fed to 'clear deck' with preemptive cut. CPI tomorrow is key catalyst.",
+        "recommendation": "BUY after CPI - if CPI <2.5% could jump to 80%+",
+        "url": "https://kalshi.com/markets/kxfed/fed-funds-rate/kxfed-26mar"
       },
       {
-        "id": "cpi-feb",
-        "title": "February CPI (YoY)",
+        "id": "cpi-jan",
+        "title": "January CPI Release (Feb 12)",
         "platform": "Kalshi",
         "currentPrice": null,
         "marketProb": null,
-        "reasoning": "Key catalyst for Fed rate bets. Current sticky at 2.7%. Sub-2.5% print would move markets.",
-        "recommendation": "RESEARCH - check market pricing",
-        "url": "https://kalshi.com/category/economics/inflation"
+        "reasoning": "Releases Feb 12 8:30 AM. Currently sticky at 2.7%. Sub-2.5% would boost rate cut odds. Above 3% would tank them.",
+        "recommendation": "CATALYST - watch for Fed trade setup",
+        "url": "https://kalshi.com/markets/kxcpiyoy/inflation"
+      },
+      {
+        "id": "scotus-tariffs",
+        "title": "Supreme Court Rules for Trump Tariffs",
+        "platform": "Kalshi",
+        "currentPrice": 0.30,
+        "marketProb": 0.30,
+        "reasoning": "Only 30% odds court upholds tariffs. V.O.S. Selections case pending. 3 justices expected to vote in favor (35% odds).",
+        "recommendation": "CONTRARIAN - consider NO position if price rises",
+        "url": "https://kalshi.com/markets/kxdjtvostariffs/tariffs-case"
+      },
+      {
+        "id": "rate-cuts-2026",
+        "title": "Number of Rate Cuts in 2026",
+        "platform": "Kalshi",
+        "currentPrice": null,
+        "marketProb": null,
+        "reasoning": "Labor market weakening (4.6% unemployment, weak payrolls). Warsh transition in May. Market may be underpricing cuts.",
+        "recommendation": "RESEARCH - check 3+ cuts pricing",
+        "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31"
       }
     ]
   },
@@ -182,24 +204,60 @@
       "returnPct": -24
     }
   ],
+  "opportunities": [
+    {
+      "id": "fed-cut-post-cpi",
+      "title": "Fed March Rate Cut (Post-CPI Play)",
+      "action": "BUY YES if CPI < 2.5%",
+      "currentPrice": 0.64,
+      "targetPrice": 0.80,
+      "reasoning": "If CPI comes in below 2.5% tomorrow, rate cut odds should spike. Entry at 64% with 80%+ upside potential.",
+      "catalyst": "Feb 12 CPI Release",
+      "risk": "High - binary event",
+      "suggestedSize": 25
+    },
+    {
+      "id": "scotus-tariffs-no",
+      "title": "Supreme Court Strikes Down Tariffs",
+      "action": "BUY NO (bet against Trump)",
+      "currentPrice": 0.30,
+      "targetPrice": 0.20,
+      "reasoning": "70% probability court rules against. If conviction strengthens, NO price rises. Good risk/reward.",
+      "catalyst": "Court decision timing unclear",
+      "risk": "Medium - timing uncertain",
+      "suggestedSize": 20
+    },
+    {
+      "id": "greenland-no",
+      "title": "No Greenland Deal by May 2026",
+      "action": "Consider NO position",
+      "currentPrice": 0.13,
+      "targetPrice": 0.05,
+      "reasoning": "Only 13% odds of deal by May. Very unlikely Denmark sells. Collect premium.",
+      "catalyst": "None specific",
+      "risk": "Low - time decay in favor",
+      "suggestedSize": 15
+    }
+  ],
   "upcomingEvents": [
     {
       "date": "2026-02-11",
       "time": "8:30 AM ET",
-      "description": "BLS Jobs Report (DELAYED) - Unemployment & Payrolls settle"
+      "description": "BLS Jobs Report - Unemployment & Payrolls settle. BOTH POSITIONS LOOKING STRONG.",
+      "highlight": true
     },
     {
       "date": "2026-02-12",
       "time": "8:30 AM ET",
-      "description": "CPI Inflation Data Release - key for Fed rate cut bets"
+      "description": "January CPI Release - Key catalyst for Fed rate cut trade"
     },
     {
       "date": "2026-02-24",
-      "description": "Challenge Period Ends"
+      "description": "Challenge Period Ends - Day 31"
     },
     {
       "date": "2026-03-18",
-      "description": "March FOMC Meeting - potential 25bp cut"
+      "description": "March FOMC Meeting - potential 25bp cut (64% odds)"
     }
   ]
 }

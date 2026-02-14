@@ -393,6 +393,23 @@
             }
         }
 
+        /* Assignments Section */
+        #assignmentsSection {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--accent-yellow);
+        }
+
+        #assignmentsSection .table-title {
+            color: var(--accent-yellow);
+        }
+
+        #assignmentsSection table {
+            background: var(--bg-card);
+            border-radius: 8px;
+        }
+
         /* Activity Feed */
         .feed-container {
             max-height: 700px;
@@ -859,6 +876,29 @@
                     <div class="feed-stat-label">Last Activity</div>
                     <div class="feed-stat-value" id="feedLastActivity">--</div>
                 </div>
+            </div>
+
+            <!-- Assignments Section -->
+            <div class="table-container" id="assignmentsSection" style="margin-bottom: 24px;">
+                <div class="table-title" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Assigned Positions (Puts Exercised)</span>
+                    <span class="status-badge itm" style="font-size: 12px;">WHEEL IN PROGRESS</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Shares</th>
+                            <th>Assigned Price</th>
+                            <th>Current Price</th>
+                            <th>Unrealized P&L</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assignmentsTable">
+                        <tr><td colspan="6" class="loading">Loading assignments...</td></tr>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Filters -->
@@ -1791,6 +1831,68 @@
             });
         }
 
+        // Assignments tracking
+        function renderAssignments(portfolio) {
+            const tbody = document.getElementById('assignmentsTable');
+
+            if (!portfolio || !portfolio.positions) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No portfolio data</td></tr>';
+                return;
+            }
+
+            // Filter positions that look like assignments (shares owned with avg price significantly above current)
+            // These are stocks acquired from put assignments
+            const assignments = portfolio.positions.filter(pos => {
+                const shares = parseFloat(pos.quantity) || 0;
+                const avgPrice = parseFloat(pos.average_price) || 0;
+                const currentPrice = parseFloat(pos.market_price) || 0;
+
+                // Must have shares and average price > current price (underwater from assignment)
+                // Also filter out small positions (fractional shares from dividends etc)
+                return shares >= 100 && avgPrice > currentPrice * 1.05;
+            });
+
+            if (assignments.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No assigned positions - all puts expired OTM!</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = assignments.map(pos => {
+                const shares = parseFloat(pos.quantity) || 0;
+                const avgPrice = parseFloat(pos.average_price) || 0;
+                const currentPrice = parseFloat(pos.market_price) || 0;
+                const unrealizedPL = parseFloat(pos.unrealized_pl) || 0;
+                const plClass = unrealizedPL >= 0 ? 'positive' : 'negative';
+                const plSign = unrealizedPL >= 0 ? '+' : '';
+
+                // Estimate contracts assigned (100 shares per contract)
+                const contracts = Math.round(shares / 100);
+
+                // Determine status based on how underwater it is
+                const pctDown = ((currentPrice - avgPrice) / avgPrice) * 100;
+                let status = 'otm';
+                let statusText = 'RECOVERING';
+                if (pctDown < -20) {
+                    status = 'itm';
+                    statusText = 'DEEP RED';
+                } else if (pctDown < -10) {
+                    status = 'atm';
+                    statusText = 'UNDERWATER';
+                }
+
+                return `
+                    <tr>
+                        <td><strong>${pos.symbol}</strong></td>
+                        <td>${Math.round(shares)} <span style="opacity: 0.6; font-size: 11px;">(${contracts} contracts)</span></td>
+                        <td>${formatCurrency(avgPrice)}</td>
+                        <td>${formatCurrency(currentPrice)}</td>
+                        <td class="${plClass}">${plSign}${formatCurrency(unrealizedPL)}</td>
+                        <td><span class="status-badge ${status}">${statusText}</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
         // Activity Feed Functions
         let currentFeedFilter = 'all';
 
@@ -2043,6 +2145,7 @@
             renderSuggestions(optionsPositions, optionsOrders, stockPrices);
             renderCharts(optionsOrders);
             renderFeed(optionsOrders);
+            renderAssignments(portfolioData);
         }
 
         // Check for stale data

@@ -393,6 +393,151 @@
             }
         }
 
+        /* Activity Feed */
+        .feed-container {
+            max-height: 700px;
+            overflow-y: auto;
+        }
+
+        .feed-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .feed-filter {
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .feed-filter:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .feed-filter.active {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        .feed-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .feed-item:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .feed-item.credit {
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .feed-item.debit {
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .feed-ticker {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .feed-strategy {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feed-strategy.csp { background: rgba(0, 210, 106, 0.15); color: var(--accent-green); }
+        .feed-strategy.cc { background: rgba(77, 171, 247, 0.15); color: var(--accent-blue); }
+        .feed-strategy.roll { background: rgba(255, 193, 7, 0.15); color: var(--accent-yellow); }
+
+        .feed-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .feed-description strong {
+            color: var(--accent-blue);
+        }
+
+        .feed-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .feed-premium {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .feed-premium.credit {
+            color: var(--accent-green);
+        }
+
+        .feed-premium.debit {
+            color: var(--accent-red);
+        }
+
+        .feed-date {
+            font-size: 12px;
+        }
+
+        .feed-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .feed-stat {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feed-stat-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .feed-stat-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
         /* Password Protection */
         .password-overlay {
             position: fixed;
@@ -542,6 +687,7 @@
         <!-- Tabs -->
         <div class="tabs">
             <button class="tab active" data-tab="positions">Positions</button>
+            <button class="tab" data-tab="feed">Activity Feed</button>
             <button class="tab" data-tab="analytics">P&L Analytics</button>
             <button class="tab" data-tab="suggestions">Trade Suggestions</button>
         </div>
@@ -690,6 +836,42 @@
                         <li>Loading suggestions...</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+
+        <!-- Activity Feed Tab -->
+        <div class="tab-content" id="feed-tab">
+            <!-- Stats -->
+            <div class="feed-stats">
+                <div class="feed-stat">
+                    <div class="feed-stat-label">Total Orders</div>
+                    <div class="feed-stat-value" id="feedTotalOrders">0</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-label">Filled Orders</div>
+                    <div class="feed-stat-value" id="feedFilledOrders">0</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-label">Total Premium Collected</div>
+                    <div class="feed-stat-value positive" id="feedTotalPremium">$0</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-label">Last Activity</div>
+                    <div class="feed-stat-value" id="feedLastActivity">--</div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="feed-filters">
+                <button class="feed-filter active" data-filter="all">All Orders</button>
+                <button class="feed-filter" data-filter="filled">Filled</button>
+                <button class="feed-filter" data-filter="pending">Pending</button>
+                <button class="feed-filter" data-filter="cancelled">Cancelled</button>
+            </div>
+
+            <!-- Feed Items -->
+            <div class="feed-container" id="feedContainer">
+                <div class="loading">Loading activity feed...</div>
             </div>
         </div>
     </div>
@@ -1609,6 +1791,175 @@
             });
         }
 
+        // Activity Feed Functions
+        let currentFeedFilter = 'all';
+
+        function formatTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function generateOrderDescription(order) {
+            const ticker = order.chain_symbol || 'Unknown';
+            const state = order.state || 'unknown';
+            const direction = order.direction || order.processed_premium_direction || '';
+            const isCredit = direction === 'credit';
+            const quantity = parseFloat(order.quantity) || 0;
+            const premium = parseFloat(order.processed_premium) || parseFloat(order.premium) || 0;
+
+            // Get leg info
+            const legs = order.legs || [];
+            const leg = legs[0] || {};
+            const optionType = leg.option_type || 'option';
+            const strike = parseFloat(leg.strike_price) || 0;
+            const expiration = leg.expiration_date || '';
+            const side = leg.side || '';
+            const effect = leg.position_effect || '';
+
+            // Detect strategy type
+            const strategy = order.opening_strategy || order.closing_strategy || '';
+            const isRoll = legs.length > 1 || strategy.includes('roll');
+            const isCSP = strategy.includes('short_put') || (optionType === 'put' && side === 'sell');
+            const isCC = strategy.includes('short_call') || (optionType === 'call' && side === 'sell');
+
+            let description = '';
+            let strategyLabel = '';
+
+            if (isRoll && legs.length > 1) {
+                // Multi-leg roll
+                const buyLeg = legs.find(l => l.side === 'buy');
+                const sellLeg = legs.find(l => l.side === 'sell');
+                strategyLabel = 'roll';
+
+                if (buyLeg && sellLeg) {
+                    const buyStrike = parseFloat(buyLeg.strike_price) || 0;
+                    const sellStrike = parseFloat(sellLeg.strike_price) || 0;
+                    const sellExp = sellLeg.expiration_date || '';
+                    const sellType = sellLeg.option_type || 'option';
+
+                    description = `<strong>Rolled position!</strong> Closed $${buyStrike} ${buyLeg.option_type?.toUpperCase() || ''} and opened $${sellStrike} ${sellType.toUpperCase()} expiring ${formatDate(sellExp)}.`;
+
+                    if (isCredit) {
+                        description += ` Collected <strong>$${premium.toFixed(2)}</strong> net credit.`;
+                    } else {
+                        description += ` Paid <strong>$${premium.toFixed(2)}</strong> net debit.`;
+                    }
+                }
+            } else if (state === 'filled') {
+                if (isCSP) {
+                    strategyLabel = 'csp';
+                    description = `<strong>Cash-Secured Put opened!</strong> Sold ${quantity} ${ticker} $${strike} PUT expiring ${formatDate(expiration)}. Collected <strong>$${premium.toFixed(2)}</strong> premium.`;
+                } else if (isCC) {
+                    strategyLabel = 'cc';
+                    description = `<strong>Covered Call opened!</strong> Sold ${quantity} ${ticker} $${strike} CALL expiring ${formatDate(expiration)}. Collected <strong>$${premium.toFixed(2)}</strong> premium.`;
+                } else if (side === 'buy' && effect === 'close') {
+                    strategyLabel = optionType === 'put' ? 'csp' : 'cc';
+                    description = `<strong>Position closed!</strong> Bought to close ${quantity} ${ticker} $${strike} ${optionType.toUpperCase()}. Paid <strong>$${premium.toFixed(2)}</strong>.`;
+                } else {
+                    strategyLabel = optionType === 'put' ? 'csp' : 'cc';
+                    description = `Executed ${side} ${optionType} at $${strike} strike, expiring ${formatDate(expiration)}.`;
+                }
+            } else if (state === 'cancelled') {
+                strategyLabel = optionType === 'put' ? 'csp' : 'cc';
+                description = `<strong>Order cancelled.</strong> ${quantity} ${ticker} $${strike} ${optionType.toUpperCase()} was not filled.`;
+            } else if (state === 'pending' || state === 'queued' || state === 'confirmed') {
+                strategyLabel = optionType === 'put' ? 'csp' : 'cc';
+                description = `<strong>Order pending.</strong> ${side === 'sell' ? 'Selling' : 'Buying'} ${quantity} ${ticker} $${strike} ${optionType.toUpperCase()} at $${(premium/100/quantity).toFixed(2)}/share.`;
+            } else {
+                description = `${ticker} ${optionType} order - ${state}`;
+            }
+
+            return { description, strategyLabel, isCredit, premium };
+        }
+
+        function renderFeed(orders) {
+            const container = document.getElementById('feedContainer');
+
+            if (!orders || orders.length === 0) {
+                container.innerHTML = '<div class="empty-state">No orders found</div>';
+                return;
+            }
+
+            // Sort by date descending (most recent first)
+            const sortedOrders = [...orders].sort((a, b) => {
+                const dateA = new Date(a.created_at || a.updated_at || 0);
+                const dateB = new Date(b.created_at || b.updated_at || 0);
+                return dateB - dateA;
+            });
+
+            // Filter orders based on current filter
+            const filteredOrders = sortedOrders.filter(order => {
+                if (currentFeedFilter === 'all') return true;
+                if (currentFeedFilter === 'filled') return order.state === 'filled';
+                if (currentFeedFilter === 'pending') return ['pending', 'queued', 'confirmed'].includes(order.state);
+                if (currentFeedFilter === 'cancelled') return order.state === 'cancelled';
+                return true;
+            });
+
+            // Update stats
+            const totalOrders = orders.length;
+            const filledOrders = orders.filter(o => o.state === 'filled').length;
+            const totalPremium = orders
+                .filter(o => o.state === 'filled' && (o.direction === 'credit' || o.processed_premium_direction === 'credit'))
+                .reduce((sum, o) => sum + (parseFloat(o.processed_premium) || 0), 0);
+            const lastOrder = sortedOrders[0];
+            const lastActivity = lastOrder ? formatTimeAgo(new Date(lastOrder.created_at || lastOrder.updated_at)) : '--';
+
+            document.getElementById('feedTotalOrders').textContent = totalOrders;
+            document.getElementById('feedFilledOrders').textContent = filledOrders;
+            document.getElementById('feedTotalPremium').textContent = formatCurrency(totalPremium);
+            document.getElementById('feedLastActivity').textContent = lastActivity;
+
+            // Render feed items
+            if (filteredOrders.length === 0) {
+                container.innerHTML = '<div class="empty-state">No orders match this filter</div>';
+                return;
+            }
+
+            container.innerHTML = filteredOrders.map(order => {
+                const { description, strategyLabel, isCredit, premium } = generateOrderDescription(order);
+                const ticker = order.chain_symbol || 'Unknown';
+                const orderDate = new Date(order.created_at || order.updated_at);
+                const state = order.state || 'unknown';
+
+                return `
+                    <div class="feed-item ${isCredit ? 'credit' : 'debit'}">
+                        <div class="feed-header">
+                            <div>
+                                <span class="feed-ticker">${ticker}</span>
+                                <span class="feed-strategy ${strategyLabel}">${strategyLabel.toUpperCase() || state.toUpperCase()}</span>
+                            </div>
+                            <span class="feed-premium ${isCredit ? 'credit' : 'debit'}">${isCredit ? '+' : '-'}$${premium.toFixed(2)}</span>
+                        </div>
+                        <div class="feed-description">${description}</div>
+                        <div class="feed-meta">
+                            <span class="feed-date">${orderDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                            <span>${formatTimeAgo(orderDate)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Feed filter click handlers
+        document.querySelectorAll('.feed-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.feed-filter').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFeedFilter = btn.dataset.filter;
+                renderFeed(optionsOrders);
+            });
+        });
+
         // Cache Functions
         function saveToCache(data) {
             try {
@@ -1691,6 +2042,7 @@
             renderCCTable(ccs);
             renderSuggestions(optionsPositions, optionsOrders, stockPrices);
             renderCharts(optionsOrders);
+            renderFeed(optionsOrders);
         }
 
         // Check for stale data

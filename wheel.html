@@ -755,6 +755,29 @@
                 </table>
             </div>
 
+            <!-- Assigned Positions (Wheel in Progress) -->
+            <div class="table-container" id="assignmentsSectionMain" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%); border-radius: 12px; padding: 16px; border: 1px solid var(--accent-yellow);">
+                <div class="table-title" style="color: var(--accent-yellow); display: flex; justify-content: space-between; align-items: center;">
+                    <span>Assigned Positions (Wheel in Progress)</span>
+                    <span class="status-badge itm" style="font-size: 12px;">NEED COVERED CALLS</span>
+                </div>
+                <table style="background: var(--bg-card); border-radius: 8px;">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Shares</th>
+                            <th>Assigned Price</th>
+                            <th>Current Price</th>
+                            <th>Unrealized P&L</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assignmentsTableMain">
+                        <tr><td colspan="6" class="loading">Loading assignments...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
             <!-- Risk Metrics -->
             <div class="risk-section">
                 <div class="table-title">Risk Metrics</div>
@@ -1834,9 +1857,15 @@
         // Assignments tracking
         function renderAssignments(portfolio) {
             const tbody = document.getElementById('assignmentsTable');
+            const tbodyMain = document.getElementById('assignmentsTableMain');
+            const sectionMain = document.getElementById('assignmentsSectionMain');
+
+            const emptyMsg = '<tr><td colspan="6" class="empty-state">No portfolio data</td></tr>';
+            const noAssignmentsMsg = '<tr><td colspan="6" class="empty-state">No assigned positions - all puts expired OTM!</td></tr>';
 
             if (!portfolio || !portfolio.positions) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No portfolio data</td></tr>';
+                if (tbody) tbody.innerHTML = emptyMsg;
+                if (tbodyMain) tbodyMain.innerHTML = emptyMsg;
                 return;
             }
 
@@ -1853,11 +1882,16 @@
             });
 
             if (assignments.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No assigned positions - all puts expired OTM!</td></tr>';
+                if (tbody) tbody.innerHTML = noAssignmentsMsg;
+                if (tbodyMain) tbodyMain.innerHTML = noAssignmentsMsg;
+                if (sectionMain) sectionMain.style.display = 'none';
                 return;
             }
 
-            tbody.innerHTML = assignments.map(pos => {
+            // Show the section if there are assignments
+            if (sectionMain) sectionMain.style.display = 'block';
+
+            const html = assignments.map(pos => {
                 const shares = parseFloat(pos.quantity) || 0;
                 const avgPrice = parseFloat(pos.average_price) || 0;
                 const currentPrice = parseFloat(pos.market_price) || 0;
@@ -1891,6 +1925,9 @@
                     </tr>
                 `;
             }).join('');
+
+            if (tbody) tbody.innerHTML = html;
+            if (tbodyMain) tbodyMain.innerHTML = html;
         }
 
         // Activity Feed Functions

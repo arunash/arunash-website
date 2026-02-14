@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-11T09:00:00.000000",
-    "day": 17,
+    "lastUpdated": "2026-02-13T15:00:00.000000",
+    "day": 19,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,33 +9,32 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 313.76,
-      "available": 53.76,
-      "deployed": 260.0
+      "total": 228.76,
+      "available": 43.76,
+      "deployed": 185.0
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": 4.23,
-      "unrealizedPnL": 69.53,
-      "currentValue": 313.76,
-      "totalReturnPct": 31.0
+      "realizedProfit": -20.77,
+      "unrealizedPnL": 9.53,
+      "currentValue": 228.76,
+      "totalReturnPct": -4.7
     },
     "stats": {
-      "activeBets": 9,
-      "settledBets": 7,
-      "winRate": 57,
-      "deploymentRate": 0.83
+      "activeBets": 8,
+      "settledBets": 8,
+      "winRate": 50,
+      "deploymentRate": 0.81
     },
     "positionSummary": {
-      "cpiJan": {"entry": 0.25, "current": 0.85, "pnl": 60.0, "status": "WINNING"},
       "gdpQ4": {"entry": 0.49, "current": 0.82, "pnl": 16.83, "status": "WINNING"},
       "fedMarch": {"entry": 0.91, "current": 0.93, "pnl": 0.54, "status": "WINNING"},
       "oscars": {"entry": 0.22, "current": 0.16, "pnl": -2.70, "status": "LOSING"},
       "khamenei": {"entry": 0.39, "current": 0.38, "pnl": -0.38, "status": "LOSING"},
       "jonyIve": {"entry": 0.42, "current": 0.32, "pnl": -4.76, "status": "LOSING"},
-      "btcNo100k": {"entry": 0.71, "current": 0.71, "pnl": 0.00, "status": "NEW"},
-      "rateCuts1": {"entry": 0.17, "current": 0.17, "pnl": 0.00, "status": "NEW"},
-      "jonyIveEarbuds": {"entry": 0.75, "current": 0.75, "pnl": 0.00, "status": "NEW"}
+      "btcNo100k": {"entry": 0.71, "current": 0.71, "pnl": 0.00, "status": "HOLD"},
+      "rateCuts1": {"entry": 0.17, "current": 0.17, "pnl": 0.00, "status": "HOLD"},
+      "jonyIveEarbuds": {"entry": 0.75, "current": 0.75, "pnl": 0.00, "status": "HOLD"}
     }
   },
   "positions": {
@@ -169,14 +168,13 @@
         "position": "YES",
         "amount": 25.0,
         "entryPrice": 0.25,
-        "currentPrice": 0.85,
         "contracts": 100,
-        "potentialProfit": 75.0,
-        "profitPct": 300,
-        "unrealizedPnL": 60.0,
+        "payout": 0,
+        "profit": -25.0,
+        "profitPct": -100,
         "settlementDate": "2026-02-13",
-        "status": "ACTIVE",
-        "reasoning": "STRONG: CPI at 2.7% in Dec. 85% odds. Settles tomorrow 8:30 AM."
+        "status": "LOST",
+        "result": "CPI came in at 2.4%, below the 2.5% threshold. Inflation cooled more than expected."
       },
       {
         "id": "gdp-q4-3.5",
@@ -340,32 +338,32 @@
   },
   "scenarios": [
     {
-      "name": "Best Case (All 6 Active Win)",
+      "name": "Best Case (All 8 Active Win)",
       "emoji": "target",
-      "totalProfit": 234.70,
-      "finalBankroll": 474.70,
-      "returnPct": 98
+      "totalProfit": 138.00,
+      "finalBankroll": 378.00,
+      "returnPct": 58
     },
     {
-      "name": "CPI + Fed + GDP Win, Others Lose",
+      "name": "Fed + GDP Win, Others Lose",
       "emoji": "chart",
-      "totalProfit": 81.70,
-      "finalBankroll": 321.70,
-      "returnPct": 34
+      "totalProfit": -7.77,
+      "finalBankroll": 232.23,
+      "returnPct": -3
     },
     {
       "name": "Current Locked",
       "emoji": "lock",
-      "totalProfit": 4.23,
-      "finalBankroll": 244.23,
-      "returnPct": 2
+      "totalProfit": -20.77,
+      "finalBankroll": 219.23,
+      "returnPct": -9
     },
     {
-      "name": "Worst Case (All 6 Lose)",
+      "name": "Worst Case (All 8 Lose)",
       "emoji": "warning",
-      "totalProfit": -145.77,
-      "finalBankroll": 94.23,
-      "returnPct": -61
+      "totalProfit": -205.77,
+      "finalBankroll": 34.23,
+      "returnPct": -86
     }
   ],
   "opportunities": [
@@ -405,23 +403,30 @@
   ],
   "upcomingEvents": [
     {
-      "date": "2026-02-11",
-      "description": "Jobs Report Released: Unemployment 4.3%, Payrolls +130k. Both bets LOST.",
+      "date": "2026-02-13",
+      "description": "CPI Released: 2.4% YoY (below 2.5% threshold). CPI >2.5% bet LOST (-$25).",
       "highlight": false
     },
     {
-      "date": "2026-02-12",
-      "time": "8:30 AM ET",
-      "description": "January CPI Release - Key catalyst for Fed rate cut trade",
-      "highlight": true
+      "date": "2026-02-11",
+      "description": "Jobs Report Released: Unemployment 4.3%, Payrolls +130k. Both bets LOST.",
+      "highlight": false
     },
     {
       "date": "2026-02-24",
       "description": "Challenge Period Ends - Day 31"
     },
     {
-      "date": "2026-03-18",
-      "description": "March FOMC Meeting - potential 25bp cut (18% odds currently)"
+      "date": "2026-02-27",
+      "description": "GDP Q4 Report - GDP >3.5% bet settles (currently 82% odds)"
+    },
+    {
+      "date": "2026-03-02",
+      "description": "Oscars - Best Picture bet settles"
+    },
+    {
+      "date": "2026-03-19",
+      "description": "March FOMC Meeting - Fed rate decision"
     }
   ]
 }

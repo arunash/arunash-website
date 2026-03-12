@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-13T15:00:00.000000",
-    "day": 19,
+    "lastUpdated": "2026-03-11T19:45:00.000000",
+    "day": 45,
     "challenge": {
       "startDate": "2026-01-25",
       "endDate": "2026-02-24"
@@ -9,51 +9,70 @@
   },
   "portfolio": {
     "workingCapital": {
-      "total": 204.97,
-      "available": 19.97,
-      "deployed": 185.0
+      "total": 165.98,
+      "available": 0.29,
+      "deployed": 165.69
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": -20.77,
-      "unrealizedPnL": -14.26,
-      "currentValue": 204.97,
-      "totalReturnPct": -14.6
+      "realizedProfit": -26.67,
+      "unrealizedPnL": -47.35,
+      "currentValue": 165.98,
+      "totalReturnPct": -30.8
     },
     "stats": {
       "activeBets": 8,
-      "settledBets": 8,
-      "winRate": 50,
-      "deploymentRate": 0.90
+      "settledBets": 11,
+      "winRate": 45,
+      "deploymentRate": 0.99
     },
     "positionSummary": {
-      "gdpQ4": {"entry": 0.49, "current": 0.34, "pnl": -7.65, "status": "LOSING"},
-      "fedMarch": {"entry": 0.91, "current": 0.93, "pnl": 0.54, "status": "WINNING"},
-      "oscars": {"entry": 0.22, "current": 0.14, "pnl": -3.60, "status": "LOSING"},
-      "khamenei": {"entry": 0.39, "current": 0.38, "pnl": -0.38, "status": "LOSING"},
-      "jonyIve": {"entry": 0.42, "current": 0.42, "pnl": 0.00, "status": "HOLD"},
-      "btcNo100k": {"entry": 0.71, "current": 0.75, "pnl": 1.12, "status": "WINNING"},
-      "rateCuts1": {"entry": 0.17, "current": 0.20, "pnl": 3.51, "status": "WINNING"},
-      "jonyIveEarbuds": {"entry": 0.75, "current": 0.45, "pnl": -7.80, "status": "LOSING"}
+      "rateCuts0": {
+        "entry": 0.22,
+        "current": 0.21,
+        "pnl": -0.54,
+        "status": "NEW"
+      },
+      "rateCuts1": {
+        "entry": 0.21,
+        "current": 0.24,
+        "pnl": 6.93,
+        "status": "WINNING"
+      },
+      "rateCuts2": {
+        "entry": 0.24,
+        "current": 0.23,
+        "pnl": -0.41,
+        "status": "NEW"
+      },
+      "btcNo100k": {
+        "entry": 0.71,
+        "current": 0.78,
+        "pnl": 1.89,
+        "status": "WINNING"
+      },
+      "oscars": {
+        "entry": 0.22,
+        "current": 0.22,
+        "pnl": 0.0,
+        "status": "HOLD"
+      },
+      "gasNo4": {
+        "entry": 0.55,
+        "current": 0.50,
+        "pnl": -1.85,
+        "status": "LOSING"
+      },
+      "recessionNo": {
+        "entry": 0.73,
+        "current": 0.72,
+        "pnl": -0.27,
+        "status": "HOLD"
+      }
     }
   },
   "positions": {
     "shortTerm": [
-      {
-        "id": "superbowl-patriots",
-        "title": "Super Bowl LX Patriots Win",
-        "platform": "Polymarket",
-        "position": "YES",
-        "amount": 15.0,
-        "entryPrice": 0.33,
-        "contracts": 45,
-        "payout": 0,
-        "profit": -15.0,
-        "profitPct": -100,
-        "settlementDate": "2026-02-09",
-        "status": "LOST",
-        "result": "Patriots lost Super Bowl LX."
-      },
       {
         "id": "shutdown-jan31",
         "title": "Government Shutdown Jan 31",
@@ -85,12 +104,27 @@
         "result": "Shutdown lasted ~4 days. Trump signed funding bill Feb 4."
       },
       {
+        "id": "superbowl-patriots",
+        "title": "Super Bowl LX Patriots Win",
+        "platform": "Polymarket",
+        "position": "YES",
+        "amount": 15.0,
+        "entryPrice": 0.33,
+        "contracts": 45,
+        "payout": 0,
+        "profit": -15.0,
+        "profitPct": -100,
+        "settlementDate": "2026-02-09",
+        "status": "LOST",
+        "result": "Patriots lost Super Bowl LX."
+      },
+      {
         "id": "unemployment-jan26",
         "title": "January 2026 Unemployment Rate >4.5%",
         "platform": "Kalshi",
         "position": "YES",
         "amount": 10.0,
-        "entryPrice": 0.20,
+        "entryPrice": 0.2,
         "contracts": 50,
         "payout": 0,
         "profit": -10.0,
@@ -130,38 +164,6 @@
         "result": "Payrolls came in at +130k. Hedge bet paid off!"
       },
       {
-        "id": "oscars-sinners",
-        "title": "Oscars Best Picture - Sinners",
-        "platform": "Polymarket",
-        "position": "YES",
-        "amount": 10.0,
-        "entryPrice": 0.22,
-        "currentPrice": 0.14,
-        "contracts": 45,
-        "potentialProfit": 35.0,
-        "profitPct": 350,
-        "unrealizedPnL": -3.60,
-        "settlementDate": "2026-03-02",
-        "status": "ACTIVE",
-        "reasoning": "DOWN 36%: One Battle After Another heavy favorite at 75%. Sinners at 14%."
-      },
-      {
-        "id": "fed-march-nocut",
-        "title": "Fed March 2026 No Rate Cut",
-        "platform": "Kalshi",
-        "position": "NO CUT",
-        "amount": 25.0,
-        "entryPrice": 0.91,
-        "currentPrice": 0.93,
-        "contracts": 27,
-        "potentialProfit": 2.47,
-        "profitPct": 10,
-        "unrealizedPnL": 0.54,
-        "settlementDate": "2026-03-19",
-        "status": "ACTIVE",
-        "reasoning": "UP 2%: 93% hold odds now. Limited upside remaining."
-      },
-      {
         "id": "cpi-jan-2.5",
         "title": "January CPI >2.5%",
         "platform": "Kalshi",
@@ -183,14 +185,13 @@
         "position": "YES",
         "amount": 25.0,
         "entryPrice": 0.49,
-        "currentPrice": 0.34,
         "contracts": 51,
-        "potentialProfit": 26.0,
-        "profitPct": 104,
-        "unrealizedPnL": -7.65,
+        "payout": 0,
+        "profit": -25.0,
+        "profitPct": -100,
         "settlementDate": "2026-02-27",
-        "status": "ACTIVE",
-        "reasoning": "DOWN 31%: Atlanta Fed nowcast at 3.7%. Market skeptical at 34% odds."
+        "status": "LOST",
+        "result": "GDP came in at 1.4% annualized, well below 3.5%. Government shutdown subtracted ~1pp but still far short."
       },
       {
         "id": "khamenei-sept",
@@ -199,46 +200,13 @@
         "position": "YES",
         "amount": 15.0,
         "entryPrice": 0.39,
-        "currentPrice": 0.38,
         "contracts": 38,
-        "potentialProfit": 23.0,
+        "payout": 38.0,
+        "profit": 23.0,
         "profitPct": 153,
-        "unrealizedPnL": -0.38,
-        "settlementDate": "2026-09-30",
-        "status": "ACTIVE",
-        "reasoning": "HOLD: 38% by Sept, 64% by year-end. Health concerns driving odds."
-      },
-      {
-        "id": "btc-no-100k-july",
-        "title": "Bitcoin NO $100K Before July 2026",
-        "platform": "Kalshi",
-        "position": "NO",
-        "amount": 20.0,
-        "entryPrice": 0.71,
-        "currentPrice": 0.75,
-        "contracts": 28,
-        "potentialProfit": 7.0,
-        "profitPct": 35,
-        "unrealizedPnL": 1.12,
-        "settlementDate": "2026-07-01",
-        "status": "ACTIVE",
-        "reasoning": "UP 6%: BTC at $68K, 45% below ATH. Rally broken per Deribit. Needs $85K to resume bull."
-      },
-      {
-        "id": "rate-cuts-2026-1",
-        "title": "Exactly 1 Fed Rate Cut in 2026",
-        "platform": "Kalshi",
-        "position": "YES (1 cut)",
-        "amount": 20.0,
-        "entryPrice": 0.17,
-        "currentPrice": 0.20,
-        "contracts": 117,
-        "potentialProfit": 93.60,
-        "profitPct": 468,
-        "unrealizedPnL": 3.51,
-        "settlementDate": "2026-12-31",
-        "status": "ACTIVE",
-        "reasoning": "UP 18%: CPI cooled to 2.4%. Market now pricing slightly more cuts. Fed still expected to hold in March."
+        "settlementDate": "2026-02-28",
+        "status": "WON",
+        "result": "Khamenei killed Feb 28 in US-Israeli airstrikes on Tehran. Mojtaba Khamenei named successor Mar 8."
       },
       {
         "id": "jony-ive-earbuds",
@@ -247,14 +215,94 @@
         "position": "YES (Earbuds)",
         "amount": 20.0,
         "entryPrice": 0.75,
-        "currentPrice": 0.45,
+        "exitPrice": 0.60,
         "contracts": 26,
-        "potentialProfit": 14.30,
-        "profitPct": 72,
-        "unrealizedPnL": -7.80,
+        "payout": 15.6,
+        "profit": -4.4,
+        "profitPct": -22,
         "settlementDate": "2027-01-01",
+        "status": "SOLD",
+        "result": "Cut losses at 60c after Tang Tan confirmed 'not in-ear device.' Recovered $15.60 to redeploy."
+      },
+      {
+        "id": "oscars-sinners",
+        "title": "Oscars Best Picture - Sinners",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 10.0,
+        "entryPrice": 0.22,
+        "currentPrice": 0.22,
+        "contracts": 43,
+        "potentialProfit": 33.0,
+        "profitPct": 330,
+        "unrealizedPnL": 0.0,
+        "settlementDate": "2026-03-15",
         "status": "ACTIVE",
-        "reasoning": "DOWN 40%: Earbuds dropped to 45%. Clip-on now close at 42%. Race tightened significantly."
+        "reasoning": "4 DAYS: Sinners at 22%. Record 16 nominations. OBAA is 74% favorite. Long shot but huge payoff."
+      },
+      {
+        "id": "oscars-obaa",
+        "title": "Oscars Best Picture - One Battle After Another",
+        "platform": "Kalshi",
+        "position": "YES",
+        "amount": 15.0,
+        "entryPrice": 0.75,
+        "currentPrice": 0.74,
+        "contracts": 20,
+        "potentialProfit": 5.0,
+        "profitPct": 33,
+        "unrealizedPnL": -0.20,
+        "settlementDate": "2026-03-15",
+        "status": "ACTIVE",
+        "reasoning": "4 DAYS: Heavy favorite at 74%. Hedges our Sinners bet. One of these should win."
+      },
+      {
+        "id": "btc-no-100k-july",
+        "title": "Bitcoin NO $100K Before July 2026",
+        "platform": "Kalshi",
+        "position": "NO",
+        "amount": 20.0,
+        "entryPrice": 0.71,
+        "currentPrice": 0.78,
+        "contracts": 27,
+        "potentialProfit": 7.83,
+        "profitPct": 39,
+        "unrealizedPnL": 1.89,
+        "settlementDate": "2026-07-01",
+        "status": "ACTIVE",
+        "reasoning": "UP 10%: BTC at $71K, stuck in range. Needs +41% to hit $100K. Bear case intact."
+      },
+      {
+        "id": "gas-no-4-march",
+        "title": "Gas NO >$4.00 by March 31",
+        "platform": "Kalshi",
+        "position": "NO",
+        "amount": 20.35,
+        "entryPrice": 0.55,
+        "currentPrice": 0.50,
+        "contracts": 37,
+        "potentialProfit": 16.65,
+        "profitPct": 82,
+        "unrealizedPnL": -1.85,
+        "settlementDate": "2026-03-31",
+        "status": "ACTIVE",
+        "reasoning": "DOWN 9%: Gas at ~$3.90 national avg. Coin flip at 50/50. Settles in 20 days."
+      },
+      {
+        "id": "recession-no-2026",
+        "title": "NO NBER Recession in 2026",
+        "platform": "Kalshi",
+        "position": "NO",
+        "amount": 19.71,
+        "entryPrice": 0.73,
+        "currentPrice": 0.72,
+        "contracts": 27,
+        "potentialProfit": 7.29,
+        "profitPct": 37,
+        "unrealizedPnL": -0.27,
+        "settlementDate": "2026-12-31",
+        "status": "ACTIVE",
+        "reasoning": "FLAT: 72% no-recession odds. Economy slowing but not recessionary."
       }
     ],
     "longTerm": [
@@ -267,8 +315,8 @@
         "entryPrice": 0.61,
         "contracts": 82,
         "exitPrice": 0.69,
-        "payout": 56.90,
-        "profit": 6.90,
+        "payout": 56.9,
+        "profit": 6.9,
         "profitPct": 14,
         "settlementDate": "2027-06-01",
         "status": "SOLD",
@@ -282,151 +330,166 @@
         "amount": 50.0,
         "entryPrice": 0.42,
         "contracts": 119,
-        "potentialProfit": 69.0,
-        "profitPct": 138,
+        "exitPrice": 0.08,
+        "payout": 9.52,
+        "profit": -40.48,
+        "profitPct": -81,
         "settlementDate": "2027-01-01",
-        "currentPrice": 0.42,
-        "marketProb": 0.42,
-        "unrealizedPnL": 0.0,
-        "riskLevel": "high",
-        "reasoning": "RECOVERED: Back to $0.42 (entry). Earbuds 45%, Clip-on 42%. Race is now very close.",
-        "status": "ACTIVE"
+        "status": "SOLD",
+        "result": "Cut losses. Device confirmed as neck-worn form factor, not clip-on."
+      },
+      {
+        "id": "rate-cuts-0",
+        "title": "Fed 0 Rate Cuts in 2026",
+        "platform": "Kalshi",
+        "position": "YES (0 cuts)",
+        "amount": 11.88,
+        "entryPrice": 0.22,
+        "currentPrice": 0.21,
+        "contracts": 54,
+        "potentialProfit": 42.12,
+        "profitPct": 355,
+        "unrealizedPnL": -0.54,
+        "settlementDate": "2026-12-31",
+        "status": "ACTIVE",
+        "reasoning": "NEW: Part of 0-1-2 cut spread. If Fed holds all year, 4.5x return. Covers hawkish scenario."
+      },
+      {
+        "id": "rate-cuts-2026-1",
+        "title": "Exactly 1 Fed Rate Cut in 2026",
+        "platform": "Kalshi",
+        "position": "YES (1 cut)",
+        "amount": 40.0,
+        "entryPrice": 0.21,
+        "currentPrice": 0.24,
+        "contracts": 231,
+        "potentialProfit": 191.0,
+        "profitPct": 478,
+        "unrealizedPnL": 6.93,
+        "settlementDate": "2026-12-31",
+        "status": "ACTIVE",
+        "reasoning": "CORE BET: 231 contracts. Blended entry 21c. If Fed cuts once in H2 2026, payout is $231. Biggest asymmetric position."
+      },
+      {
+        "id": "rate-cuts-2",
+        "title": "Exactly 2 Fed Rate Cuts in 2026",
+        "platform": "Kalshi",
+        "position": "YES (2 cuts)",
+        "amount": 9.84,
+        "entryPrice": 0.24,
+        "currentPrice": 0.23,
+        "contracts": 41,
+        "potentialProfit": 31.16,
+        "profitPct": 317,
+        "unrealizedPnL": -0.41,
+        "settlementDate": "2026-12-31",
+        "status": "ACTIVE",
+        "reasoning": "NEW: Part of 0-1-2 cut spread. If Fed cuts twice, 4.2x return. Covers moderate dovish scenario."
       }
     ],
     "watchlist": [
       {
-        "id": "fed-march-cut",
-        "title": "Fed 25bp Cut at March FOMC",
-        "platform": "Kalshi",
-        "currentPrice": 0.18,
-        "marketProb": 0.18,
-        "reasoning": "Only 18% cut odds. 81% expect hold. Market has moved hawkish. Wait for CPI catalyst.",
-        "recommendation": "WAIT - low odds, needs CPI surprise to move",
-        "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26mar"
-      },
-      {
-        "id": "cpi-jan",
-        "title": "January CPI Release (Feb 12)",
+        "id": "fed-june-cut",
+        "title": "Fed Rate Cut by June 2026",
         "platform": "Kalshi",
         "currentPrice": null,
         "marketProb": null,
-        "reasoning": "Releases Feb 12 8:30 AM. Currently sticky at 2.7%. Sub-2.5% would boost rate cut odds.",
-        "recommendation": "CATALYST - key for Fed trade setup",
-        "url": "https://kalshi.com/markets/kxcpiyoy/inflation"
+        "reasoning": "Already covered via rate cuts spread. March FOMC dot plot will signal timing.",
+        "recommendation": "COVERED by T0/T1/T2 spread"
       },
       {
-        "id": "openai-earbuds",
-        "title": "OpenAI/Jony Ive Device: Earbuds",
-        "platform": "Kalshi",
-        "currentPrice": 0.74,
-        "marketProb": 0.74,
-        "reasoning": "Earbuds now favorite at 74%. 'Sweetpea' earbud prototype confirmed. Could hedge clip-on position.",
-        "recommendation": "CONSIDER - hedge against clip-on bet",
-        "url": "https://kalshi.com/markets/kxoaihardware/what-hardware-will-openaijony-ive-launch"
-      },
-      {
-        "id": "rate-cuts-2026",
-        "title": "Number of Rate Cuts in 2026",
+        "id": "btc-bounce",
+        "title": "Bitcoin $80K+ Before June",
         "platform": "Kalshi",
         "currentPrice": null,
         "marketProb": null,
-        "reasoning": "Market expects Fed to hold. Contrarian if labor market weakens further.",
-        "recommendation": "RESEARCH - check 2+ cuts pricing",
-        "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31"
+        "reasoning": "BTC at $71K. If it breaks $73K, could run. Would pressure our NO $100K bet.",
+        "recommendation": "MONITOR - hedge if BTC > $80K"
       }
     ]
   },
   "scenarios": [
     {
-      "name": "Best Case (All 8 Active Win)",
+      "name": "Best Case (Rate Spread + BTC + Oscars Win)",
       "emoji": "target",
-      "totalProfit": 124.00,
-      "finalBankroll": 364.00,
-      "returnPct": 52
+      "totalProfit": 195.0,
+      "finalBankroll": 435.0,
+      "returnPct": 81
     },
     {
-      "name": "Fed + Rate Cuts Win, Others Lose",
+      "name": "Likely Case (1 Rate Cut + BTC NO Wins)",
       "emoji": "chart",
-      "totalProfit": -75.77,
-      "finalBankroll": 164.23,
-      "returnPct": -32
+      "totalProfit": 125.0,
+      "finalBankroll": 365.0,
+      "returnPct": 52
     },
     {
       "name": "Current Mark-to-Market",
       "emoji": "lock",
-      "totalProfit": -35.03,
-      "finalBankroll": 204.97,
-      "returnPct": -15
+      "totalProfit": -74.02,
+      "finalBankroll": 165.98,
+      "returnPct": -31
     },
     {
-      "name": "Worst Case (All 8 Lose)",
+      "name": "Worst Case (All Active Lose)",
       "emoji": "warning",
-      "totalProfit": -205.77,
-      "finalBankroll": 34.23,
-      "returnPct": -86
+      "totalProfit": -193.55,
+      "finalBankroll": 46.45,
+      "returnPct": -81
     }
   ],
   "opportunities": [
     {
-      "id": "fed-cut-post-cpi",
-      "title": "Fed March Rate Cut (Post-CPI Play)",
-      "action": "BUY YES at $0.18 if CPI surprises low",
-      "currentPrice": 0.18,
-      "targetPrice": 0.40,
-      "reasoning": "Only 18% cut odds now. Low entry point. If Jan CPI <2.5%, could spike to 40%+. High risk/reward.",
-      "catalyst": "Feb 12 CPI Release 8:30 AM",
-      "risk": "High - needs CPI surprise",
-      "suggestedSize": 15
-    },
-    {
-      "id": "openai-ipo-2026",
-      "title": "OpenAI IPO Before Oct 2026",
-      "action": "BUY YES at $0.35",
-      "currentPrice": 0.35,
-      "targetPrice": 0.60,
-      "reasoning": "Oct 2026 contract at 35%. Company targeting IPO in 2026. Good risk/reward for 8-month timeline.",
-      "catalyst": "IPO rumors, S-1 filing",
-      "risk": "Medium - timing uncertain",
-      "suggestedSize": 25
-    },
-    {
-      "id": "earbuds-hedge",
-      "title": "OpenAI Device: Earbuds (Hedge)",
-      "action": "BUY YES at $0.74 to hedge clip-on bet",
-      "currentPrice": 0.74,
-      "targetPrice": 1.00,
-      "reasoning": "Earbuds now favorite at 74%. 'Sweetpea' prototype confirmed. Hedges existing clip-on position.",
-      "catalyst": "Device announcement H2 2026",
-      "risk": "Low - strong favorite",
-      "suggestedSize": 20
+      "id": "rate-cuts-spread-info",
+      "title": "Rate Cuts 0-1-2 Spread (DEPLOYED)",
+      "action": "HOLD: Spread covers 0, 1, or 2 cuts (~68% combined probability)",
+      "currentPrice": null,
+      "targetPrice": 1.0,
+      "reasoning": "326 total contracts across T0 (54), T1 (231), T2 (41). If any one hits, 3-5x return on that leg. Combined cost $61.72.",
+      "catalyst": "March FOMC dot plot Mar 18, CPI releases, employment data",
+      "risk": "Fed cuts 3+ times (only ~15% probability)",
+      "suggestedSize": 0
     }
   ],
   "upcomingEvents": [
     {
-      "date": "2026-02-13",
-      "description": "CPI Released: 2.4% YoY (below 2.5% threshold). CPI >2.5% bet LOST (-$25).",
-      "highlight": false
-    },
-    {
-      "date": "2026-02-11",
-      "description": "Jobs Report Released: Unemployment 4.3%, Payrolls +130k. Both bets LOST.",
-      "highlight": false
-    },
-    {
-      "date": "2026-02-24",
-      "description": "Challenge Period Ends - Day 31"
-    },
-    {
       "date": "2026-02-27",
-      "description": "GDP Q4 Report - GDP >3.5% bet settles (currently 82% odds)"
+      "description": "GDP Q4 Released: 1.4% annualized. GDP >3.5% bet LOST (-$25).",
+      "highlight": false
     },
     {
-      "date": "2026-03-02",
-      "description": "Oscars - Best Picture bet settles"
+      "date": "2026-02-28",
+      "description": "Khamenei killed in US-Israeli airstrikes. Khamenei Out bet WON (+$23).",
+      "highlight": false
     },
     {
-      "date": "2026-03-19",
-      "description": "March FOMC Meeting - Fed rate decision"
+      "date": "2026-03-11",
+      "description": "Portfolio rebalance: Sold Earbuds (-$4.40). Deployed $44 into Rate Cuts 0/1/2 spread.",
+      "highlight": true
+    },
+    {
+      "date": "2026-03-15",
+      "description": "98th Academy Awards - Oscars Best Picture settles (Sinners 22% / OBAA 74%)"
+    },
+    {
+      "date": "2026-03-18",
+      "description": "March FOMC Meeting - Fed rate decision. Key catalyst for rate cut bets."
+    },
+    {
+      "date": "2026-03-31",
+      "description": "Gas >$4 bet settles (currently 50/50 at $3.90 national avg)"
+    },
+    {
+      "date": "2026-07-01",
+      "description": "Bitcoin NO $100K bet settles (BTC currently $71K)"
+    },
+    {
+      "date": "2026-12-31",
+      "description": "Rate Cuts spread settles: 0 cuts (54 contracts) / 1 cut (231 contracts) / 2 cuts (41 contracts). NO Recession bet settles."
+    },
+    {
+      "date": "2027-01-01",
+      "description": "Jony Ive device Clip-on bet settled (SOLD at loss)."
     }
   ]
 }

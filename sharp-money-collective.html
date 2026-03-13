@@ -341,7 +341,8 @@
             if (active.length > 0) {
                 html += `<div class="section"><h2 class="section-title">Active Bets (${active.length})</h2>`;
                 for (const pos of active) {
-                    const pnl = pos.unrealizedPnL || 0;
+                    const pnl = netPnL(pos);
+                    const pct = netPct(pos);
                     const isWinning = pnl >= 0;
                     html += `
                         <div class="bet-card ${isWinning ? 'winning' : 'losing'}">
@@ -354,7 +355,7 @@
                                 <div><div class="bet-field-label">Contracts</div><div class="bet-field-value">${pos.contracts}</div></div>
                                 <div><div class="bet-field-label">Entry</div><div class="bet-field-value">${(pos.entryPrice * 100).toFixed(0)}c</div></div>
                                 <div><div class="bet-field-label">Current</div><div class="bet-field-value">${pos.currentPrice ? (pos.currentPrice * 100).toFixed(0) + 'c' : '—'}</div></div>
-                                <div><div class="bet-field-label">Unrealized P&L</div><div class="bet-field-value ${isWinning ? 'positive' : 'negative'}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</div></div>
+                                <div><div class="bet-field-label">Net P&L</div><div class="bet-field-value ${isWinning ? 'positive' : 'negative'}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)} (${pct >= 0 ? '+' : ''}${pct.toFixed(0)}%)</div></div>
                                 <div><div class="bet-field-label">Settles</div><div class="bet-field-value">${pos.settlementDate}</div></div>
                             </div>
                         </div>
@@ -364,23 +365,38 @@
             }
 
             // ── Bet History (all bets, combined value) ──
+            // Compute net P&L from first principles
+            function netPnL(pos) {
+                const amt = pos.amount || 0;
+                if (pos.status === 'WON') return (pos.payout || 0) - amt;
+                if (pos.status === 'LOST') return -amt;
+                if (pos.status === 'SOLD') return (pos.payout || (pos.contracts * (pos.exitPrice || 0))) - amt;
+                // ACTIVE: contracts * price change
+                const entry = pos.entryPrice || 0;
+                const cur = pos.currentPrice || entry;
+                return (pos.contracts || 0) * (cur - entry);
+            }
+
+            function netPct(pos) {
+                const amt = pos.amount || 0;
+                if (amt === 0) return 0;
+                return (netPnL(pos) / amt) * 100;
+            }
+
             html += `<div class="section"><h2 class="section-title">Bet History</h2>`;
             html += `<table class="history-table"><thead><tr>
-                <th>Bet</th><th>Position</th><th>Invested</th><th>P&L</th><th>Status</th>
+                <th>Bet</th><th>Position</th><th>Invested</th><th>Net P&L</th><th>Return</th><th>Status</th>
             </tr></thead><tbody>`;
 
             let totalInvested = 0;
             let totalPnL = 0;
 
-            // Sort all bets by P&L descending (largest gains first)
-            const sortedAll = [...active, ...settled].sort((a, b) => {
-                const pnlA = a.status === 'ACTIVE' ? (a.unrealizedPnL || 0) : (a.profit || 0);
-                const pnlB = b.status === 'ACTIVE' ? (b.unrealizedPnL || 0) : (b.profit || 0);
-                return pnlB - pnlA;
-            });
+            // Sort all bets by net P&L descending (largest gains first)
+            const sortedAll = [...active, ...settled].sort((a, b) => netPnL(b) - netPnL(a));
+
             for (const pos of sortedAll) {
-                const isActive = pos.status === 'ACTIVE';
-                const pnl = isActive ? (pos.unrealizedPnL || 0) : (pos.profit || 0);
+                const pnl = netPnL(pos);
+                const pct = netPct(pos);
                 const pnlClass = pnl >= 0 ? 'positive' : 'negative';
                 const statusBadge = pos.status === 'ACTIVE' ? 'badge-active'
                     : pos.status === 'WON' ? 'badge-won'
@@ -395,15 +411,18 @@
                     <td>${pos.position}</td>
                     <td>$${(pos.amount || 0).toFixed(2)}</td>
                     <td class="${pnlClass}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</td>
+                    <td class="${pnlClass}">${pct >= 0 ? '+' : ''}${pct.toFixed(0)}%</td>
                     <td><span class="badge ${statusBadge}">${pos.status}</span></td>
                 </tr>`;
             }
 
             const totalPnLClass = totalPnL >= 0 ? 'positive' : 'negative';
+            const totalPct = totalInvested > 0 ? (totalPnL / totalInvested * 100) : 0;
             html += `<tr class="history-total">
                 <td colspan="2">Total</td>
                 <td>$${totalInvested.toFixed(2)}</td>
                 <td class="${totalPnLClass}">${totalPnL >= 0 ? '+' : ''}$${totalPnL.toFixed(2)}</td>
+                <td class="${totalPnLClass}">${totalPct >= 0 ? '+' : ''}${totalPct.toFixed(0)}%</td>
                 <td></td>
             </tr>`;
 

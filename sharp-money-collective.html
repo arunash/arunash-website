@@ -372,8 +372,12 @@
             let totalInvested = 0;
             let totalPnL = 0;
 
-            // Show all bets: active first, then settled
-            const sortedAll = [...active, ...settled];
+            // Sort all bets by P&L descending (largest gains first)
+            const sortedAll = [...active, ...settled].sort((a, b) => {
+                const pnlA = a.status === 'ACTIVE' ? (a.unrealizedPnL || 0) : (a.profit || 0);
+                const pnlB = b.status === 'ACTIVE' ? (b.unrealizedPnL || 0) : (b.profit || 0);
+                return pnlB - pnlA;
+            });
             for (const pos of sortedAll) {
                 const isActive = pos.status === 'ACTIVE';
                 const pnl = isActive ? (pos.unrealizedPnL || 0) : (pos.profit || 0);

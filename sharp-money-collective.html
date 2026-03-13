@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharp Money Collective | Prediction Market Portfolio</title>
+    <title>Sharp Money Collective — Kalshi | Prediction Market Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,10 +15,7 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
         header {
             text-align: center;
@@ -40,11 +33,7 @@
             margin-bottom: 10px;
         }
 
-        .subtitle {
-            color: #a0a0a0;
-            font-size: 1rem;
-            margin-top: 5px;
-        }
+        .subtitle { color: #a0a0a0; font-size: 1rem; margin-top: 5px; }
 
         .loading {
             text-align: center;
@@ -55,8 +44,7 @@
 
         .loading-spinner {
             display: inline-block;
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border: 4px solid rgba(102, 126, 234, 0.2);
             border-top-color: #667eea;
             border-radius: 50%;
@@ -64,277 +52,178 @@
             margin-bottom: 20px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 25px;
+            padding: 22px;
             backdrop-filter: blur(10px);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25);
         }
 
         .stat-label {
             color: #a0a0a0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .stat-change {
-            font-size: 0.9rem;
-            margin-top: 8px;
-            color: #a0a0a0;
-        }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .stat-change { font-size: 0.85rem; margin-top: 6px; color: #a0a0a0; }
 
         .positive { color: #4ade80; }
         .negative { color: #f87171; }
-        .warning { color: #fbbf24; }
 
         .section {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             backdrop-filter: blur(10px);
         }
 
         .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
             color: #fff;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
+        /* Bet cards */
+        .bet-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .bet-card:hover { border-color: rgba(102, 126, 234, 0.4); }
+        .bet-card.winning { border-left: 3px solid #4ade80; }
+        .bet-card.losing { border-left: 3px solid #f87171; }
+        .bet-card.settled { border-left: 3px solid #666; opacity: 0.7; }
+
+        .bet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .bet-title { font-size: 1.05rem; font-weight: 600; color: #fff; flex: 1; }
+
         .badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .badge-won {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-        }
+        .badge-active { background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid rgba(102, 126, 234, 0.3); }
+        .badge-won { background: rgba(74, 222, 128, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+        .badge-lost { background: rgba(248, 113, 113, 0.2); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.3); }
+        .badge-sold { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
 
-        .badge-active {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-        }
-
-        .badge-losing {
-            background: rgba(248, 113, 113, 0.2);
-            color: #f87171;
-            border: 1px solid rgba(248, 113, 113, 0.3);
-        }
-
-        .badge-winning {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-        }
-
-        .position-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.2s;
-        }
-
-        .position-card:hover {
-            border-color: rgba(102, 126, 234, 0.5);
-            background: rgba(102, 126, 234, 0.05);
-        }
-
-        .position-card.winning {
-            border-left: 3px solid #4ade80;
-        }
-
-        .position-card.losing {
-            border-left: 3px solid #f87171;
-        }
-
-        .position-card.settled-won {
-            border-left: 3px solid #4ade80;
-            opacity: 0.8;
-        }
-
-        .position-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .position-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            flex: 1;
-        }
-
-        .position-details {
+        .bet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            font-size: 0.9rem;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-label {
-            color: #a0a0a0;
-            font-size: 0.8rem;
-            margin-bottom: 4px;
-        }
-
-        .detail-value {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .reasoning {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
             font-size: 0.85rem;
+        }
+
+        .bet-field-label { color: #a0a0a0; font-size: 0.75rem; margin-bottom: 3px; }
+        .bet-field-value { color: #fff; font-weight: 600; }
+
+        /* History table */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .history-table th {
+            text-align: left;
             color: #a0a0a0;
-            line-height: 1.5;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 25px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -23px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #667eea;
-            border: 3px solid #1a1a2e;
-        }
-
-        .timeline-item.highlight::before {
-            background: #4ade80;
-            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -18px;
-            top: 17px;
-            width: 2px;
-            height: calc(100% - 10px);
-            background: rgba(102, 126, 234, 0.3);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-date {
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item.highlight .timeline-date {
-            color: #4ade80;
-        }
-
-        .timeline-content {
+        .history-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: #e0e0e0;
         }
 
-        .scenarios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .history-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
+
+        .history-total td {
+            font-weight: 700;
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding-top: 12px;
         }
 
-        .scenario-card {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            padding: 20px;
+        /* Chart */
+        .chart-container { position: relative; height: 280px; width: 100%; }
+
+        .chart-controls { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+
+        .chart-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #a0a0a0;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
         }
+
+        .chart-btn:hover { background: rgba(102, 126, 234, 0.2); color: #fff; }
+        .chart-btn.active { background: rgba(102, 126, 234, 0.3); border-color: #667eea; color: #fff; }
 
         footer {
             text-align: center;
-            padding: 30px 0;
+            padding: 25px 0;
             color: #a0a0a0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
-        }
-
-        .pnl-summary {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .pnl-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-top: 30px;
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
+            h1 { font-size: 1.8rem; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
-            .position-details { grid-template-columns: 1fr 1fr; }
+            .bet-grid { grid-template-columns: 1fr 1fr; }
+            .history-table { font-size: 0.8rem; }
+            .history-table th, .history-table td { padding: 6px 8px; }
         }
     </style>
 </head>
@@ -342,7 +231,7 @@
     <div class="container">
         <header>
             <h1>Sharp Money Collective</h1>
-            <p class="subtitle">Data-Driven Prediction Market Portfolio</p>
+            <p class="subtitle">Kalshi Edition — Prediction Market Portfolio</p>
             <p class="subtitle" id="last-updated" style="margin-top: 5px; font-size: 0.85rem;">Loading...</p>
         </header>
 
@@ -354,14 +243,18 @@
         <div id="content" style="display: none;"></div>
 
         <footer>
-            <div>Sharp Money Collective &bull; Prediction Market Portfolio</div>
-            <div style="margin-top: 10px; font-size: 0.85rem;">
-                Platform: Kalshi &bull; Challenge Period: Jan 25 - Feb 24, 2026
+            <div>Sharp Money Collective — Kalshi Edition</div>
+            <div style="margin-top: 8px; font-size: 0.8rem;">
+                Platform: Kalshi &bull; Started: Jan 25, 2026
             </div>
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script>
+        let trendChart = null;
+
         async function loadPortfolio() {
             try {
                 const response = await fetch('smc-data.json?' + Date.now());
@@ -370,41 +263,53 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
             } catch (error) {
-                document.getElementById('loading').innerHTML = `
-                    <div style="color: #f87171;">Error loading portfolio: ${error.message}</div>
-                `;
+                document.getElementById('loading').innerHTML =
+                    `<div style="color: #f87171;">Error loading portfolio: ${error.message}</div>`;
             }
         }
 
         function renderPortfolio(data) {
-            const { meta, portfolio, positions, scenarios, upcomingEvents } = data;
+            const { meta, portfolio, positions } = data;
 
-            // Update header
             const lastUpdated = new Date(meta.lastUpdated).toLocaleString();
-            document.getElementById('last-updated').textContent =
-                `Day ${meta.day} of 31 | Last Updated: ${lastUpdated}`;
+            document.getElementById('last-updated').textContent = `Last Updated: ${lastUpdated}`;
+
+            // Merge all positions into one flat list
+            const allPositions = [
+                ...(positions.shortTerm || []),
+                ...(positions.longTerm || []),
+            ];
+
+            const active = allPositions.filter(p => p.status === 'ACTIVE');
+            const settled = allPositions.filter(p => p.status !== 'ACTIVE');
+
+            // Compute totals
+            const perf = portfolio.performance;
+            const wc = portfolio.workingCapital || {};
+            const stats = portfolio.stats;
+
+            const totalDeployed = active.reduce((s, p) => s + (p.amount || 0), 0);
+            const totalSettledPnL = settled.reduce((s, p) => s + (p.profit || 0), 0);
 
             let html = '';
 
-            // Stats Grid
-            const perf = portfolio.performance;
-            const stats = portfolio.stats;
+            // ── Top Cards ──
             html += `
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-label">Portfolio Value</div>
                         <div class="stat-value">$${perf.currentValue.toFixed(2)}</div>
-                        <div class="stat-change ${perf.realizedProfit >= 0 ? 'positive' : 'negative'}">${perf.realizedProfit >= 0 ? '+' : ''}$${perf.realizedProfit.toFixed(2)} realized</div>
+                        <div class="stat-change">Started at $${perf.startingBankroll}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Cash</div>
+                        <div class="stat-value">$${(wc.available || 0).toFixed(2)}</div>
+                        <div class="stat-change">$${totalDeployed.toFixed(2)} deployed</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">Total Return</div>
                         <div class="stat-value ${perf.totalReturnPct >= 0 ? 'positive' : 'negative'}">${perf.totalReturnPct >= 0 ? '+' : ''}${perf.totalReturnPct}%</div>
-                        <div class="stat-change">From $${perf.startingBankroll} start</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Unrealized P&L</div>
-                        <div class="stat-value ${perf.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${perf.unrealizedPnL >= 0 ? '+' : ''}$${perf.unrealizedPnL.toFixed(2)}</div>
-                        <div class="stat-change">Mark-to-market</div>
+                        <div class="stat-change">${perf.realizedProfit >= 0 ? '+' : ''}$${perf.realizedProfit.toFixed(2)} realized</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">Win Rate</div>
@@ -414,233 +319,183 @@
                 </div>
             `;
 
-            // Position Summary
-            if (portfolio.positionSummary) {
-                const ps = portfolio.positionSummary;
+            // ── Trend Chart ──
+            if (data.history && data.history.length > 1) {
                 html += `
                     <div class="section">
-                        <h2 class="section-title">Position Summary (Live Prices)</h2>
-                        <div class="stats-grid">
-                            ${Object.entries(ps).map(([key, pos]) => `
-                                <div class="stat-card" style="border-left: 3px solid ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}">
-                                    <div class="stat-label">${key}</div>
-                                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                                        <span style="color: #a0a0a0;">$${pos.entry.toFixed(2)}</span>
-                                        <span style="color: ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}; font-size: 1.2rem;">→ $${pos.current ? pos.current.toFixed(2) : 'N/A'}</span>
-                                    </div>
-                                    <div class="stat-change" style="color: ${pos.pnl >= 0 ? '#4ade80' : '#f87171'}">
-                                        ${pos.pnl >= 0 ? '+' : ''}$${pos.pnl.toFixed(2)} (${pos.status})
-                                    </div>
-                                </div>
-                            `).join('')}
+                        <h2 class="section-title">Portfolio Trend</h2>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" onclick="setChartRange('24h')">24H</button>
+                            <button class="chart-btn" onclick="setChartRange('3d')">3D</button>
+                            <button class="chart-btn" onclick="setChartRange('7d')">7D</button>
+                            <button class="chart-btn" onclick="setChartRange('all')">All</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="trendChart"></canvas>
                         </div>
                     </div>
                 `;
             }
 
-            // Settled Bets
-            const settledBets = positions.shortTerm.filter(p => p.status === 'WON' || p.status === 'LOST');
-            if (settledBets.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Settled Bets</h2>
-                        ${settledBets.map(pos => {
-                            const isWin = pos.status === 'WON';
-                            return `
-                            <div class="position-card" style="border-left: 3px solid ${isWin ? '#4ade80' : '#f87171'}; opacity: 0.85;">
-                                <div class="position-header">
-                                    <div class="position-title">${pos.title}</div>
-                                    <span class="badge ${isWin ? 'badge-won' : 'badge-losing'}">${pos.status}</span>
-                                </div>
-                                <div class="position-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Position</span>
-                                        <span class="detail-value">${pos.position}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Amount</span>
-                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Profit/Loss</span>
-                                        <span class="detail-value ${isWin ? 'positive' : 'negative'}">${pos.profit >= 0 ? '+' : ''}$${pos.profit.toFixed(2)} (${pos.profitPct >= 0 ? '+' : ''}${pos.profitPct}%)</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Settlement</span>
-                                        <span class="detail-value">${pos.settlementDate}</span>
-                                    </div>
-                                </div>
-                                ${pos.result ? `<div class="reasoning">${pos.result}</div>` : ''}
+            // ── Active Bets ──
+            if (active.length > 0) {
+                html += `<div class="section"><h2 class="section-title">Active Bets (${active.length})</h2>`;
+                for (const pos of active) {
+                    const pnl = pos.unrealizedPnL || 0;
+                    const isWinning = pnl >= 0;
+                    html += `
+                        <div class="bet-card ${isWinning ? 'winning' : 'losing'}">
+                            <div class="bet-header">
+                                <div class="bet-title">${pos.title}</div>
+                                <span class="badge badge-active">${pos.position}</span>
                             </div>
-                        `}).join('')}
-                    </div>
-                `;
-            }
-
-            // Active Short-Term
-            const activeShort = positions.shortTerm.filter(p => p.status === 'ACTIVE');
-            if (activeShort.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Active Short-Term Positions</h2>
-                        ${activeShort.map(pos => {
-                            const isWinning = pos.unrealizedPnL && pos.unrealizedPnL > 0;
-                            return `
-                            <div class="position-card ${isWinning ? 'winning' : 'losing'}">
-                                <div class="position-header">
-                                    <div class="position-title">${pos.title}</div>
-                                    <span class="badge ${isWinning ? 'badge-winning' : 'badge-losing'}">${isWinning ? 'WINNING' : 'LOSING'}</span>
-                                </div>
-                                <div class="position-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Position</span>
-                                        <span class="detail-value">${pos.position}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Amount</span>
-                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Entry</span>
-                                        <span class="detail-value">$${pos.entryPrice.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Current</span>
-                                        <span class="detail-value">$${pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A'}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Unrealized P&L</span>
-                                        <span class="detail-value ${pos.unrealizedPnL >= 0 ? 'positive' : 'negative'}">${pos.unrealizedPnL >= 0 ? '+' : ''}$${pos.unrealizedPnL ? pos.unrealizedPnL.toFixed(2) : '0.00'}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Settlement</span>
-                                        <span class="detail-value">${pos.settlementDate}</span>
-                                    </div>
-                                </div>
-                                ${pos.reasoning ? `<div class="reasoning">${pos.reasoning}</div>` : ''}
+                            <div class="bet-grid">
+                                <div><div class="bet-field-label">Cost</div><div class="bet-field-value">$${pos.amount.toFixed(2)}</div></div>
+                                <div><div class="bet-field-label">Contracts</div><div class="bet-field-value">${pos.contracts}</div></div>
+                                <div><div class="bet-field-label">Entry</div><div class="bet-field-value">${(pos.entryPrice * 100).toFixed(0)}c</div></div>
+                                <div><div class="bet-field-label">Current</div><div class="bet-field-value">${pos.currentPrice ? (pos.currentPrice * 100).toFixed(0) + 'c' : '—'}</div></div>
+                                <div><div class="bet-field-label">Unrealized P&L</div><div class="bet-field-value ${isWinning ? 'positive' : 'negative'}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</div></div>
+                                <div><div class="bet-field-label">Settles</div><div class="bet-field-value">${pos.settlementDate}</div></div>
                             </div>
-                        `}).join('')}
-                    </div>
-                `;
-            }
-
-            // Long-Term Positions
-            if (positions.longTerm && positions.longTerm.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Long-Term Positions</h2>
-                        ${positions.longTerm.map(pos => {
-                            const isSold = pos.status === 'SOLD';
-                            const isWinning = isSold ? pos.profit > 0 : (pos.unrealizedPnL && pos.unrealizedPnL > 0);
-                            const pnlValue = isSold ? pos.profit : (pos.unrealizedPnL || 0);
-                            return `
-                            <div class="position-card" style="border-left: 3px solid ${isWinning ? '#4ade80' : '#f87171'}; ${isSold ? 'opacity: 0.85;' : ''}">
-                                <div class="position-header">
-                                    <div class="position-title">${pos.title}</div>
-                                    <span class="badge ${isSold ? (isWinning ? 'badge-won' : 'badge-losing') : (isWinning ? 'badge-winning' : 'badge-losing')}">${pos.status || (isWinning ? 'WINNING' : 'LOSING')}</span>
-                                </div>
-                                <div class="position-details">
-                                    <div class="detail-item">
-                                        <span class="detail-label">Position</span>
-                                        <span class="detail-value">${pos.position}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Amount</span>
-                                        <span class="detail-value">$${pos.amount.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Entry</span>
-                                        <span class="detail-value">$${pos.entryPrice.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">${isSold ? 'Exit' : 'Current'}</span>
-                                        <span class="detail-value">$${isSold ? pos.exitPrice.toFixed(2) : (pos.currentPrice ? pos.currentPrice.toFixed(2) : 'N/A')}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">${isSold ? 'Realized P&L' : 'Unrealized P&L'}</span>
-                                        <span class="detail-value ${pnlValue >= 0 ? 'positive' : 'negative'}">${pnlValue >= 0 ? '+' : ''}$${pnlValue.toFixed(2)}</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <span class="detail-label">Settlement</span>
-                                        <span class="detail-value">${pos.settlementDate}</span>
-                                    </div>
-                                </div>
-                                ${pos.reasoning ? `<div class="reasoning">${pos.reasoning}</div>` : ''}
-                                ${pos.result ? `<div class="reasoning">${pos.result}</div>` : ''}
-                            </div>
-                        `}).join('')}
-                    </div>
-                `;
-            }
-
-            // Watchlist
-            if (positions.watchlist && positions.watchlist.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Watchlist</h2>
-                        ${positions.watchlist.map(item => `
-                            <div class="position-card">
-                                <div class="position-header">
-                                    <div class="position-title">${item.title}</div>
-                                    ${item.currentPrice ? `<span class="badge badge-active">$${item.currentPrice.toFixed(2)}</span>` : ''}
-                                </div>
-                                <div class="reasoning">${item.reasoning}</div>
-                                <div style="margin-top: 10px; color: #667eea; font-weight: 600;">${item.recommendation}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            }
-
-            // Upcoming Events
-            if (upcomingEvents && upcomingEvents.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Upcoming Events</h2>
-                        <div class="timeline">
-                            ${upcomingEvents.map(event => `
-                                <div class="timeline-item ${event.highlight ? 'highlight' : ''}">
-                                    <div class="timeline-date">${event.date}${event.time ? ` (${event.time})` : ''}</div>
-                                    <div class="timeline-content">${event.description}</div>
-                                </div>
-                            `).join('')}
                         </div>
-                    </div>
-                `;
+                    `;
+                }
+                html += `</div>`;
             }
 
-            // Scenarios
-            if (scenarios && scenarios.length > 0) {
-                html += `
-                    <div class="section">
-                        <h2 class="section-title">Portfolio Scenarios</h2>
-                        <div class="scenarios-grid">
-                            ${scenarios.map(scenario => {
-                                const color = scenario.returnPct > 50 ? '#4ade80' : scenario.returnPct > 0 ? '#fbbf24' : '#f87171';
-                                return `
-                                    <div class="scenario-card">
-                                        <div style="font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: ${color};">
-                                            ${scenario.name}
-                                        </div>
-                                        <div style="font-size: 1.8rem; font-weight: 700; color: #fff;">$${scenario.finalBankroll.toFixed(2)}</div>
-                                        <div style="margin-top: 8px; font-size: 0.9rem; color: #a0a0a0;">
-                                            ${scenario.totalProfit >= 0 ? '+' : ''}$${scenario.totalProfit.toFixed(2)} (${scenario.returnPct >= 0 ? '+' : ''}${scenario.returnPct}%)
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
+            // ── Bet History (all bets, combined value) ──
+            html += `<div class="section"><h2 class="section-title">Bet History</h2>`;
+            html += `<table class="history-table"><thead><tr>
+                <th>Bet</th><th>Position</th><th>Invested</th><th>P&L</th><th>Status</th>
+            </tr></thead><tbody>`;
+
+            let totalInvested = 0;
+            let totalPnL = 0;
+
+            // Show all bets: active first, then settled
+            const sortedAll = [...active, ...settled];
+            for (const pos of sortedAll) {
+                const isActive = pos.status === 'ACTIVE';
+                const pnl = isActive ? (pos.unrealizedPnL || 0) : (pos.profit || 0);
+                const pnlClass = pnl >= 0 ? 'positive' : 'negative';
+                const statusBadge = pos.status === 'ACTIVE' ? 'badge-active'
+                    : pos.status === 'WON' ? 'badge-won'
+                    : pos.status === 'SOLD' ? 'badge-sold'
+                    : 'badge-lost';
+
+                totalInvested += pos.amount || 0;
+                totalPnL += pnl;
+
+                html += `<tr>
+                    <td>${pos.title}</td>
+                    <td>${pos.position}</td>
+                    <td>$${(pos.amount || 0).toFixed(2)}</td>
+                    <td class="${pnlClass}">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</td>
+                    <td><span class="badge ${statusBadge}">${pos.status}</span></td>
+                </tr>`;
             }
+
+            const totalPnLClass = totalPnL >= 0 ? 'positive' : 'negative';
+            html += `<tr class="history-total">
+                <td colspan="2">Total</td>
+                <td>$${totalInvested.toFixed(2)}</td>
+                <td class="${totalPnLClass}">${totalPnL >= 0 ? '+' : ''}$${totalPnL.toFixed(2)}</td>
+                <td></td>
+            </tr>`;
+
+            html += `</tbody></table></div>`;
 
             document.getElementById('content').innerHTML = html;
+
+            if (data.history && data.history.length > 1) {
+                window._smcHistory = data.history;
+                renderTrendChart(data.history, '24h');
+            }
         }
 
-        // Load on page load
-        loadPortfolio();
+        function filterHistory(history, range) {
+            const now = new Date();
+            const cutoffs = { '24h': 24*3600000, '3d': 3*24*3600000, '7d': 7*24*3600000, 'all': Infinity };
+            const ms = cutoffs[range] || Infinity;
+            if (ms === Infinity) return history;
+            return history.filter(h => (now - new Date(h.ts)) <= ms);
+        }
 
-        // Auto-refresh every 5 minutes
+        function setChartRange(range) {
+            document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            if (window._smcHistory) renderTrendChart(window._smcHistory, range);
+        }
+
+        function renderTrendChart(history, range) {
+            const filtered = filterHistory(history, range);
+            if (filtered.length < 2) return;
+
+            const labels = filtered.map(h => new Date(h.ts));
+            const totalData = filtered.map(h => h.total);
+            const cashData = filtered.map(h => h.cash);
+
+            const canvas = document.getElementById('trendChart');
+            if (!canvas) return;
+            if (trendChart) trendChart.destroy();
+
+            trendChart = new Chart(canvas.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Portfolio Value',
+                            data: totalData,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            fill: true, tension: 0.3,
+                            pointRadius: 0, pointHitRadius: 10, borderWidth: 2,
+                        },
+                        {
+                            label: 'Cash',
+                            data: cashData,
+                            borderColor: '#fbbf24',
+                            backgroundColor: 'transparent',
+                            tension: 0.3,
+                            pointRadius: 0, pointHitRadius: 10, borderWidth: 1.5,
+                            borderDash: [4, 4],
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { labels: { color: '#a0a0a0', usePointStyle: true, pointStyle: 'line', padding: 15 } },
+                        tooltip: {
+                            backgroundColor: 'rgba(22, 33, 62, 0.95)',
+                            titleColor: '#fff', bodyColor: '#e0e0e0',
+                            borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1,
+                            callbacks: {
+                                title: items => new Date(items[0].parsed.x).toLocaleString(),
+                                label: item => ` ${item.dataset.label}: $${item.parsed.y.toFixed(2)}`,
+                            }
+                        },
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { tooltipFormat: 'MMM d, h:mm a', displayFormats: { hour: 'h a', day: 'MMM d' } },
+                            ticks: { color: '#666', maxTicksLimit: 8 },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                        },
+                        y: {
+                            ticks: { color: '#666', callback: v => '$' + v.toFixed(0) },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                        },
+                    },
+                },
+            });
+        }
+
+        loadPortfolio();
         setInterval(loadPortfolio, 5 * 60 * 1000);
     </script>
 </body>

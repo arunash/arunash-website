@@ -1,23 +1,21 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-12T21:24:27.023808",
+    "lastUpdated": "2026-03-12T21:31:47.683697",
     "day": 46,
     "dataSource": "Kalshi API (reconciled)"
   },
   "portfolio": {
     "workingCapital": {
-      "total": 295.33,
-      "available": 125.07,
-      "deployed": 170.26
+      "total": 294.4,
+      "available": 125.41,
+      "deployed": 168.99
     },
     "performance": {
-      "startingBankroll": 240.0,
-      "deposited": 150.0,
-      "totalCapitalIn": 390.0,
+      "totalCapitalIn": 466.12,
       "realizedProfit": -157.43,
-      "unrealizedPnL": 2.92,
-      "currentValue": 295.33,
-      "totalReturnPct": -24.3
+      "unrealizedPnL": 0.85,
+      "currentValue": 294.4,
+      "totalReturnPct": -36.9
     },
     "stats": {
       "activeBets": 9,
@@ -33,12 +31,11 @@
         "ticker": "KXAAAGASM-26MAR31-3.45",
         "title": "Will average **gas prices** be above $3.45?",
         "position": "NO",
-        "contracts": 86,
+        "contracts": 79,
         "amount": 9.9,
         "entryPrice": 0.09,
         "currentPrice": 0.04,
-        "unrealizedPnL": -4.3,
-        "realizedPnL": -0.96,
+        "unrealizedPnL": -3.95,
         "daysLeft": 17,
         "status": "ACTIVE"
       },
@@ -49,9 +46,8 @@
         "contracts": 76,
         "amount": 9.88,
         "entryPrice": 0.13,
-        "currentPrice": 0.11,
-        "unrealizedPnL": -1.52,
-        "realizedPnL": 0.0,
+        "currentPrice": 0.08,
+        "unrealizedPnL": -3.8,
         "daysLeft": 17,
         "status": "ACTIVE"
       },
@@ -64,7 +60,6 @@
         "entryPrice": 0.98,
         "currentPrice": 0.96,
         "unrealizedPnL": -0.48,
-        "realizedPnL": 0.0,
         "daysLeft": 0,
         "status": "ACTIVE"
       },
@@ -77,7 +72,6 @@
         "entryPrice": 0.22,
         "currentPrice": 0.24,
         "unrealizedPnL": 2.22,
-        "realizedPnL": 0.0,
         "daysLeft": 294,
         "status": "ACTIVE"
       },
@@ -90,7 +84,6 @@
         "entryPrice": 0.21,
         "currentPrice": 0.25,
         "unrealizedPnL": 8.88,
-        "realizedPnL": 0.0,
         "daysLeft": 294,
         "status": "ACTIVE"
       },
@@ -103,7 +96,6 @@
         "entryPrice": 0.24,
         "currentPrice": 0.22,
         "unrealizedPnL": -1.12,
-        "realizedPnL": 0.0,
         "daysLeft": 294,
         "status": "ACTIVE"
       },
@@ -114,9 +106,8 @@
         "contracts": 7,
         "amount": 3.9,
         "entryPrice": 0.4,
-        "currentPrice": 0.33,
-        "unrealizedPnL": -0.49,
-        "realizedPnL": -3.83,
+        "currentPrice": 0.31,
+        "unrealizedPnL": -0.63,
         "daysLeft": 294,
         "status": "ACTIVE"
       },
@@ -129,7 +120,6 @@
         "entryPrice": 0.73,
         "currentPrice": 0.65,
         "unrealizedPnL": -2.16,
-        "realizedPnL": 0.0,
         "daysLeft": 324,
         "status": "ACTIVE"
       },
@@ -142,7 +132,6 @@
         "entryPrice": 0.71,
         "currentPrice": 0.78,
         "unrealizedPnL": 1.89,
-        "realizedPnL": 0.0,
         "daysLeft": 294,
         "status": "ACTIVE"
       }
@@ -822,6 +811,13 @@
       "cash": 125.07,
       "deployed": 170.26,
       "pnl": 82.0
+    },
+    {
+      "ts": "2026-03-12T21:31:50.496390",
+      "total": 294.4,
+      "cash": 125.41,
+      "deployed": 168.99,
+      "pnl": 0.85
     }
   ]
 }

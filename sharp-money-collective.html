@@ -274,14 +274,15 @@
             const lastUpdated = new Date(meta.lastUpdated).toLocaleString();
             document.getElementById('last-updated').textContent = `Last Updated: ${lastUpdated}`;
 
-            // Merge all positions into one flat list
-            const allPositions = [
+            // Use new structure (active/closed) with fallback to old (shortTerm/longTerm)
+            const active = positions.active || [
                 ...(positions.shortTerm || []),
                 ...(positions.longTerm || []),
-            ];
-
-            const active = allPositions.filter(p => p.status === 'ACTIVE');
-            const settled = allPositions.filter(p => p.status !== 'ACTIVE');
+            ].filter(p => p.status === 'ACTIVE');
+            const settled = positions.closed || [
+                ...(positions.shortTerm || []),
+                ...(positions.longTerm || []),
+            ].filter(p => p.status !== 'ACTIVE');
 
             // Compute totals
             const perf = portfolio.performance;
@@ -299,7 +300,7 @@
                     <div class="stat-card">
                         <div class="stat-label">Portfolio Value</div>
                         <div class="stat-value">$${perf.currentValue.toFixed(2)}</div>
-                        <div class="stat-change">Started at $${perf.startingBankroll}</div>
+                        <div class="stat-change">${perf.totalCapitalIn ? '$' + perf.totalCapitalIn + ' capital in' : 'Started at $' + perf.startingBankroll}</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">Cash</div>
@@ -365,16 +366,10 @@
             }
 
             // ── Bet History (all bets, combined value) ──
-            // Compute net P&L from first principles
+            // Net P&L: use profit field (from Kalshi API) for closed, unrealizedPnL for active
             function netPnL(pos) {
-                const amt = pos.amount || 0;
-                if (pos.status === 'WON') return (pos.payout || 0) - amt;
-                if (pos.status === 'LOST') return -amt;
-                if (pos.status === 'SOLD') return (pos.payout || (pos.contracts * (pos.exitPrice || 0))) - amt;
-                // ACTIVE: contracts * price change
-                const entry = pos.entryPrice || 0;
-                const cur = pos.currentPrice || entry;
-                return (pos.contracts || 0) * (cur - entry);
+                if (pos.status === 'ACTIVE') return pos.unrealizedPnL || 0;
+                return pos.profit || 0;
             }
 
             function netPct(pos) {

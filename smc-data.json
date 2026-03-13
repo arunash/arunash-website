@@ -1,495 +1,827 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-11T19:45:00.000000",
-    "day": 45,
-    "challenge": {
-      "startDate": "2026-01-25",
-      "endDate": "2026-02-24"
-    }
+    "lastUpdated": "2026-03-12T21:24:27.023808",
+    "day": 46,
+    "dataSource": "Kalshi API (reconciled)"
   },
   "portfolio": {
     "workingCapital": {
-      "total": 165.98,
-      "available": 0.29,
-      "deployed": 165.69
+      "total": 295.33,
+      "available": 125.07,
+      "deployed": 170.26
     },
     "performance": {
       "startingBankroll": 240.0,
-      "realizedProfit": -26.67,
-      "unrealizedPnL": -47.35,
-      "currentValue": 165.98,
-      "totalReturnPct": -30.8
+      "deposited": 150.0,
+      "totalCapitalIn": 390.0,
+      "realizedProfit": -157.43,
+      "unrealizedPnL": 2.92,
+      "currentValue": 295.33,
+      "totalReturnPct": -24.3
     },
     "stats": {
-      "activeBets": 8,
-      "settledBets": 11,
-      "winRate": 45,
-      "deploymentRate": 0.99
-    },
-    "positionSummary": {
-      "rateCuts0": {
-        "entry": 0.22,
-        "current": 0.21,
-        "pnl": -0.54,
-        "status": "NEW"
-      },
-      "rateCuts1": {
-        "entry": 0.21,
-        "current": 0.24,
-        "pnl": 6.93,
-        "status": "WINNING"
-      },
-      "rateCuts2": {
-        "entry": 0.24,
-        "current": 0.23,
-        "pnl": -0.41,
-        "status": "NEW"
-      },
-      "btcNo100k": {
-        "entry": 0.71,
-        "current": 0.78,
-        "pnl": 1.89,
-        "status": "WINNING"
-      },
-      "oscars": {
-        "entry": 0.22,
-        "current": 0.22,
-        "pnl": 0.0,
-        "status": "HOLD"
-      },
-      "gasNo4": {
-        "entry": 0.55,
-        "current": 0.50,
-        "pnl": -1.85,
-        "status": "LOSING"
-      },
-      "recessionNo": {
-        "entry": 0.73,
-        "current": 0.72,
-        "pnl": -0.27,
-        "status": "HOLD"
-      }
+      "activeBets": 9,
+      "settledBets": 18,
+      "wins": 7,
+      "losses": 11,
+      "winRate": 39
     }
   },
   "positions": {
-    "shortTerm": [
+    "active": [
       {
-        "id": "shutdown-jan31",
-        "title": "Government Shutdown Jan 31",
-        "platform": "Kalshi",
+        "ticker": "KXAAAGASM-26MAR31-3.45",
+        "title": "Will average **gas prices** be above $3.45?",
+        "position": "NO",
+        "contracts": 86,
+        "amount": 9.9,
+        "entryPrice": 0.09,
+        "currentPrice": 0.04,
+        "unrealizedPnL": -4.3,
+        "realizedPnL": -0.96,
+        "daysLeft": 17,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXAAAGASM-26MAR31-3.60",
+        "title": "Will average **gas prices** be above $3.60?",
+        "position": "NO",
+        "contracts": 76,
+        "amount": 9.88,
+        "entryPrice": 0.13,
+        "currentPrice": 0.11,
+        "unrealizedPnL": -1.52,
+        "realizedPnL": 0.0,
+        "daysLeft": 17,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXBTC-26MAR1317-B68750",
+        "title": "Bitcoin price range  on Mar 13, 2026?: $68,500 to 68,999.99",
+        "position": "NO",
+        "contracts": 24,
+        "amount": 23.52,
+        "entryPrice": 0.98,
+        "currentPrice": 0.96,
+        "unrealizedPnL": -0.48,
+        "realizedPnL": 0.0,
+        "daysLeft": 0,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+        "title": "Will the Fed cut rates 0 times?: 0:: 0 bps",
         "position": "YES",
-        "amount": 19.0,
-        "entryPrice": 0.75,
-        "contracts": 25,
-        "payout": 25.33,
-        "profit": 6.33,
-        "profitPct": 33,
+        "contracts": 92,
+        "amount": 19.86,
+        "entryPrice": 0.22,
+        "currentPrice": 0.24,
+        "unrealizedPnL": 2.22,
+        "realizedPnL": 0.0,
+        "daysLeft": 294,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXRATECUTCOUNT-26DEC31-T1",
+        "title": "Will the Fed cut rates 1 times?: 1:: 25 bps",
+        "position": "YES",
+        "contracts": 231,
+        "amount": 48.87,
+        "entryPrice": 0.21,
+        "currentPrice": 0.25,
+        "unrealizedPnL": 8.88,
+        "realizedPnL": 0.0,
+        "daysLeft": 294,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXRATECUTCOUNT-26DEC31-T2",
+        "title": "Will the Fed cut rates 2 times?: 2:: 50 bps",
+        "position": "YES",
+        "contracts": 51,
+        "amount": 12.34,
+        "entryPrice": 0.24,
+        "currentPrice": 0.22,
+        "unrealizedPnL": -1.12,
+        "realizedPnL": 0.0,
+        "daysLeft": 294,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXOAIHARDWARE-27-EARBUDS",
+        "title": "What kind of device will Jony Ive and OpenAI announce?",
+        "position": "NO",
+        "contracts": 7,
+        "amount": 3.9,
+        "entryPrice": 0.4,
+        "currentPrice": 0.33,
+        "unrealizedPnL": -0.49,
+        "realizedPnL": -3.83,
+        "daysLeft": 294,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXRECSSNBER-26",
+        "title": "Will there be a recession in 2026?",
+        "position": "NO",
+        "contracts": 27,
+        "amount": 19.71,
+        "entryPrice": 0.73,
+        "currentPrice": 0.65,
+        "unrealizedPnL": -2.16,
+        "realizedPnL": 0.0,
+        "daysLeft": 324,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXBTCMAX100-26-JUNE",
+        "title": "Will Bitcoin be above $100000 by July 1, 2026 at 12:00AM ET?",
+        "position": "NO",
+        "contracts": 27,
+        "amount": 19.17,
+        "entryPrice": 0.71,
+        "currentPrice": 0.78,
+        "unrealizedPnL": 1.89,
+        "realizedPnL": 0.0,
+        "daysLeft": 294,
+        "status": "ACTIVE"
+      }
+    ],
+    "closed": [
+      {
+        "ticker": "KXIPOOPENAI-27JUN01",
+        "title": "OpenAI IPO Before Jun 2027",
+        "position": "YES",
+        "contracts": 79,
+        "amount": 48.66,
+        "revenue": 57.67,
+        "fees": 0,
+        "profit": 9.01,
+        "profitPct": 19,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Sold early at 73c to lock in profit."
+      },
+      {
+        "ticker": "KXGOVSHUT-26JAN31",
+        "title": "Government Shutdown Jan 31",
+        "position": "YES",
+        "contracts": 24,
+        "amount": 18.0,
+        "revenue": 24.0,
+        "fees": 0.32,
+        "profit": 5.68,
+        "profitPct": 32,
         "settlementDate": "2026-01-31",
         "status": "WON",
-        "result": "Shutdown started at midnight. Senate passed 71-29 but House not back until Monday."
+        "result": "Shutdown started at midnight."
       },
       {
-        "id": "shutdown-length",
+        "ticker": "KXGOVSHUTLENGTH-26FEB28-2D",
         "title": "Shutdown >2 Days",
-        "platform": "Kalshi",
         "position": "YES",
-        "amount": 50.0,
-        "entryPrice": 0.89,
-        "contracts": 56,
-        "payout": 56.0,
-        "profit": 6.0,
-        "profitPct": 12,
+        "contracts": 55,
+        "amount": 49.5,
+        "revenue": 55.0,
+        "fees": 0.35,
+        "profit": 5.15,
+        "profitPct": 10,
         "settlementDate": "2026-02-04",
         "status": "WON",
-        "result": "Shutdown lasted ~4 days. Trump signed funding bill Feb 4."
+        "result": "Shutdown lasted ~4 days."
       },
       {
-        "id": "superbowl-patriots",
-        "title": "Super Bowl LX Patriots Win",
-        "platform": "Polymarket",
+        "ticker": "KXKHAMENEIOUT-AKHA-26SEP01",
+        "title": "Khamenei Out by Sept 2026",
         "position": "YES",
+        "contracts": 36,
+        "amount": 14.04,
+        "revenue": 18.36,
+        "fees": 0.6,
+        "profit": 3.72,
+        "profitPct": 26,
+        "settlementDate": "2026-03-01",
+        "status": "WON",
+        "result": "Killed Feb 28 in US-Israeli airstrikes. Scalar settlement at 51c."
+      },
+      {
+        "ticker": "KXFEDDECISION-26MAR-H0",
+        "title": "Fed March 2026 Hold",
+        "position": "YES",
+        "contracts": 27,
+        "amount": 24.57,
+        "revenue": 26.46,
+        "fees": 0,
+        "profit": 1.89,
+        "profitPct": 8,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Sold at 98c. Near-lock profit."
+      },
+      {
+        "ticker": "KXOSCARPIC-26-SIN",
+        "title": "Oscars Best Picture: Sinners",
+        "position": "YES",
+        "contracts": 43,
+        "amount": 9.46,
+        "revenue": 9.46,
+        "fees": 0,
+        "profit": 0.0,
+        "profitPct": 0,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Sold at breakeven before ceremony."
+      },
+      {
+        "ticker": "KXBTC-26MAR1317-B67750",
+        "title": "Bitcoin NO $67,750 Mar 13",
+        "position": "NO",
+        "contracts": 4,
+        "amount": 3.92,
+        "revenue": 3.88,
+        "fees": 0,
+        "profit": -0.04,
+        "profitPct": -1,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Take profit at 97c."
+      },
+      {
+        "ticker": "KXOSCARPIC-26-ONE",
+        "title": "Oscars Best Picture: OBAA",
+        "position": "YES",
+        "contracts": 20,
         "amount": 15.0,
-        "entryPrice": 0.33,
-        "contracts": 45,
-        "payout": 0,
-        "profit": -15.0,
-        "profitPct": -100,
+        "revenue": 14.8,
+        "fees": 0,
+        "profit": -0.2,
+        "profitPct": -1,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Sold near breakeven before ceremony."
+      },
+      {
+        "ticker": "KXAAAGASM-26MAR31-3.50",
+        "title": "Gas NO >$3.50 March",
+        "position": "NO",
+        "contracts": 110,
+        "amount": 9.9,
+        "revenue": 5.5,
+        "fees": 0,
+        "profit": -4.4,
+        "profitPct": -44,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Stop-lossed by optimizer."
+      },
+      {
+        "ticker": "KXPAYROLLS-26JAN-T70000",
+        "title": "January Nonfarm Payrolls >70k",
+        "position": "YES",
+        "contracts": 49,
+        "amount": 23.63,
+        "revenue": 17.0,
+        "fees": 0.85,
+        "profit": -7.48,
+        "profitPct": -32,
+        "settlementDate": "2026-02-11",
+        "status": "WON",
+        "result": "Payrolls +130k. YES won. NO hedge lost. Net loss."
+      },
+      {
+        "ticker": "KXAAAGASM-26MAR31-4.00",
+        "title": "Gas NO >$4.00 March",
+        "position": "NO",
+        "contracts": 37,
+        "amount": 20.25,
+        "revenue": 11.84,
+        "fees": 0,
+        "profit": -8.41,
+        "profitPct": -42,
+        "settlementDate": "",
+        "status": "SOLD",
+        "result": "Stop-lossed by optimizer."
+      },
+      {
+        "ticker": "KXNCAAFGAME-26JAN01MISSUGA-UGA",
+        "title": "NCAA Football: UGA vs Miss",
+        "position": "YES",
+        "contracts": 14,
+        "amount": 9.24,
+        "revenue": 0.0,
+        "fees": 0.22,
+        "profit": -9.46,
+        "profitPct": -102,
+        "settlementDate": "2026-01-02",
+        "status": "LOST",
+        "result": "UGA lost."
+      },
+      {
+        "ticker": "KXU3-26JAN-T4.5",
+        "title": "January Unemployment >4.5%",
+        "position": "YES",
+        "contracts": 55,
+        "amount": 11.31,
+        "revenue": 0.0,
+        "fees": 0.63,
+        "profit": -11.94,
+        "profitPct": -106,
+        "settlementDate": "2026-02-11",
+        "status": "LOST",
+        "result": "Unemployment 4.3%, below 4.5% threshold."
+      },
+      {
+        "ticker": "KXSB-26-NE",
+        "title": "Super Bowl LX Patriots Win",
+        "position": "YES",
+        "contracts": 43,
+        "amount": 14.19,
+        "revenue": 0.0,
+        "fees": 0.67,
+        "profit": -14.86,
+        "profitPct": -105,
         "settlementDate": "2026-02-09",
         "status": "LOST",
         "result": "Patriots lost Super Bowl LX."
       },
       {
-        "id": "unemployment-jan26",
-        "title": "January 2026 Unemployment Rate >4.5%",
-        "platform": "Kalshi",
+        "ticker": "KXGDP-26JAN30-T3.5",
+        "title": "GDP Q4 2025 >3.5%",
         "position": "YES",
-        "amount": 10.0,
-        "entryPrice": 0.2,
-        "contracts": 50,
-        "payout": 0,
-        "profit": -10.0,
-        "profitPct": -100,
-        "settlementDate": "2026-02-11",
+        "contracts": 49,
+        "amount": 24.01,
+        "revenue": 0.0,
+        "fees": 0.86,
+        "profit": -24.87,
+        "profitPct": -104,
+        "settlementDate": "2026-02-20",
         "status": "LOST",
-        "result": "Unemployment came in at 4.3%, below the 4.5% threshold needed to win."
+        "result": "GDP 1.4% annualized, well below 3.5%."
       },
       {
-        "id": "payrolls-jan26",
-        "title": "January 2026 Nonfarm Payrolls <=70k",
-        "platform": "Kalshi",
-        "position": "NO on >70k",
-        "amount": 10.0,
-        "entryPrice": 0.41,
-        "contracts": 24.4,
-        "payout": 0,
-        "profit": -10.0,
-        "profitPct": -100,
-        "settlementDate": "2026-02-11",
-        "status": "LOST",
-        "result": "Payrolls came in at +130k, well above the 70k threshold. Consensus was wrong."
-      },
-      {
-        "id": "jobs-jan-70k",
-        "title": "January 2026 Jobs >70k",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 15.0,
-        "entryPrice": 0.43,
-        "contracts": 35,
-        "payout": 35.0,
-        "profit": 20.0,
-        "profitPct": 133,
-        "settlementDate": "2026-02-11",
-        "status": "WON",
-        "result": "Payrolls came in at +130k. Hedge bet paid off!"
-      },
-      {
-        "id": "cpi-jan-2.5",
+        "ticker": "KXCPIYOY-26JAN-T2.5",
         "title": "January CPI >2.5%",
-        "platform": "Kalshi",
         "position": "YES",
-        "amount": 25.0,
-        "entryPrice": 0.25,
-        "contracts": 100,
-        "payout": 0,
-        "profit": -25.0,
-        "profitPct": -100,
+        "contracts": 88,
+        "amount": 23.76,
+        "revenue": 0.0,
+        "fees": 1.22,
+        "profit": -24.98,
+        "profitPct": -105,
         "settlementDate": "2026-02-13",
         "status": "LOST",
-        "result": "CPI came in at 2.4%, below the 2.5% threshold. Inflation cooled more than expected."
+        "result": "CPI 2.4%, below 2.5% threshold."
       },
       {
-        "id": "gdp-q4-3.5",
-        "title": "GDP Q4 2025 >3.5%",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 25.0,
-        "entryPrice": 0.49,
-        "contracts": 51,
-        "payout": 0,
-        "profit": -25.0,
-        "profitPct": -100,
-        "settlementDate": "2026-02-27",
-        "status": "LOST",
-        "result": "GDP came in at 1.4% annualized, well below 3.5%. Government shutdown subtracted ~1pp but still far short."
-      },
-      {
-        "id": "khamenei-sept",
-        "title": "Khamenei Out by Sept 2026",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 15.0,
-        "entryPrice": 0.39,
-        "contracts": 38,
-        "payout": 38.0,
-        "profit": 23.0,
-        "profitPct": 153,
-        "settlementDate": "2026-02-28",
-        "status": "WON",
-        "result": "Khamenei killed Feb 28 in US-Israeli airstrikes on Tehran. Mojtaba Khamenei named successor Mar 8."
-      },
-      {
-        "id": "jony-ive-earbuds",
-        "title": "Jony Ive/OpenAI Device: Earbuds",
-        "platform": "Kalshi",
-        "position": "YES (Earbuds)",
-        "amount": 20.0,
-        "entryPrice": 0.75,
-        "exitPrice": 0.60,
-        "contracts": 26,
-        "payout": 15.6,
-        "profit": -4.4,
-        "profitPct": -22,
-        "settlementDate": "2027-01-01",
-        "status": "SOLD",
-        "result": "Cut losses at 60c after Tang Tan confirmed 'not in-ear device.' Recovered $15.60 to redeploy."
-      },
-      {
-        "id": "oscars-sinners",
-        "title": "Oscars Best Picture - Sinners",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 10.0,
-        "entryPrice": 0.22,
-        "currentPrice": 0.22,
-        "contracts": 43,
-        "potentialProfit": 33.0,
-        "profitPct": 330,
-        "unrealizedPnL": 0.0,
-        "settlementDate": "2026-03-15",
-        "status": "ACTIVE",
-        "reasoning": "4 DAYS: Sinners at 22%. Record 16 nominations. OBAA is 74% favorite. Long shot but huge payoff."
-      },
-      {
-        "id": "oscars-obaa",
-        "title": "Oscars Best Picture - One Battle After Another",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 15.0,
-        "entryPrice": 0.75,
-        "currentPrice": 0.74,
-        "contracts": 20,
-        "potentialProfit": 5.0,
-        "profitPct": 33,
-        "unrealizedPnL": -0.20,
-        "settlementDate": "2026-03-15",
-        "status": "ACTIVE",
-        "reasoning": "4 DAYS: Heavy favorite at 74%. Hedges our Sinners bet. One of these should win."
-      },
-      {
-        "id": "btc-no-100k-july",
-        "title": "Bitcoin NO $100K Before July 2026",
-        "platform": "Kalshi",
-        "position": "NO",
-        "amount": 20.0,
-        "entryPrice": 0.71,
-        "currentPrice": 0.78,
-        "contracts": 27,
-        "potentialProfit": 7.83,
-        "profitPct": 39,
-        "unrealizedPnL": 1.89,
-        "settlementDate": "2026-07-01",
-        "status": "ACTIVE",
-        "reasoning": "UP 10%: BTC at $71K, stuck in range. Needs +41% to hit $100K. Bear case intact."
-      },
-      {
-        "id": "gas-no-4-march",
-        "title": "Gas NO >$4.00 by March 31",
-        "platform": "Kalshi",
-        "position": "NO",
-        "amount": 20.35,
-        "entryPrice": 0.55,
-        "currentPrice": 0.50,
-        "contracts": 37,
-        "potentialProfit": 16.65,
-        "profitPct": 82,
-        "unrealizedPnL": -1.85,
-        "settlementDate": "2026-03-31",
-        "status": "ACTIVE",
-        "reasoning": "DOWN 9%: Gas at ~$3.90 national avg. Coin flip at 50/50. Settles in 20 days."
-      },
-      {
-        "id": "recession-no-2026",
-        "title": "NO NBER Recession in 2026",
-        "platform": "Kalshi",
-        "position": "NO",
-        "amount": 19.71,
-        "entryPrice": 0.73,
-        "currentPrice": 0.72,
-        "contracts": 27,
-        "potentialProfit": 7.29,
-        "profitPct": 37,
-        "unrealizedPnL": -0.27,
-        "settlementDate": "2026-12-31",
-        "status": "ACTIVE",
-        "reasoning": "FLAT: 72% no-recession odds. Economy slowing but not recessionary."
-      }
-    ],
-    "longTerm": [
-      {
-        "id": "openai-ipo",
-        "title": "OpenAI IPO Before Jun 1 2027",
-        "platform": "Kalshi",
-        "position": "YES",
-        "amount": 50.0,
-        "entryPrice": 0.61,
-        "contracts": 82,
-        "exitPrice": 0.69,
-        "payout": 56.9,
-        "profit": 6.9,
-        "profitPct": 14,
-        "settlementDate": "2027-06-01",
-        "status": "SOLD",
-        "result": "Exited early at $0.69 to lock in profits. +$6.90 (+14%)"
-      },
-      {
-        "id": "jony-ive",
+        "ticker": "KXOAIHARDWARE-27-CLIPON",
         "title": "Jony Ive Device: Clip-on",
-        "platform": "Kalshi",
-        "position": "Clip-on",
-        "amount": 50.0,
-        "entryPrice": 0.42,
-        "contracts": 119,
-        "exitPrice": 0.08,
-        "payout": 9.52,
-        "profit": -40.48,
-        "profitPct": -81,
-        "settlementDate": "2027-01-01",
+        "position": "YES",
+        "contracts": 113,
+        "amount": 47.91,
+        "revenue": 21.6,
+        "fees": 0,
+        "profit": -26.31,
+        "profitPct": -55,
+        "settlementDate": "",
         "status": "SOLD",
-        "result": "Cut losses. Device confirmed as neck-worn form factor, not clip-on."
+        "result": "Cut losses. Device confirmed as neck-worn, not clip-on."
       },
       {
-        "id": "rate-cuts-0",
-        "title": "Fed 0 Rate Cuts in 2026",
-        "platform": "Kalshi",
-        "position": "YES (0 cuts)",
-        "amount": 11.88,
-        "entryPrice": 0.22,
-        "currentPrice": 0.21,
-        "contracts": 54,
-        "potentialProfit": 42.12,
-        "profitPct": 355,
-        "unrealizedPnL": -0.54,
-        "settlementDate": "2026-12-31",
-        "status": "ACTIVE",
-        "reasoning": "NEW: Part of 0-1-2 cut spread. If Fed holds all year, 4.5x return. Covers hawkish scenario."
-      },
-      {
-        "id": "rate-cuts-2026-1",
-        "title": "Exactly 1 Fed Rate Cut in 2026",
-        "platform": "Kalshi",
-        "position": "YES (1 cut)",
-        "amount": 40.0,
-        "entryPrice": 0.21,
-        "currentPrice": 0.24,
-        "contracts": 231,
-        "potentialProfit": 191.0,
-        "profitPct": 478,
-        "unrealizedPnL": 6.93,
-        "settlementDate": "2026-12-31",
-        "status": "ACTIVE",
-        "reasoning": "CORE BET: 231 contracts. Blended entry 21c. If Fed cuts once in H2 2026, payout is $231. Biggest asymmetric position."
-      },
-      {
-        "id": "rate-cuts-2",
-        "title": "Exactly 2 Fed Rate Cuts in 2026",
-        "platform": "Kalshi",
-        "position": "YES (2 cuts)",
-        "amount": 9.84,
-        "entryPrice": 0.24,
-        "currentPrice": 0.23,
-        "contracts": 41,
-        "potentialProfit": 31.16,
-        "profitPct": 317,
-        "unrealizedPnL": -0.41,
-        "settlementDate": "2026-12-31",
-        "status": "ACTIVE",
-        "reasoning": "NEW: Part of 0-1-2 cut spread. If Fed cuts twice, 4.2x return. Covers moderate dovish scenario."
-      }
-    ],
-    "watchlist": [
-      {
-        "id": "fed-june-cut",
-        "title": "Fed Rate Cut by June 2026",
-        "platform": "Kalshi",
-        "currentPrice": null,
-        "marketProb": null,
-        "reasoning": "Already covered via rate cuts spread. March FOMC dot plot will signal timing.",
-        "recommendation": "COVERED by T0/T1/T2 spread"
-      },
-      {
-        "id": "btc-bounce",
-        "title": "Bitcoin $80K+ Before June",
-        "platform": "Kalshi",
-        "currentPrice": null,
-        "marketProb": null,
-        "reasoning": "BTC at $71K. If it breaks $73K, could run. Would pressure our NO $100K bet.",
-        "recommendation": "MONITOR - hedge if BTC > $80K"
+        "ticker": "KXUFSD-25-DEC31",
+        "title": "US Federal Shutdown Dec 31",
+        "position": "YES",
+        "contracts": 594,
+        "amount": 46.9,
+        "revenue": 0.0,
+        "fees": 3.03,
+        "profit": -49.93,
+        "profitPct": -106,
+        "settlementDate": "2026-01-01",
+        "status": "LOST",
+        "result": "No shutdown. Full loss."
       }
     ]
   },
-  "scenarios": [
+  "history": [
     {
-      "name": "Best Case (Rate Spread + BTC + Oscars Win)",
-      "emoji": "target",
-      "totalProfit": 195.0,
-      "finalBankroll": 435.0,
-      "returnPct": 81
+      "ts": "2026-03-12T08:12:15",
+      "total": 154.47,
+      "cash": 0.49,
+      "deployed": 153.98,
+      "pnl": -5.82
     },
     {
-      "name": "Likely Case (1 Rate Cut + BTC NO Wins)",
-      "emoji": "chart",
-      "totalProfit": 125.0,
-      "finalBankroll": 365.0,
-      "returnPct": 52
+      "ts": "2026-03-12T08:27:18",
+      "total": 153.61,
+      "cash": 0.49,
+      "deployed": 153.12,
+      "pnl": -6.68
     },
     {
-      "name": "Current Mark-to-Market",
-      "emoji": "lock",
-      "totalProfit": -74.02,
-      "finalBankroll": 165.98,
-      "returnPct": -31
+      "ts": "2026-03-12T08:42:20",
+      "total": 156.89,
+      "cash": 0.49,
+      "deployed": 156.4,
+      "pnl": -3.4
     },
     {
-      "name": "Worst Case (All Active Lose)",
-      "emoji": "warning",
-      "totalProfit": -193.55,
-      "finalBankroll": 46.45,
-      "returnPct": -81
-    }
-  ],
-  "opportunities": [
-    {
-      "id": "rate-cuts-spread-info",
-      "title": "Rate Cuts 0-1-2 Spread (DEPLOYED)",
-      "action": "HOLD: Spread covers 0, 1, or 2 cuts (~68% combined probability)",
-      "currentPrice": null,
-      "targetPrice": 1.0,
-      "reasoning": "326 total contracts across T0 (54), T1 (231), T2 (41). If any one hits, 3-5x return on that leg. Combined cost $61.72.",
-      "catalyst": "March FOMC dot plot Mar 18, CPI releases, employment data",
-      "risk": "Fed cuts 3+ times (only ~15% probability)",
-      "suggestedSize": 0
-    }
-  ],
-  "upcomingEvents": [
-    {
-      "date": "2026-02-27",
-      "description": "GDP Q4 Released: 1.4% annualized. GDP >3.5% bet LOST (-$25).",
-      "highlight": false
+      "ts": "2026-03-12T09:42:27",
+      "total": 156.49,
+      "cash": 0.49,
+      "deployed": 156.0,
+      "pnl": -3.8
     },
     {
-      "date": "2026-02-28",
-      "description": "Khamenei killed in US-Israeli airstrikes. Khamenei Out bet WON (+$23).",
-      "highlight": false
+      "ts": "2026-03-12T09:46:23.828659",
+      "total": 156.06,
+      "cash": 0.49,
+      "deployed": 155.57,
+      "pnl": 0.0
     },
     {
-      "date": "2026-03-11",
-      "description": "Portfolio rebalance: Sold Earbuds (-$4.40). Deployed $44 into Rate Cuts 0/1/2 spread.",
-      "highlight": true
+      "ts": "2026-03-12T09:47:35.999044",
+      "total": 156.49,
+      "cash": 0.49,
+      "deployed": 156.0,
+      "pnl": -56.84
     },
     {
-      "date": "2026-03-15",
-      "description": "98th Academy Awards - Oscars Best Picture settles (Sinners 22% / OBAA 74%)"
+      "ts": "2026-03-12T09:57:31.392912",
+      "total": 156.76,
+      "cash": 0.49,
+      "deployed": 156.27,
+      "pnl": -56.57
     },
     {
-      "date": "2026-03-18",
-      "description": "March FOMC Meeting - Fed rate decision. Key catalyst for rate cut bets."
+      "ts": "2026-03-12T10:12:33.519062",
+      "total": 156.76,
+      "cash": 0.49,
+      "deployed": 156.27,
+      "pnl": -56.57
     },
     {
-      "date": "2026-03-31",
-      "description": "Gas >$4 bet settles (currently 50/50 at $3.90 national avg)"
+      "ts": "2026-03-12T10:27:35.523569",
+      "total": 155.63,
+      "cash": 0.49,
+      "deployed": 155.14,
+      "pnl": -57.7
     },
     {
-      "date": "2026-07-01",
-      "description": "Bitcoin NO $100K bet settles (BTC currently $71K)"
+      "ts": "2026-03-12T10:42:37.702671",
+      "total": 156.06,
+      "cash": 0.49,
+      "deployed": 155.57,
+      "pnl": -57.27
     },
     {
-      "date": "2026-12-31",
-      "description": "Rate Cuts spread settles: 0 cuts (54 contracts) / 1 cut (231 contracts) / 2 cuts (41 contracts). NO Recession bet settles."
+      "ts": "2026-03-12T10:57:39.890140",
+      "total": 158.8,
+      "cash": 0.49,
+      "deployed": 158.31,
+      "pnl": -54.53
     },
     {
-      "date": "2027-01-01",
-      "description": "Jony Ive device Clip-on bet settled (SOLD at loss)."
+      "ts": "2026-03-12T11:12:42.035850",
+      "total": 157.83,
+      "cash": 0.49,
+      "deployed": 157.34,
+      "pnl": -55.5
+    },
+    {
+      "ts": "2026-03-12T11:27:44.315752",
+      "total": 158.26,
+      "cash": 0.49,
+      "deployed": 157.77,
+      "pnl": -55.07
+    },
+    {
+      "ts": "2026-03-12T11:42:46.468425",
+      "total": 158.98,
+      "cash": 0.49,
+      "deployed": 158.49,
+      "pnl": -54.35
+    },
+    {
+      "ts": "2026-03-12T11:57:48.661205",
+      "total": 159.18,
+      "cash": 0.49,
+      "deployed": 158.69,
+      "pnl": -54.15
+    },
+    {
+      "ts": "2026-03-12T12:12:50.758330",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T12:27:53.069825",
+      "total": 159.99,
+      "cash": 0.49,
+      "deployed": 159.5,
+      "pnl": -53.34
+    },
+    {
+      "ts": "2026-03-12T12:42:55.152866",
+      "total": 159.45,
+      "cash": 0.49,
+      "deployed": 158.96,
+      "pnl": -53.88
+    },
+    {
+      "ts": "2026-03-12T12:57:58.330735",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T13:13:00.520638",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T13:28:02.493825",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T13:43:04.631366",
+      "total": 159.18,
+      "cash": 0.49,
+      "deployed": 158.69,
+      "pnl": -54.15
+    },
+    {
+      "ts": "2026-03-12T13:58:06.908905",
+      "total": 158.75,
+      "cash": 0.49,
+      "deployed": 158.26,
+      "pnl": -54.58
+    },
+    {
+      "ts": "2026-03-12T14:13:08.905260",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T14:28:11.123110",
+      "total": 158.4,
+      "cash": 0.49,
+      "deployed": 157.91,
+      "pnl": -54.93
+    },
+    {
+      "ts": "2026-03-12T14:43:13.137284",
+      "total": 158.91,
+      "cash": 0.49,
+      "deployed": 158.42,
+      "pnl": -54.42
+    },
+    {
+      "ts": "2026-03-12T14:58:15.189472",
+      "total": 158.64,
+      "cash": 0.49,
+      "deployed": 158.15,
+      "pnl": -54.69
+    },
+    {
+      "ts": "2026-03-12T15:13:17.567044",
+      "total": 158.21,
+      "cash": 0.49,
+      "deployed": 157.72,
+      "pnl": -55.12
+    },
+    {
+      "ts": "2026-03-12T15:28:19.619421",
+      "total": 159.07,
+      "cash": 0.49,
+      "deployed": 158.58,
+      "pnl": -54.26
+    },
+    {
+      "ts": "2026-03-12T15:43:21.666308",
+      "total": 159.07,
+      "cash": 0.49,
+      "deployed": 158.58,
+      "pnl": -54.26
+    },
+    {
+      "ts": "2026-03-12T15:58:23.767442",
+      "total": 159.14,
+      "cash": 0.49,
+      "deployed": 158.65,
+      "pnl": -54.19
+    },
+    {
+      "ts": "2026-03-12T16:13:25.920487",
+      "total": 159.88,
+      "cash": 0.49,
+      "deployed": 159.39,
+      "pnl": -53.45
+    },
+    {
+      "ts": "2026-03-12T16:28:28.091675",
+      "total": 159.18,
+      "cash": 0.49,
+      "deployed": 158.69,
+      "pnl": -54.15
+    },
+    {
+      "ts": "2026-03-12T16:43:30.148263",
+      "total": 158.53,
+      "cash": 0.49,
+      "deployed": 158.04,
+      "pnl": -54.8
+    },
+    {
+      "ts": "2026-03-12T16:58:32.250558",
+      "total": 161.29,
+      "cash": 0.49,
+      "deployed": 160.8,
+      "pnl": -52.04
+    },
+    {
+      "ts": "2026-03-12T17:13:34.240876",
+      "total": 160.75,
+      "cash": 0.49,
+      "deployed": 160.26,
+      "pnl": -52.58
+    },
+    {
+      "ts": "2026-03-12T17:28:36.331943",
+      "total": 161.02,
+      "cash": 0.49,
+      "deployed": 160.53,
+      "pnl": -52.31
+    },
+    {
+      "ts": "2026-03-12T17:43:38.351376",
+      "total": 162.86,
+      "cash": 0.49,
+      "deployed": 162.37,
+      "pnl": -50.47
+    },
+    {
+      "ts": "2026-03-12T17:58:41.710364",
+      "total": 161.02,
+      "cash": 0.49,
+      "deployed": 160.53,
+      "pnl": -52.31
+    },
+    {
+      "ts": "2026-03-12T18:13:43.764171",
+      "total": 160.75,
+      "cash": 0.49,
+      "deployed": 160.26,
+      "pnl": -52.58
+    },
+    {
+      "ts": "2026-03-12T18:28:45.978898",
+      "total": 160.67,
+      "cash": 0.49,
+      "deployed": 160.18,
+      "pnl": -52.66
+    },
+    {
+      "ts": "2026-03-12T18:43:47.996918",
+      "total": 159.39,
+      "cash": 0.49,
+      "deployed": 158.9,
+      "pnl": -53.94
+    },
+    {
+      "ts": "2026-03-12T18:58:50.148676",
+      "total": 159.32,
+      "cash": 0.49,
+      "deployed": 158.83,
+      "pnl": -54.01
+    },
+    {
+      "ts": "2026-03-12T19:13:52.390900",
+      "total": 159.32,
+      "cash": 0.49,
+      "deployed": 158.83,
+      "pnl": -54.01
+    },
+    {
+      "ts": "2026-03-12T19:28:54.477386",
+      "total": 159.59,
+      "cash": 0.49,
+      "deployed": 159.1,
+      "pnl": -53.74
+    },
+    {
+      "ts": "2026-03-12T19:44:05.616471",
+      "total": 161.23,
+      "cash": 0.49,
+      "deployed": 160.74,
+      "pnl": -52.1
+    },
+    {
+      "ts": "2026-03-12T19:48:07.567960",
+      "total": 161.59,
+      "cash": 0.49,
+      "deployed": 161.1,
+      "pnl": -51.74
+    },
+    {
+      "ts": "2026-03-12T19:50:55.464801",
+      "total": 311.86,
+      "cash": 150.49,
+      "deployed": 161.37,
+      "pnl": 98.53
+    },
+    {
+      "ts": "2026-03-12T19:51:36.952104",
+      "total": 311.86,
+      "cash": 150.49,
+      "deployed": 161.37,
+      "pnl": 98.53
+    },
+    {
+      "ts": "2026-03-12T19:58:21.381911",
+      "total": 310.44,
+      "cash": 173.96,
+      "deployed": 136.48,
+      "pnl": 97.11
+    },
+    {
+      "ts": "2026-03-12T19:58:52.834302",
+      "total": 310.44,
+      "cash": 173.96,
+      "deployed": 136.48,
+      "pnl": 97.11
+    },
+    {
+      "ts": "2026-03-12T19:59:25.065067",
+      "total": 310.44,
+      "cash": 173.96,
+      "deployed": 136.48,
+      "pnl": 97.11
+    },
+    {
+      "ts": "2026-03-12T19:59:39.452216",
+      "total": 310.44,
+      "cash": 173.96,
+      "deployed": 136.48,
+      "pnl": 97.11
+    },
+    {
+      "ts": "2026-03-12T20:00:11.134379",
+      "total": 304.2,
+      "cash": 143.22,
+      "deployed": 160.98,
+      "pnl": 90.87
+    },
+    {
+      "ts": "2026-03-12T20:14:48.200511",
+      "total": 305.03,
+      "cash": 121.74,
+      "deployed": 183.29,
+      "pnl": 91.7
+    },
+    {
+      "ts": "2026-03-12T20:19:37.158771",
+      "total": 302.06,
+      "cash": 125.61,
+      "deployed": 176.45,
+      "pnl": 88.73
+    },
+    {
+      "ts": "2026-03-12T20:30:12.835228",
+      "total": 302.06,
+      "cash": 125.61,
+      "deployed": 176.45,
+      "pnl": 88.73
+    },
+    {
+      "ts": "2026-03-12T20:45:36.719424",
+      "total": 296.05,
+      "cash": 124.82,
+      "deployed": 171.23,
+      "pnl": 82.72
+    },
+    {
+      "ts": "2026-03-12T21:01:01.577245",
+      "total": 296.05,
+      "cash": 124.82,
+      "deployed": 171.23,
+      "pnl": 82.72
+    },
+    {
+      "ts": "2026-03-12T21:16:28.255450",
+      "total": 295.33,
+      "cash": 125.07,
+      "deployed": 170.26,
+      "pnl": 82.0
     }
   ]
 }

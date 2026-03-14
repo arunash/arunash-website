@@ -11,18 +11,18 @@
       "deployed": 105.38
     },
     "performance": {
-      "totalCapitalIn": 394.78,
-      "realizedProfit": -106.8,
+      "totalCapitalIn": 347.88,
+      "realizedProfit": -56.87,
       "unrealizedPnL": -3.79,
       "currentValue": 250.13,
-      "totalReturnPct": -36.6
+      "totalReturnPct": -28.1
     },
     "stats": {
       "activeBets": 8,
-      "settledBets": 15,
+      "settledBets": 14,
       "wins": 4,
-      "losses": 4,
-      "winRate": 27
+      "losses": 3,
+      "winRate": 57
     }
   },
   "positions": {
@@ -320,20 +320,6 @@
         "settlementDate": "2026-02-13",
         "status": "LOST",
         "result": "CPI 2.4%, below 2.5% threshold."
-      },
-      {
-        "ticker": "KXUFSD-25-DEC31",
-        "title": "US Federal Shutdown Dec 31",
-        "position": "YES",
-        "contracts": 594,
-        "amount": 46.9,
-        "revenue": 0.0,
-        "fees": 3.03,
-        "profit": -49.93,
-        "profitPct": -106,
-        "settlementDate": "2026-01-01",
-        "status": "LOST",
-        "result": "No shutdown. Full loss."
       }
     ]
   },

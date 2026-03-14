@@ -1,102 +1,90 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-12T21:31:47.683697",
+    "lastUpdated": "2026-03-13T19:06:21.154435",
     "day": 46,
     "dataSource": "Kalshi API (reconciled)"
   },
   "portfolio": {
     "workingCapital": {
-      "total": 294.4,
-      "available": 125.41,
-      "deployed": 168.99
+      "total": 250.13,
+      "available": 144.75,
+      "deployed": 105.38
     },
     "performance": {
-      "totalCapitalIn": 466.12,
-      "realizedProfit": -157.43,
-      "unrealizedPnL": 0.85,
-      "currentValue": 294.4,
-      "totalReturnPct": -36.9
+      "totalCapitalIn": 394.78,
+      "realizedProfit": -106.8,
+      "unrealizedPnL": -3.79,
+      "currentValue": 250.13,
+      "totalReturnPct": -36.6
     },
     "stats": {
-      "activeBets": 9,
-      "settledBets": 18,
-      "wins": 7,
-      "losses": 11,
-      "winRate": 39
+      "activeBets": 8,
+      "settledBets": 15,
+      "wins": 4,
+      "losses": 4,
+      "winRate": 27
     }
   },
   "positions": {
     "active": [
       {
-        "ticker": "KXAAAGASM-26MAR31-3.45",
-        "title": "Will average **gas prices** be above $3.45?",
+        "ticker": "KXIPOOPENAI-26MAY01",
+        "title": "When will OpenAI IPO?",
+        "position": "YES",
+        "contracts": 16,
+        "amount": 1.3,
+        "entryPrice": 0.05,
+        "currentPrice": 0.0,
+        "unrealizedPnL": -0.8,
+        "daysLeft": 48,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXIMPEACH-27-JAN01",
+        "title": "Will the President be impeached before Jan 1, 2027?",
+        "position": "YES",
+        "contracts": 13,
+        "amount": 1.82,
+        "entryPrice": 0.14,
+        "currentPrice": 0.13,
+        "unrealizedPnL": -0.13,
+        "daysLeft": 293,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXFEDDECISION-26APR-H0",
+        "title": "Will the Federal Reserve Hike rates by 0bps at their April 2",
         "position": "NO",
-        "contracts": 79,
-        "amount": 9.9,
-        "entryPrice": 0.09,
-        "currentPrice": 0.04,
-        "unrealizedPnL": -3.95,
-        "daysLeft": 17,
+        "contracts": 13,
+        "amount": 1.04,
+        "entryPrice": 0.08,
+        "currentPrice": 0.07,
+        "unrealizedPnL": -0.13,
+        "daysLeft": 46,
+        "status": "ACTIVE"
+      },
+      {
+        "ticker": "KXFEDDECISION-26JUN-C26",
+        "title": "Will the Federal Reserve Cut rates by >25bps at their June 2",
+        "position": "YES",
+        "contracts": 49,
+        "amount": 2.94,
+        "entryPrice": 0.06,
+        "currentPrice": 0.05,
+        "unrealizedPnL": -0.49,
+        "daysLeft": 95,
         "status": "ACTIVE"
       },
       {
         "ticker": "KXAAAGASM-26MAR31-3.60",
         "title": "Will average **gas prices** be above $3.60?",
-        "position": "NO",
-        "contracts": 76,
-        "amount": 9.88,
-        "entryPrice": 0.13,
-        "currentPrice": 0.08,
-        "unrealizedPnL": -3.8,
+        "position": "YES",
+        "contracts": 65,
+        "amount": 60.05,
+        "entryPrice": 0.92,
+        "currentPrice": 0.9,
+        "unrealizedPnL": -1.55,
         "daysLeft": 17,
-        "status": "ACTIVE"
-      },
-      {
-        "ticker": "KXBTC-26MAR1317-B68750",
-        "title": "Bitcoin price range  on Mar 13, 2026?: $68,500 to 68,999.99",
-        "position": "NO",
-        "contracts": 24,
-        "amount": 23.52,
-        "entryPrice": 0.98,
-        "currentPrice": 0.96,
-        "unrealizedPnL": -0.48,
-        "daysLeft": 0,
-        "status": "ACTIVE"
-      },
-      {
-        "ticker": "KXRATECUTCOUNT-26DEC31-T0",
-        "title": "Will the Fed cut rates 0 times?: 0:: 0 bps",
-        "position": "YES",
-        "contracts": 92,
-        "amount": 19.86,
-        "entryPrice": 0.22,
-        "currentPrice": 0.24,
-        "unrealizedPnL": 2.22,
-        "daysLeft": 294,
-        "status": "ACTIVE"
-      },
-      {
-        "ticker": "KXRATECUTCOUNT-26DEC31-T1",
-        "title": "Will the Fed cut rates 1 times?: 1:: 25 bps",
-        "position": "YES",
-        "contracts": 231,
-        "amount": 48.87,
-        "entryPrice": 0.21,
-        "currentPrice": 0.25,
-        "unrealizedPnL": 8.88,
-        "daysLeft": 294,
-        "status": "ACTIVE"
-      },
-      {
-        "ticker": "KXRATECUTCOUNT-26DEC31-T2",
-        "title": "Will the Fed cut rates 2 times?: 2:: 50 bps",
-        "position": "YES",
-        "contracts": 51,
-        "amount": 12.34,
-        "entryPrice": 0.24,
-        "currentPrice": 0.22,
-        "unrealizedPnL": -1.12,
-        "daysLeft": 294,
         "status": "ACTIVE"
       },
       {
@@ -106,9 +94,9 @@
         "contracts": 7,
         "amount": 3.9,
         "entryPrice": 0.4,
-        "currentPrice": 0.31,
-        "unrealizedPnL": -0.63,
-        "daysLeft": 294,
+        "currentPrice": 0.34,
+        "unrealizedPnL": -0.42,
+        "daysLeft": 293,
         "status": "ACTIVE"
       },
       {
@@ -118,9 +106,9 @@
         "contracts": 27,
         "amount": 19.71,
         "entryPrice": 0.73,
-        "currentPrice": 0.65,
-        "unrealizedPnL": -2.16,
-        "daysLeft": 324,
+        "currentPrice": 0.64,
+        "unrealizedPnL": -2.43,
+        "daysLeft": 323,
         "status": "ACTIVE"
       },
       {
@@ -130,9 +118,9 @@
         "contracts": 27,
         "amount": 19.17,
         "entryPrice": 0.71,
-        "currentPrice": 0.78,
-        "unrealizedPnL": 1.89,
-        "daysLeft": 294,
+        "currentPrice": 0.79,
+        "unrealizedPnL": 2.16,
+        "daysLeft": 293,
         "status": "ACTIVE"
       }
     ],
@@ -292,20 +280,6 @@
         "result": "Stop-lossed by optimizer."
       },
       {
-        "ticker": "KXNCAAFGAME-26JAN01MISSUGA-UGA",
-        "title": "NCAA Football: UGA vs Miss",
-        "position": "YES",
-        "contracts": 14,
-        "amount": 9.24,
-        "revenue": 0.0,
-        "fees": 0.22,
-        "profit": -9.46,
-        "profitPct": -102,
-        "settlementDate": "2026-01-02",
-        "status": "LOST",
-        "result": "UGA lost."
-      },
-      {
         "ticker": "KXU3-26JAN-T4.5",
         "title": "January Unemployment >4.5%",
         "position": "YES",
@@ -318,20 +292,6 @@
         "settlementDate": "2026-02-11",
         "status": "LOST",
         "result": "Unemployment 4.3%, below 4.5% threshold."
-      },
-      {
-        "ticker": "KXSB-26-NE",
-        "title": "Super Bowl LX Patriots Win",
-        "position": "YES",
-        "contracts": 43,
-        "amount": 14.19,
-        "revenue": 0.0,
-        "fees": 0.67,
-        "profit": -14.86,
-        "profitPct": -105,
-        "settlementDate": "2026-02-09",
-        "status": "LOST",
-        "result": "Patriots lost Super Bowl LX."
       },
       {
         "ticker": "KXGDP-26JAN30-T3.5",
@@ -360,20 +320,6 @@
         "settlementDate": "2026-02-13",
         "status": "LOST",
         "result": "CPI 2.4%, below 2.5% threshold."
-      },
-      {
-        "ticker": "KXOAIHARDWARE-27-CLIPON",
-        "title": "Jony Ive Device: Clip-on",
-        "position": "YES",
-        "contracts": 113,
-        "amount": 47.91,
-        "revenue": 21.6,
-        "fees": 0,
-        "profit": -26.31,
-        "profitPct": -55,
-        "settlementDate": "",
-        "status": "SOLD",
-        "result": "Cut losses. Device confirmed as neck-worn, not clip-on."
       },
       {
         "ticker": "KXUFSD-25-DEC31",
@@ -818,6 +764,643 @@
       "cash": 125.41,
       "deployed": 168.99,
       "pnl": 0.85
+    },
+    {
+      "ts": "2026-03-12T21:47:18.078652",
+      "total": 296.24,
+      "cash": 125.41,
+      "deployed": 170.83,
+      "pnl": 3.13
+    },
+    {
+      "ts": "2026-03-12T22:02:41.154486",
+      "total": 296.48,
+      "cash": 125.41,
+      "deployed": 171.07,
+      "pnl": 2.24
+    },
+    {
+      "ts": "2026-03-12T22:04:25.306999",
+      "total": 294.36,
+      "cash": 117.85,
+      "deployed": 176.51,
+      "pnl": 6.97
+    },
+    {
+      "ts": "2026-03-12T22:11:04.625002",
+      "total": 287.78,
+      "cash": 150.94,
+      "deployed": 136.84,
+      "pnl": 1.78
+    },
+    {
+      "ts": "2026-03-12T22:18:10.093924",
+      "total": 287.8,
+      "cash": 150.98,
+      "deployed": 136.82,
+      "pnl": 1.98
+    },
+    {
+      "ts": "2026-03-12T22:33:36.043195",
+      "total": 283.66,
+      "cash": 150.17,
+      "deployed": 133.49,
+      "pnl": -0.55
+    },
+    {
+      "ts": "2026-03-12T22:49:01.664241",
+      "total": 283.64,
+      "cash": 148.55,
+      "deployed": 135.09,
+      "pnl": 0.9
+    },
+    {
+      "ts": "2026-03-12T23:04:30.004558",
+      "total": 283.14,
+      "cash": 120.86,
+      "deployed": 162.28,
+      "pnl": -0.28
+    },
+    {
+      "ts": "2026-03-12T23:19:57.687734",
+      "total": 281.51,
+      "cash": 113.9,
+      "deployed": 167.61,
+      "pnl": -2.84
+    },
+    {
+      "ts": "2026-03-12T23:35:24.871595",
+      "total": 286.43,
+      "cash": 113.9,
+      "deployed": 172.53,
+      "pnl": -2.53
+    },
+    {
+      "ts": "2026-03-12T23:50:52.535001",
+      "total": 286.43,
+      "cash": 113.9,
+      "deployed": 172.53,
+      "pnl": -2.53
+    },
+    {
+      "ts": "2026-03-13T00:06:25.887825",
+      "total": 279.32,
+      "cash": 144.92,
+      "deployed": 134.4,
+      "pnl": 0.35
+    },
+    {
+      "ts": "2026-03-13T00:21:54.593861",
+      "total": 278.35,
+      "cash": 168.69,
+      "deployed": 109.66,
+      "pnl": 2.58
+    },
+    {
+      "ts": "2026-03-13T00:37:21.955710",
+      "total": 276.34,
+      "cash": 107.0,
+      "deployed": 169.34,
+      "pnl": 0.41
+    },
+    {
+      "ts": "2026-03-13T00:52:50.255501",
+      "total": 276.34,
+      "cash": 103.64,
+      "deployed": 172.7,
+      "pnl": 1.0
+    },
+    {
+      "ts": "2026-03-13T01:08:17.059301",
+      "total": 275.6,
+      "cash": 154.05,
+      "deployed": 121.55,
+      "pnl": 1.63
+    },
+    {
+      "ts": "2026-03-13T01:23:42.942469",
+      "total": 275.33,
+      "cash": 148.87,
+      "deployed": 126.46,
+      "pnl": 5.78
+    },
+    {
+      "ts": "2026-03-13T01:39:09.626551",
+      "total": 274.0,
+      "cash": 109.92,
+      "deployed": 164.08,
+      "pnl": 5.79
+    },
+    {
+      "ts": "2026-03-13T01:54:38.375172",
+      "total": 273.9,
+      "cash": 109.92,
+      "deployed": 163.98,
+      "pnl": 5.96
+    },
+    {
+      "ts": "2026-03-13T02:10:05.459684",
+      "total": 274.58,
+      "cash": 109.92,
+      "deployed": 164.66,
+      "pnl": 6.03
+    },
+    {
+      "ts": "2026-03-13T02:25:32.220795",
+      "total": 270.17,
+      "cash": 108.26,
+      "deployed": 161.91,
+      "pnl": 5.76
+    },
+    {
+      "ts": "2026-03-13T02:40:58.281710",
+      "total": 270.17,
+      "cash": 108.26,
+      "deployed": 161.91,
+      "pnl": 5.89
+    },
+    {
+      "ts": "2026-03-13T02:56:25.071153",
+      "total": 270.17,
+      "cash": 108.26,
+      "deployed": 161.91,
+      "pnl": 6.42
+    },
+    {
+      "ts": "2026-03-13T03:11:51.011410",
+      "total": 270.14,
+      "cash": 129.77,
+      "deployed": 140.37,
+      "pnl": 6.61
+    },
+    {
+      "ts": "2026-03-13T03:27:19.560660",
+      "total": 269.37,
+      "cash": 69.64,
+      "deployed": 199.73,
+      "pnl": 2.95
+    },
+    {
+      "ts": "2026-03-13T03:42:45.848104",
+      "total": 271.14,
+      "cash": 69.64,
+      "deployed": 201.5,
+      "pnl": 2.18
+    },
+    {
+      "ts": "2026-03-13T03:58:12.308554",
+      "total": 270.65,
+      "cash": 86.99,
+      "deployed": 183.66,
+      "pnl": 2.23
+    },
+    {
+      "ts": "2026-03-13T04:13:38.268800",
+      "total": 270.38,
+      "cash": 86.99,
+      "deployed": 183.39,
+      "pnl": 2.23
+    },
+    {
+      "ts": "2026-03-13T04:29:02.517686",
+      "total": 270.42,
+      "cash": 100.71,
+      "deployed": 169.71,
+      "pnl": 3.13
+    },
+    {
+      "ts": "2026-03-13T04:44:26.687685",
+      "total": 270.42,
+      "cash": 100.71,
+      "deployed": 169.71,
+      "pnl": 2.86
+    },
+    {
+      "ts": "2026-03-13T04:59:50.715912",
+      "total": 269.51,
+      "cash": 100.07,
+      "deployed": 169.44,
+      "pnl": 2.93
+    },
+    {
+      "ts": "2026-03-13T05:15:15.363334",
+      "total": 269.51,
+      "cash": 100.07,
+      "deployed": 169.44,
+      "pnl": 2.93
+    },
+    {
+      "ts": "2026-03-13T05:30:41.647156",
+      "total": 268.06,
+      "cash": 98.65,
+      "deployed": 169.41,
+      "pnl": -1.71
+    },
+    {
+      "ts": "2026-03-13T05:46:18.172207",
+      "total": 264.57,
+      "cash": 102.94,
+      "deployed": 161.63,
+      "pnl": 2.89
+    },
+    {
+      "ts": "2026-03-13T06:01:43.720675",
+      "total": 264.3,
+      "cash": 102.94,
+      "deployed": 161.36,
+      "pnl": 2.24
+    },
+    {
+      "ts": "2026-03-13T06:17:08.229160",
+      "total": 264.68,
+      "cash": 102.94,
+      "deployed": 161.74,
+      "pnl": 2.51
+    },
+    {
+      "ts": "2026-03-13T06:32:33.129490",
+      "total": 263.65,
+      "cash": 95.55,
+      "deployed": 168.1,
+      "pnl": -0.28
+    },
+    {
+      "ts": "2026-03-13T06:47:50.411823",
+      "total": 260.73,
+      "cash": 101.45,
+      "deployed": 159.28,
+      "pnl": 3.54
+    },
+    {
+      "ts": "2026-03-13T06:48:22.827277",
+      "total": 260.69,
+      "cash": 92.52,
+      "deployed": 168.17,
+      "pnl": 3.45
+    },
+    {
+      "ts": "2026-03-13T07:03:19.302228",
+      "total": 260.39,
+      "cash": 78.71,
+      "deployed": 181.68,
+      "pnl": 3.31
+    },
+    {
+      "ts": "2026-03-13T07:18:43.511322",
+      "total": 257.43,
+      "cash": 96.83,
+      "deployed": 160.6,
+      "pnl": 4.15
+    },
+    {
+      "ts": "2026-03-13T07:34:10.260702",
+      "total": 256.74,
+      "cash": 77.53,
+      "deployed": 179.21,
+      "pnl": 4.12
+    },
+    {
+      "ts": "2026-03-13T07:49:39.794858",
+      "total": 252.04,
+      "cash": 94.8,
+      "deployed": 157.24,
+      "pnl": 4.57
+    },
+    {
+      "ts": "2026-03-13T08:05:06.665075",
+      "total": 252.2,
+      "cash": 80.07,
+      "deployed": 172.13,
+      "pnl": 4.57
+    },
+    {
+      "ts": "2026-03-13T08:20:35.911273",
+      "total": 252.2,
+      "cash": 76.12,
+      "deployed": 176.08,
+      "pnl": 4.49
+    },
+    {
+      "ts": "2026-03-13T08:36:05.030893",
+      "total": 254.69,
+      "cash": 77.01,
+      "deployed": 177.68,
+      "pnl": 4.75
+    },
+    {
+      "ts": "2026-03-13T08:51:34.439763",
+      "total": 254.61,
+      "cash": 76.9,
+      "deployed": 177.71,
+      "pnl": 5.05
+    },
+    {
+      "ts": "2026-03-13T09:07:04.172080",
+      "total": 253.41,
+      "cash": 76.79,
+      "deployed": 176.62,
+      "pnl": 4.69
+    },
+    {
+      "ts": "2026-03-13T09:22:32.779423",
+      "total": 251.22,
+      "cash": 75.54,
+      "deployed": 175.68,
+      "pnl": 2.61
+    },
+    {
+      "ts": "2026-03-13T09:38:00.679779",
+      "total": 254.78,
+      "cash": 75.54,
+      "deployed": 179.24,
+      "pnl": 2.88
+    },
+    {
+      "ts": "2026-03-13T09:53:27.023916",
+      "total": 254.78,
+      "cash": 75.54,
+      "deployed": 179.24,
+      "pnl": 3.37
+    },
+    {
+      "ts": "2026-03-13T10:08:53.654407",
+      "total": 254.78,
+      "cash": 75.54,
+      "deployed": 179.24,
+      "pnl": 3.37
+    },
+    {
+      "ts": "2026-03-13T10:24:21.121113",
+      "total": 255.05,
+      "cash": 75.54,
+      "deployed": 179.51,
+      "pnl": 3.37
+    },
+    {
+      "ts": "2026-03-13T10:39:49.034889",
+      "total": 254.78,
+      "cash": 75.54,
+      "deployed": 179.24,
+      "pnl": 4.35
+    },
+    {
+      "ts": "2026-03-13T10:55:15.078206",
+      "total": 254.63,
+      "cash": 72.58,
+      "deployed": 182.05,
+      "pnl": 4.08
+    },
+    {
+      "ts": "2026-03-13T11:10:44.182746",
+      "total": 254.12,
+      "cash": 82.1,
+      "deployed": 172.02,
+      "pnl": 4.42
+    },
+    {
+      "ts": "2026-03-13T11:26:07.548601",
+      "total": 253.13,
+      "cash": 81.1,
+      "deployed": 172.03,
+      "pnl": 3.47
+    },
+    {
+      "ts": "2026-03-13T11:41:32.244482",
+      "total": 252.83,
+      "cash": 77.12,
+      "deployed": 175.71,
+      "pnl": 2.98
+    },
+    {
+      "ts": "2026-03-13T11:57:02.003698",
+      "total": 253.18,
+      "cash": 76.01,
+      "deployed": 177.17,
+      "pnl": 3.13
+    },
+    {
+      "ts": "2026-03-13T12:12:35.286379",
+      "total": 253.18,
+      "cash": 75.88,
+      "deployed": 177.3,
+      "pnl": 3.0
+    },
+    {
+      "ts": "2026-03-13T12:28:06.095392",
+      "total": 253.0,
+      "cash": 76.83,
+      "deployed": 176.17,
+      "pnl": 2.35
+    },
+    {
+      "ts": "2026-03-13T12:43:36.127419",
+      "total": 251.64,
+      "cash": 75.44,
+      "deployed": 176.2,
+      "pnl": 2.09
+    },
+    {
+      "ts": "2026-03-13T12:59:06.115164",
+      "total": 254.22,
+      "cash": 75.44,
+      "deployed": 178.78,
+      "pnl": 2.47
+    },
+    {
+      "ts": "2026-03-13T13:14:36.362875",
+      "total": 253.95,
+      "cash": 75.44,
+      "deployed": 178.51,
+      "pnl": 3.77
+    },
+    {
+      "ts": "2026-03-13T13:30:08.323714",
+      "total": 255.72,
+      "cash": 75.44,
+      "deployed": 180.28,
+      "pnl": 5.81
+    },
+    {
+      "ts": "2026-03-13T13:45:40.903629",
+      "total": 257.19,
+      "cash": 75.44,
+      "deployed": 181.75,
+      "pnl": 4.83
+    },
+    {
+      "ts": "2026-03-13T13:54:58.061158",
+      "total": 257.19,
+      "cash": 75.44,
+      "deployed": 181.75,
+      "pnl": 4.05
+    },
+    {
+      "ts": "2026-03-13T14:01:13.733584",
+      "total": 253.69,
+      "cash": 75.53,
+      "deployed": 178.16,
+      "pnl": -9.57
+    },
+    {
+      "ts": "2026-03-13T14:16:40.741665",
+      "total": 257.9,
+      "cash": 89.53,
+      "deployed": 168.37,
+      "pnl": 6.19
+    },
+    {
+      "ts": "2026-03-13T14:32:09.728138",
+      "total": 258.71,
+      "cash": 89.53,
+      "deployed": 169.18,
+      "pnl": 5.27
+    },
+    {
+      "ts": "2026-03-13T14:47:38.997783",
+      "total": 255.96,
+      "cash": 89.38,
+      "deployed": 166.58,
+      "pnl": 6.46
+    },
+    {
+      "ts": "2026-03-13T15:03:08.876427",
+      "total": 255.32,
+      "cash": 89.23,
+      "deployed": 166.09,
+      "pnl": 6.46
+    },
+    {
+      "ts": "2026-03-13T15:18:35.851303",
+      "total": 255.59,
+      "cash": 89.23,
+      "deployed": 166.36,
+      "pnl": 6.46
+    },
+    {
+      "ts": "2026-03-13T15:34:08.137317",
+      "total": 255.59,
+      "cash": 89.23,
+      "deployed": 166.36,
+      "pnl": 6.46
+    },
+    {
+      "ts": "2026-03-13T15:49:37.970123",
+      "total": 255.17,
+      "cash": 89.08,
+      "deployed": 166.09,
+      "pnl": 6.46
+    },
+    {
+      "ts": "2026-03-13T16:05:07.583380",
+      "total": 254.26,
+      "cash": 88.93,
+      "deployed": 165.33,
+      "pnl": 5.97
+    },
+    {
+      "ts": "2026-03-13T16:20:38.898809",
+      "total": 254.26,
+      "cash": 88.93,
+      "deployed": 165.33,
+      "pnl": 5.32
+    },
+    {
+      "ts": "2026-03-13T16:36:06.213212",
+      "total": 254.26,
+      "cash": 88.93,
+      "deployed": 165.33,
+      "pnl": 5.25
+    },
+    {
+      "ts": "2026-03-13T16:51:37.533287",
+      "total": 254.85,
+      "cash": 87.95,
+      "deployed": 166.9,
+      "pnl": 5.9
+    },
+    {
+      "ts": "2026-03-13T17:07:09.313236",
+      "total": 254.98,
+      "cash": 87.81,
+      "deployed": 167.17,
+      "pnl": 5.9
+    },
+    {
+      "ts": "2026-03-13T17:22:36.671627",
+      "total": 254.44,
+      "cash": 87.81,
+      "deployed": 166.63,
+      "pnl": 6.55
+    },
+    {
+      "ts": "2026-03-13T17:38:04.644341",
+      "total": 254.44,
+      "cash": 87.81,
+      "deployed": 166.63,
+      "pnl": 6.55
+    },
+    {
+      "ts": "2026-03-13T17:49:22.065236",
+      "total": 249.01,
+      "cash": 144.75,
+      "deployed": 104.26,
+      "pnl": -4.64
+    },
+    {
+      "ts": "2026-03-13T17:53:31.921344",
+      "total": 249.01,
+      "cash": 144.75,
+      "deployed": 104.26,
+      "pnl": -4.64
+    },
+    {
+      "ts": "2026-03-13T18:08:59.745885",
+      "total": 249.66,
+      "cash": 144.75,
+      "deployed": 104.91,
+      "pnl": -3.99
+    },
+    {
+      "ts": "2026-03-13T18:24:27.164458",
+      "total": 249.59,
+      "cash": 144.75,
+      "deployed": 104.84,
+      "pnl": -3.99
+    },
+    {
+      "ts": "2026-03-13T18:39:54.225659",
+      "total": 249.46,
+      "cash": 144.75,
+      "deployed": 104.71,
+      "pnl": -3.99
+    },
+    {
+      "ts": "2026-03-13T18:55:20.581419",
+      "total": 250.0,
+      "cash": 144.75,
+      "deployed": 105.25,
+      "pnl": -3.79
+    },
+    {
+      "ts": "2026-03-13T19:04:38.155687",
+      "total": 250.13,
+      "cash": 144.75,
+      "deployed": 105.38,
+      "pnl": -3.79
+    },
+    {
+      "ts": "2026-03-13T19:05:30.543889",
+      "total": 250.13,
+      "cash": 144.75,
+      "deployed": 105.38,
+      "pnl": -3.79
+    },
+    {
+      "ts": "2026-03-13T19:06:23.658805",
+      "total": 250.13,
+      "cash": 144.75,
+      "deployed": 105.38,
+      "pnl": -3.79
     }
   ]
 }
